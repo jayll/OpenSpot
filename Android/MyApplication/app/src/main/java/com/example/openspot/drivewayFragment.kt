@@ -42,13 +42,18 @@ class DrivewayFragment : PreferenceFragmentCompat() {
                                 title = a[i]
                             }
                             3 -> {//
-                                title = title + "\n" + a[i] +":"
+                                if(a[i] == "1") {
+                                     title = "$title\nActive"
+                                }
+                                else{
+                                    title = "$title\nInactive"
+                                }
                             }
                             4 -> {//LicensePlate
-                                preference.title = title + " " + a[i]
+                                preference.title = title + ": $" + a[i] +" per hour"
                                 preference.key = "Driveway$counter"
                                 preference.icon =
-                                    ContextCompat.getDrawable(activity!!.baseContext, R.drawable.icons8_car_35)
+                                    ContextCompat.getDrawable(activity!!.baseContext, R.drawable.icons8_garage_doo_part_open_35)
                                 preferenceScreen.addPreference(preference)
                                 val drivewayButton = findPreference("Driveway$counter")
                                 drivewayButton.setOnPreferenceClickListener {

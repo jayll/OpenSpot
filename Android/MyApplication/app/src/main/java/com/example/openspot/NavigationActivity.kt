@@ -18,6 +18,7 @@ class NavigationActivity : AppCompatActivity() {
         var fromVehiclePage = false
         var fromContactPage = false
         var fromEditProfile = false
+        var fromDrivewayPage = false
     }
 
     private val fragment11: Fragment = HomeFragment()
@@ -75,7 +76,7 @@ class NavigationActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_navigation)
 
-        if(NavigationActivity.fromVehiclePage || NavigationActivity.fromContactPage  || fromEditProfile){
+        if(NavigationActivity.fromVehiclePage || NavigationActivity.fromContactPage  || fromEditProfile || fromDrivewayPage){
             fm.beginTransaction().add(R.id.container, fragment22, "2").hide(fragment22).commit()
             fm.beginTransaction().add(R.id.container, fragment11, "1").hide(fragment11).commit()
             fm.beginTransaction().add(R.id.container, fragment33, "3").commit()

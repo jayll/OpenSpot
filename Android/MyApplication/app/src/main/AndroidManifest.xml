@@ -16,6 +16,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme.Launcher">
         <activity android:name=".DrivewayViewActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.openspot.NavigationActivity"/>
         </activity>
         <activity android:name=".ListDrivewayActivity">
         </activity>

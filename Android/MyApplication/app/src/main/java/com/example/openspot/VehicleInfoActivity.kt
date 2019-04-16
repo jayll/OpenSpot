@@ -582,6 +582,7 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
                 users["dateOfBirth"]= dateofBirth
                 users["phoneNumber"]= currentFirebaseUser!!.phoneNumber
                 users["Cars"]= arrayListOf(carMakeSpinner.selectedItem.toString(),carModelSpinner.selectedItem.toString(),carColorSpinner.selectedItem.toString(),carStateSpinner.selectedItem.toString(),value)
+                users["Addresses"] = arrayListOf<String>()
 
                 db.collection("Users").document(currentFirebaseUser!!.uid)
                     .set(users)
@@ -642,6 +643,7 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
     fun skipButton(){
         val users = HashMap<String, ArrayList<String>>()
         users["Cars"]= arrayListOf()
+        users["Addresses"] = arrayListOf()
         db.collection("Users").document(currentFirebaseUser!!.uid)
             .set(users)
             .addOnSuccessListener { documentReference ->
