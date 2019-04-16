@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.openspot.EditProfile">
+
+
+    <TextView
+            android:id="@+id/fullNameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:textSize="22dp"
+            android:inputType="textPersonName"
+            android:textColor="#A9A9A9"
+    />
+
+    <EditText
+            android:id="@+id/emailUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_below="@id/fullNameView"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+
+    <TextView
+            android:id="@+id/birthdayView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailUpdate"
+            android:text="Date of Birth"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="22dp"
+            android:textColor="#A9A9A9"
+    />
+
+    <TextView
+            android:id="@+id/phoneNumberView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_below="@+id/birthdayView"
+            android:text="Phone Number"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:textSize="22dp"
+            android:textColor="#A9A9A9"
+    />
+
+
+    <ImageButton
+            android:id="@+id/checkmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/check_mark"
+            android:background="@color/fui_transparent"
+            android:onClick="clickButton"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"
+            android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

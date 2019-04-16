@@ -2,6 +2,7 @@ package com.example.openspot
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         FirebaseApp.initializeApp(this)
-
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
         val providers = arrayListOf(
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
             if (resultCode == Activity.RESULT_OK) {
                 // Successfully signed in
-                val intent = Intent(this@MainActivity, NavigationActivity::class.java)
+                val intent = Intent(this@MainActivity, userProfile::class.java)
                 startActivity(intent)
                 finish()
             }

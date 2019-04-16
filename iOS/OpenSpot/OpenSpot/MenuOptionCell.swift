@@ -21,9 +21,17 @@ class MenuOptionCell: UITableViewCell {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
-//        label.textColor = .white
+        //        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "Sample text"
+//        label.text = "Sample text"
+        return label
+    }()
+    
+    let subDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.blue
+        label.font = UIFont.systemFont(ofSize: 12)
+//        label.text = "sub"
         return label
     }()
     
@@ -44,6 +52,12 @@ class MenuOptionCell: UITableViewCell {
         descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         descriptionLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 12).isActive = true
         descriptionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12).isActive = true
+        
+        addSubview(subDescriptionLabel)
+        subDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        subDescriptionLabel.centerYAnchor.constraint(equalTo: descriptionLabel.centerYAnchor, constant: 15).isActive = true
+        subDescriptionLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 12).isActive = true
+        subDescriptionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

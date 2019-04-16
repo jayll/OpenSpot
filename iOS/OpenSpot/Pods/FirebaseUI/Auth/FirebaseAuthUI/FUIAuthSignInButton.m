@@ -57,8 +57,11 @@ static const CGFloat kFontSize = 12.0f;
   if (!self) {
     return nil;
   }
+//    red: 231/255, green: 117/255, blue: 157/255, alpha: 1.0)
 
-  self.backgroundColor = backgroundColor;
+
+    self.backgroundColor = UIColor.darkGrayColor;
+//    self.backgroundColor = backgroundColor;
   [self setTitle:text forState:UIControlStateNormal];
   [self setTitleColor:textColor forState:UIControlStateNormal];
   self.titleLabel.font = [UIFont boldSystemFontOfSize:kFontSize];

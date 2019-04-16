@@ -71,7 +71,7 @@ class LogoutTest {
                 )
             )
         )
-        recyclerView.perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(4, click()))
+        recyclerView.perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(5, click()))
         //click logout button
         Thread.sleep(500)
         //half second wait

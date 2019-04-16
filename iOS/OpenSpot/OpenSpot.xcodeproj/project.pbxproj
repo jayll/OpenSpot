@@ -13,14 +13,23 @@
 		3E3C9C8F22176FAE00A88600 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8E22176FAE00A88600 /* SecondViewController.swift */; };
 		3E3C9C9222176FAE00A88600 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3C9C9022176FAE00A88600 /* Main.storyboard */; };
 		3E3C9C9722176FB000A88600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3C9C9522176FB000A88600 /* LaunchScreen.storyboard */; };
-		3E3C9CA222176FB000A88600 /* OpenSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CA122176FB000A88600 /* OpenSpotTests.swift */; };
-		3E3C9CAD22176FB000A88600 /* OpenSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CAC22176FB000A88600 /* OpenSpotUITests.swift */; };
+		3E3C9CA222176FB000A88600 /* OpenSpotTestsSprint1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CA122176FB000A88600 /* OpenSpotTestsSprint1.swift */; };
+		3E3C9CAD22176FB000A88600 /* OpenSpotUITestsSprint1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */; };
 		3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */; };
 		3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */; };
 		3E5CA0B4221E2022009954D7 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B3221E2022009954D7 /* MenuOption.swift */; };
 		3E5CA0B6221E29A1009954D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B5221E29A1009954D7 /* Assets.xcassets */; };
+		3E6525BC225737FE00941F27 /* OpenSpotUITestsSprint2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */; };
+		3E6525BE2257381600941F27 /* OpenSpotTestsSprint2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */; };
 		3E6762A422292584008E85BC /* Pods_OpenSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0796D1BA3492B57B06B3A331 /* Pods_OpenSpot.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		3EA2AA422218C0FB00224DDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2AA412218C0FB00224DDA /* GoogleService-Info.plist */; };
+		3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2373C224F0B5400DD6905 /* SupportViewController.swift */; };
+		3ED288E122338442007E8256 /* VehicleInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED288E022338442007E8256 /* VehicleInformationViewController.swift */; };
+		3ED288E3223384B8007E8256 /* UserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED288E2223384B8007E8256 /* UserInformationViewController.swift */; };
+		3ED288E5223481C9007E8256 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED288E4223481C9007E8256 /* UITextFieldExtension.swift */; };
+		9C5D93AE22505C3500011FB7 /* VehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D93AD22505C3500011FB7 /* VehicleViewController.swift */; };
+		9C5D93B0225170D700011FB7 /* VehicleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D93AF225170D700011FB7 /* VehicleOption.swift */; };
+		9CD5978C2241F60F00302BB1 /* OpenSpotFirebaseUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */; };
 		D4957764D6581D847C9AA024 /* Pods_OpenSpotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9C1319A1530BF5B1CAC992 /* Pods_OpenSpotTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,18 +77,28 @@
 		3E3C9C9622176FB000A88600 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E3C9C9822176FB000A88600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E3C9C9D22176FB000A88600 /* OpenSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E3C9CA122176FB000A88600 /* OpenSpotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotTests.swift; sourceTree = "<group>"; };
+		3E3C9CA122176FB000A88600 /* OpenSpotTestsSprint1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotTestsSprint1.swift; sourceTree = "<group>"; };
 		3E3C9CA322176FB000A88600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E3C9CA822176FB000A88600 /* OpenSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E3C9CAC22176FB000A88600 /* OpenSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITests.swift; sourceTree = "<group>"; };
+		3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITestsSprint1.swift; sourceTree = "<group>"; };
 		3E3C9CAE22176FB000A88600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		3E5CA0B3221E2022009954D7 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		3E5CA0B5221E29A1009954D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITestsSprint2.swift; sourceTree = "<group>"; };
+		3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotTestsSprint2.swift; sourceTree = "<group>"; };
 		3EA2AA412218C0FB00224DDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3EC2373C224F0B5400DD6905 /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
+		3ED288E022338442007E8256 /* VehicleInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleInformationViewController.swift; sourceTree = "<group>"; };
+		3ED288E2223384B8007E8256 /* UserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewController.swift; sourceTree = "<group>"; };
+		3ED288E4223481C9007E8256 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		5B9A1FB9F359B2F37E499603 /* Pods-OpenSpotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpotTests.release.xcconfig"; path = "Target Support Files/Pods-OpenSpotTests/Pods-OpenSpotTests.release.xcconfig"; sourceTree = "<group>"; };
 		5EA5A6ABAACA54187062F90F /* Pods-OpenSpotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpotTests.debug.xcconfig"; path = "Target Support Files/Pods-OpenSpotTests/Pods-OpenSpotTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9C5D93AD22505C3500011FB7 /* VehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewController.swift; sourceTree = "<group>"; };
+		9C5D93AF225170D700011FB7 /* VehicleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleOption.swift; sourceTree = "<group>"; };
+		9CD5978522361B8E00302BB1 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotFirebaseUI.swift; sourceTree = "<group>"; };
 		B2C58D57680DEC30632C6525 /* Pods_OpenSpotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSpotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9C1319A1530BF5B1CAC992 /* Pods_OpenSpotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSpotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -152,10 +171,17 @@
 			children = (
 				3E3C9C8A22176FAE00A88600 /* AppDelegate.swift */,
 				3E3C9C8C22176FAE00A88600 /* FirstViewController.swift */,
+				9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */,
+				3ED288E2223384B8007E8256 /* UserInformationViewController.swift */,
+				3ED288E022338442007E8256 /* VehicleInformationViewController.swift */,
+				9C5D93AD22505C3500011FB7 /* VehicleViewController.swift */,
 				3E3C9C8E22176FAE00A88600 /* SecondViewController.swift */,
 				3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */,
+				3EC2373C224F0B5400DD6905 /* SupportViewController.swift */,
 				3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */,
 				3E5CA0B3221E2022009954D7 /* MenuOption.swift */,
+				9C5D93AF225170D700011FB7 /* VehicleOption.swift */,
+				3ED288E4223481C9007E8256 /* UITextFieldExtension.swift */,
 				3E5CA0B5221E29A1009954D7 /* Assets.xcassets */,
 				3E3C9C9022176FAE00A88600 /* Main.storyboard */,
 				3E3C9C9522176FB000A88600 /* LaunchScreen.storyboard */,
@@ -168,7 +194,8 @@
 		3E3C9CA022176FB000A88600 /* OpenSpotTests */ = {
 			isa = PBXGroup;
 			children = (
-				3E3C9CA122176FB000A88600 /* OpenSpotTests.swift */,
+				3E3C9CA122176FB000A88600 /* OpenSpotTestsSprint1.swift */,
+				3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */,
 				3E3C9CA322176FB000A88600 /* Info.plist */,
 			);
 			path = OpenSpotTests;
@@ -177,7 +204,8 @@
 		3E3C9CAB22176FB000A88600 /* OpenSpotUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3E3C9CAC22176FB000A88600 /* OpenSpotUITests.swift */,
+				3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */,
+				3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */,
 				3E3C9CAE22176FB000A88600 /* Info.plist */,
 			);
 			path = OpenSpotUITests;
@@ -186,6 +214,7 @@
 		BCC43BDDBA6F219778930976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CD5978522361B8E00302BB1 /* iOSDropDown.framework */,
 				0796D1BA3492B57B06B3A331 /* Pods_OpenSpot.framework */,
 				FA9C1319A1530BF5B1CAC992 /* Pods_OpenSpotTests.framework */,
 				B2C58D57680DEC30632C6525 /* Pods_OpenSpotUITests.framework */,
@@ -265,19 +294,26 @@
 		3E3C9C7F22176FAE00A88600 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					0,
+					1,
+				);
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Jay Lliguichushca";
 				TargetAttributes = {
 					3E3C9C8622176FAE00A88600 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					3E3C9C9C22176FB000A88600 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 3E3C9C8622176FAE00A88600;
 					};
 					3E3C9CA722176FB000A88600 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 3E3C9C8622176FAE00A88600;
 					};
 				};
@@ -342,7 +378,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-OpenSpotUITests/Pods-OpenSpotUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-00567490/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -446,7 +482,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-OpenSpot/Pods-OpenSpot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-00567490/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -549,7 +585,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-OpenSpotTests/Pods-OpenSpotTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-Environment-Logger-UserDefaults/GoogleUtilities.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -571,10 +607,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E3C9C8F22176FAE00A88600 /* SecondViewController.swift in Sources */,
+				9C5D93AE22505C3500011FB7 /* VehicleViewController.swift in Sources */,
+				3ED288E5223481C9007E8256 /* UITextFieldExtension.swift in Sources */,
+				3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */,
+				9C5D93B0225170D700011FB7 /* VehicleOption.swift in Sources */,
+				9CD5978C2241F60F00302BB1 /* OpenSpotFirebaseUI.swift in Sources */,
 				3E5CA0B4221E2022009954D7 /* MenuOption.swift in Sources */,
+				3ED288E3223384B8007E8256 /* UserInformationViewController.swift in Sources */,
 				3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */,
 				3E3C9C8B22176FAE00A88600 /* AppDelegate.swift in Sources */,
 				3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */,
+				3ED288E122338442007E8256 /* VehicleInformationViewController.swift in Sources */,
 				3E3C9C8D22176FAE00A88600 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,7 +626,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E3C9CA222176FB000A88600 /* OpenSpotTests.swift in Sources */,
+				3E6525BE2257381600941F27 /* OpenSpotTestsSprint2.swift in Sources */,
+				3E3C9CA222176FB000A88600 /* OpenSpotTestsSprint1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,7 +635,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E3C9CAD22176FB000A88600 /* OpenSpotUITests.swift in Sources */,
+				3E6525BC225737FE00941F27 /* OpenSpotUITestsSprint2.swift in Sources */,
+				3E3C9CAD22176FB000A88600 /* OpenSpotUITestsSprint1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,16 +797,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7ZQ7ZU696;
+				DEVELOPMENT_TEAM = 4KBD465JXX;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -772,16 +817,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7ZQ7ZU696;
+				DEVELOPMENT_TEAM = 4KBD465JXX;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -793,16 +838,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7ZQ7ZU696;
+				DEVELOPMENT_TEAM = 4KBD465JXX;
 				INFOPLIST_FILE = OpenSpotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpotTests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenSpot.app/OpenSpot";
 			};
@@ -815,16 +860,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7ZQ7ZU696;
+				DEVELOPMENT_TEAM = 4KBD465JXX;
 				INFOPLIST_FILE = OpenSpotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpotTests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenSpot.app/OpenSpot";
 			};
@@ -835,8 +880,9 @@
 			baseConfigurationReference = 2854F5D1C33F1BC07BCB6106 /* Pods-OpenSpotUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7ZQ7ZU696;
+				DEVELOPMENT_TEAM = 4KBD465JXX;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpotUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -844,9 +890,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpotUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = OpenSpot;
 			};
@@ -857,8 +904,9 @@
 			baseConfigurationReference = 33547ADBA8A2B1DB1F15F228 /* Pods-OpenSpotUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7ZQ7ZU696;
+				DEVELOPMENT_TEAM = 4KBD465JXX;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpotUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -866,9 +914,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpotUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = OpenSpot;
 			};

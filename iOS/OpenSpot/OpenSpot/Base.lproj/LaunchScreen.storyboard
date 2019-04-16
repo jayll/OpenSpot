@@ -21,17 +21,20 @@
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fTy-fr-2OG">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ss-aD-thT">
-                                        <rect key="frame" x="82" y="415" width="250.5" height="66"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="55"/>
-                                        <color key="textColor" red="0.18431372549019609" green="0.23529411764705882" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OpenSpot" translatesAutoresizingMaskIntoConstraints="NO" id="M4S-N7-Qzb">
+                                        <rect key="frame" x="100" y="349.66666666666669" width="214" height="197.00000000000006"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="214" id="LJr-9Z-O0h"/>
+                                            <constraint firstAttribute="height" constant="197" id="PLp-31-nX7"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98431372549019602" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.61568627450980395" green="0.60392156862745094" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="6Ss-aD-thT" firstAttribute="centerX" secondItem="fTy-fr-2OG" secondAttribute="centerX" id="Cyp-qX-lQR"/>
-                                    <constraint firstItem="6Ss-aD-thT" firstAttribute="centerY" secondItem="fTy-fr-2OG" secondAttribute="centerY" id="Pev-2u-BzK"/>
+                                    <constraint firstItem="M4S-N7-Qzb" firstAttribute="centerX" secondItem="fTy-fr-2OG" secondAttribute="centerX" id="4Ii-6b-DiX"/>
+                                    <constraint firstItem="M4S-N7-Qzb" firstAttribute="centerY" secondItem="fTy-fr-2OG" secondAttribute="centerY" id="8iD-dc-Psf"/>
+                                    <constraint firstItem="M4S-N7-Qzb" firstAttribute="centerX" secondItem="fTy-fr-2OG" secondAttribute="centerX" id="AV4-yS-v4E"/>
+                                    <constraint firstItem="M4S-N7-Qzb" firstAttribute="centerY" secondItem="fTy-fr-2OG" secondAttribute="centerY" id="pH3-DV-U7A"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -50,4 +53,7 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="OpenSpot" width="616" height="567"/>
+    </resources>
 </document>

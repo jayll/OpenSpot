@@ -1,6 +1,7 @@
 package com.example.openspot
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -21,12 +22,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_home.*
 import com.google.android.gms.location.LocationServices
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class ReservationFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         return   inflater.inflate(R.layout.reservation, container, false)
     }
 }
@@ -43,13 +46,14 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
     private lateinit var lastLocation: Location
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         if(activity != null) {
             gMapView = view!!.findViewById(R.id.mapView) as MapView
             mapView.onCreate(savedInstanceState)
@@ -120,15 +124,48 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
 
 class SettingFragment : PreferenceFragmentCompat() {
 
+    //Firebase for User Profile title replacement with Users Full name
+    private val db = FirebaseFirestore.getInstance()
+    private val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, root_key: String?) {
         setPreferencesFromResource(R.xml.preferences, root_key)
-        val button = findPreference("logout")
-        button.setOnPreferenceClickListener {
+        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        val logoutBtn = findPreference("logout")
+        logoutBtn.setOnPreferenceClickListener {
             AuthUI.getInstance()
                 .signOut(activity!!.baseContext)
                 .addOnCompleteListener {
                     startActivity(Intent(activity, MainActivity::class.java))
                 }
+            true
+        }
+
+        val contactUsButton = findPreference("contact")
+        contactUsButton.setOnPreferenceClickListener {
+            AuthUI.getInstance()
+            startActivity(Intent(activity, ContactActivity::class.java))
+            true
+        }
+        val vehicleButton = findPreference("vehicle")
+        vehicleButton.setOnPreferenceClickListener {
+            AuthUI.getInstance()
+            startActivity(Intent(activity, VehicleViewActivity::class.java))
+            true
+        }
+        val userProfileBtn = findPreference("profile")
+        if(currentFirebaseUser != null) {
+            val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
+            docRef.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        userProfileBtn.title = document.data!!["fullName"].toString()
+                    }
+                }
+        }
+        userProfileBtn.setOnPreferenceClickListener {
+            AuthUI.getInstance()
+            startActivity(Intent(activity, EditProfile::class.java))
             true
         }
     }
