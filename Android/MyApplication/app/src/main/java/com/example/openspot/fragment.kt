@@ -168,5 +168,12 @@ class SettingFragment : PreferenceFragmentCompat() {
             startActivity(Intent(activity, EditProfile::class.java))
             true
         }
+
+        val listYourDriveWayBtn = findPreference("driveway")
+        listYourDriveWayBtn.setOnPreferenceClickListener {
+            AuthUI.getInstance()
+            startActivity(Intent(activity, DrivewayViewActivity::class.java))
+            true
+        }
     }
 }
