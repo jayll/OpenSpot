@@ -17,7 +17,7 @@ class DrivewayListViewController: UIViewController{
         self.navigationItem.title = "Driveways"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action:  #selector(dismissViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newDrivewayViewController))
-    
+        
         drivewayTableView.tableFooterView = UIView()
         drivewayTableView.register(MenuOptionCell.self, forCellReuseIdentifier: "cell")
     }
@@ -52,38 +52,69 @@ extension DrivewayListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MenuOptionCell
-        cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuOptionCell
-        if drivewayArray[indexPath.row * 5 + 4] == "1"{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuOptionCell
+        if drivewayArray[indexPath.row * 5 + 3] == "1"{
             cell.iconImageView.image = #imageLiteral(resourceName: "DrivewayOpen")
+            cell.subDescriptionLabel.text = "Active: " + "$" + drivewayArray[indexPath.row * 5 + 4] + "/hr"
         }
         else{
             cell.iconImageView.image = #imageLiteral(resourceName: "DrivewayClosed")
+            cell.subDescriptionLabel.text = "Inactive: " + "$" + drivewayArray[indexPath.row * 5 + 4] + "/hr"
         }
         cell.descriptionLabel.text = drivewayArray[indexPath.row * 5]
-        if drivewayArray[indexPath.row * 5 + 4] == "1" {
-            cell.subDescriptionLabel.text = "Active: " + "$" + drivewayArray[indexPath.row * 5 + 3] + "/hr"
-        }else{
-            cell.subDescriptionLabel.text = "Inactive: " + "$" + drivewayArray[indexPath.row * 5 + 3] + "/hr"
-        }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let db = Firestore.firestore()
-            let currentUser = Auth.auth().currentUser
-            let user = db.collection("Users").document((currentUser?.uid)!)
-            user.getDocument { (value, Error) in
-                var getCarArray = (value!["Addresses"] as? [String])!
-                let deleteIndex = indexPath.row * 5
-                for _ in 0..<5 {
-                    getCarArray.remove(at: deleteIndex)
-                }
-                self.drivewayArray = getCarArray
-                self.drivewayTableView.reloadData()
-                user.updateData(["Addresses":getCarArray])
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var switchStatus: UITableViewRowAction
+        if drivewayArray[indexPath.row * 5 + 3] == "1"{
+            switchStatus = UITableViewRowAction(style: .normal, title: "Deactivate") { action, index in
+                self.switchStatusFunc(indexPath: indexPath)
             }
+        }else{
+            switchStatus = UITableViewRowAction(style: .normal, title: "Activate") { action, index in
+                self.switchStatusFunc(indexPath: indexPath)
+            }
+        }
+        switchStatus.backgroundColor = .orange
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            self.deleteFunc(indexPath: indexPath)
+        }
+        delete.backgroundColor = .red
+        
+        return [delete, switchStatus]
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func switchStatusFunc(indexPath: IndexPath) {
+        let db = Firestore.firestore()
+        let currentUser = Auth.auth().currentUser
+        let user = db.collection("Users").document((currentUser?.uid)!)
+        user.getDocument { (value, Error) in
+            if self.drivewayArray[indexPath.row * 5 + 3] == "1"{
+                self.drivewayArray[indexPath.row * 5 + 3] = "0"
+            }else{
+                self.drivewayArray[indexPath.row * 5 + 3] = "1"
+            }
+            self.drivewayTableView.reloadData()
+            user.updateData(["Addresses" : self.drivewayArray])
+        }
+    }
+    
+    func deleteFunc(indexPath: IndexPath) {
+        let db = Firestore.firestore()
+        let currentUser = Auth.auth().currentUser
+        let user = db.collection("Users").document((currentUser?.uid)!)
+        user.getDocument { (value, Error) in
+            let deleteIndex = indexPath.row * 5
+            for _ in 0..<5 {
+                self.drivewayArray.remove(at: deleteIndex)
+            }
+            self.drivewayTableView.reloadData()
+            user.updateData(["Addresses" : self.drivewayArray])
         }
     }
     
@@ -92,6 +123,5 @@ extension DrivewayListViewController: UITableViewDelegate, UITableViewDataSource
         destinationVC.addressIndex = indexPath.row * 5
         self.navigationController!.pushViewController(destinationVC, animated: true)
     }
-    
     
 }

@@ -24,7 +24,8 @@
 		3E6525BC225737FE00941F27 /* OpenSpotUITestsSprint2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */; };
 		3E6525BE2257381600941F27 /* OpenSpotTestsSprint2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */; };
 		3E6762A422292584008E85BC /* Pods_OpenSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0796D1BA3492B57B06B3A331 /* Pods_OpenSpot.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		3EAC65BB2263B8360048D6E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC65BA2263B8360048D6E3 /* GoogleService-Info.plist */; };
+		3E9407C32265738600D9EE0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E9407C22265738600D9EE0E /* GoogleService-Info.plist */; };
+		3EAC65BD226419AE0048D6E3 /* ReservationsOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */; };
 		3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2373C224F0B5400DD6905 /* SupportViewController.swift */; };
 		3ED288E122338442007E8256 /* VehicleInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED288E022338442007E8256 /* VehicleInformationViewController.swift */; };
 		3ED288E3223384B8007E8256 /* UserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED288E2223384B8007E8256 /* UserInformationViewController.swift */; };
@@ -92,7 +93,8 @@
 		3E5CA0B5221E29A1009954D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITestsSprint2.swift; sourceTree = "<group>"; };
 		3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotTestsSprint2.swift; sourceTree = "<group>"; };
-		3EAC65BA2263B8360048D6E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3E9407C22265738600D9EE0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsOptionCell.swift; sourceTree = "<group>"; };
 		3EC2373C224F0B5400DD6905 /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		3ED288E022338442007E8256 /* VehicleInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleInformationViewController.swift; sourceTree = "<group>"; };
 		3ED288E2223384B8007E8256 /* UserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewController.swift; sourceTree = "<group>"; };
@@ -185,13 +187,14 @@
 				3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */,
 				3EC2373C224F0B5400DD6905 /* SupportViewController.swift */,
 				3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */,
+				3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */,
 				3E5CA0B3221E2022009954D7 /* MenuOption.swift */,
 				9C5D93AF225170D700011FB7 /* VehicleOption.swift */,
 				3ED288E4223481C9007E8256 /* UITextFieldExtension.swift */,
 				3E5CA0B5221E29A1009954D7 /* Assets.xcassets */,
 				3E3C9C9022176FAE00A88600 /* Main.storyboard */,
 				3E3C9C9522176FB000A88600 /* LaunchScreen.storyboard */,
-				3EAC65BA2263B8360048D6E3 /* GoogleService-Info.plist */,
+				3E9407C22265738600D9EE0E /* GoogleService-Info.plist */,
 				3E3C9C9822176FB000A88600 /* Info.plist */,
 			);
 			path = OpenSpot;
@@ -350,8 +353,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E3C9C9722176FB000A88600 /* LaunchScreen.storyboard in Resources */,
+				3E9407C32265738600D9EE0E /* GoogleService-Info.plist in Resources */,
 				3E5CA0B6221E29A1009954D7 /* Assets.xcassets in Resources */,
-				3EAC65BB2263B8360048D6E3 /* GoogleService-Info.plist in Resources */,
 				3E3C9C9222176FAE00A88600 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +620,7 @@
 				3E2342E62261802E0061A6AE /* DrivewayViewController.swift in Sources */,
 				9C5D93AE22505C3500011FB7 /* VehicleViewController.swift in Sources */,
 				3ED288E5223481C9007E8256 /* UITextFieldExtension.swift in Sources */,
+				3EAC65BD226419AE0048D6E3 /* ReservationsOptionCell.swift in Sources */,
 				3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */,
 				9C5D93B0225170D700011FB7 /* VehicleOption.swift in Sources */,
 				9CD5978C2241F60F00302BB1 /* OpenSpotFirebaseUI.swift in Sources */,

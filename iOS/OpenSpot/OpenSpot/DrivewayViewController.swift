@@ -26,16 +26,15 @@ class DrivewayViewController : UIViewController {
         }
         else{
             if addressIndex == nil{
-            let db = Firestore.firestore()
-            let currentUser = Auth.auth().currentUser
-            db.collection("Users").document((currentUser?.uid)!).getDocument {(value, Error) in
-                let getAddressesArray = value!["Addresses"] as? [String]
-                self.addressesArray = [self.addressTextView.text!, self.lat, self.long, String(format: "%.2f", self.priceSlide.value.rounded()), String(self.availablitySegmentedControl.selectedSegmentIndex)]
-                db.collection("Users").document((currentUser?.uid)!).updateData([
-                    "Addresses": getAddressesArray! + self.addressesArray])
-                let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "DrivewayListViewController") as! DrivewayListViewController
-                self.show(destinationVC, sender: nil)
-            }
+                let db = Firestore.firestore()
+                let currentUser = Auth.auth().currentUser
+                db.collection("Users").document((currentUser?.uid)!).getDocument {(value, Error) in
+                    self.addressesArray = [self.addressTextView.text!, self.lat, self.long, String(self.availablitySegmentedControl.selectedSegmentIndex), String(format: "%.2f", self.priceSlide.value.rounded())]
+                    db.collection("Users").document((currentUser?.uid)!).updateData([
+                        "Addresses": value!["Addresses"] as! [String] + self.addressesArray])
+                    let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "DrivewayListViewController") as! DrivewayListViewController
+                    self.show(destinationVC, sender: nil)
+                }
             }else{
                 let db = Firestore.firestore()
                 let currentUser = Auth.auth().currentUser
@@ -44,8 +43,9 @@ class DrivewayViewController : UIViewController {
                     getAddressesArray![self.addressIndex!] = self.addressTextView.text!
                     getAddressesArray![self.addressIndex!+1] = self.lat
                     getAddressesArray![self.addressIndex!+2] = self.long
-                    getAddressesArray![self.addressIndex!+3] = String(format: "%.2f", self.priceSlide.value.rounded())
-                    getAddressesArray![self.addressIndex!+4] = String(self.availablitySegmentedControl.selectedSegmentIndex)
+                    getAddressesArray![self.addressIndex!+3] = String(self.availablitySegmentedControl.selectedSegmentIndex)
+                    getAddressesArray![self.addressIndex!+4] = String(format: "%.2f", self.priceSlide.value.rounded())
+                    
                     db.collection("Users").document((currentUser?.uid)!).updateData([
                         "Addresses": getAddressesArray!])
                     let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "DrivewayListViewController") as! DrivewayListViewController
@@ -74,18 +74,17 @@ class DrivewayViewController : UIViewController {
             let db = Firestore.firestore()
             let currentUser = Auth.auth().currentUser
             let user = db.collection("Users").document((currentUser?.uid)!)
-            var addressArray = [String]()
             user.getDocument { (value, Error) in
-                addressArray = (value!["Addresses"] as? [String])!
-                self.addressTextView.text = addressArray[self.addressIndex!]
-                self.lat = addressArray[self.addressIndex!+1]
-                self.long = addressArray[self.addressIndex!+2]
-                self.priceLabel.text = "$" + addressArray[self.addressIndex!+3] + "/hr"
-                self.priceSlide.setValue(Float(addressArray[self.addressIndex!+3])!, animated: false)
+                self.addressesArray = value!["Addresses"] as! [String]
+                self.addressTextView.text = self.addressesArray[self.addressIndex!]
+                self.lat = self.addressesArray[self.addressIndex!+1]
+                self.long = self.addressesArray[self.addressIndex!+2]
+                self.availablitySegmentedControl.selectedSegmentIndex = Int(self.addressesArray[self.addressIndex! + 3])!
+                self.priceLabel.text = "$" + self.addressesArray[self.addressIndex! + 4] + "/hr"
+                self.priceSlide.setValue(Float(self.addressesArray[self.addressIndex! + 4])!, animated: false)
             }
         }
-        }
-
+    }
     
     func showErrorMessage(message : String) {
         let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
@@ -141,6 +140,16 @@ extension DrivewayViewController: MKLocalSearchCompleterDelegate {
         searchResultTableView.isHidden = true
         addressSearchBar.isHidden = true
     }
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.showsCancelButton = true
+        return true
+    }
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.showsCancelButton = false
+        return true
+    }
 }
 
 extension DrivewayViewController: UISearchBarDelegate {
@@ -153,14 +162,11 @@ extension DrivewayViewController: UITextFieldDelegate{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         addressSearchBar.isHidden = false
         searchResultTableView.isHidden = false
+        
         DispatchQueue.main.async {
             self.addressSearchBar.becomeFirstResponder()
         }
         print("exampleTextView: START EDIT")
-        return true
-    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        print("exampleTextView: END EDIT")
         return true
     }
 }
