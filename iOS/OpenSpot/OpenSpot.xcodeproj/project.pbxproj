@@ -29,6 +29,8 @@
 		3ED288E5223481C9007E8256 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED288E4223481C9007E8256 /* UITextFieldExtension.swift */; };
 		9C5D93AE22505C3500011FB7 /* VehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D93AD22505C3500011FB7 /* VehicleViewController.swift */; };
 		9C5D93B0225170D700011FB7 /* VehicleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D93AF225170D700011FB7 /* VehicleOption.swift */; };
+		9C5D93B62263E70800011FB7 /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D93B52263E70800011FB7 /* CustomMarkerView.swift */; };
+		9C5D93B82263E8F800011FB7 /* DrivewayPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D93B72263E8F800011FB7 /* DrivewayPreviewView.swift */; };
 		9CD5978C2241F60F00302BB1 /* OpenSpotFirebaseUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */; };
 		D4957764D6581D847C9AA024 /* Pods_OpenSpotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9C1319A1530BF5B1CAC992 /* Pods_OpenSpotTests.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +99,8 @@
 		5EA5A6ABAACA54187062F90F /* Pods-OpenSpotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpotTests.debug.xcconfig"; path = "Target Support Files/Pods-OpenSpotTests/Pods-OpenSpotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C5D93AD22505C3500011FB7 /* VehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewController.swift; sourceTree = "<group>"; };
 		9C5D93AF225170D700011FB7 /* VehicleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleOption.swift; sourceTree = "<group>"; };
+		9C5D93B52263E70800011FB7 /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
+		9C5D93B72263E8F800011FB7 /* DrivewayPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivewayPreviewView.swift; sourceTree = "<group>"; };
 		9CD5978522361B8E00302BB1 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotFirebaseUI.swift; sourceTree = "<group>"; };
 		B2C58D57680DEC30632C6525 /* Pods_OpenSpotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenSpotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +178,8 @@
 				9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */,
 				3ED288E2223384B8007E8256 /* UserInformationViewController.swift */,
 				3ED288E022338442007E8256 /* VehicleInformationViewController.swift */,
+				9C5D93B52263E70800011FB7 /* CustomMarkerView.swift */,
+				9C5D93B72263E8F800011FB7 /* DrivewayPreviewView.swift */,
 				9C5D93AD22505C3500011FB7 /* VehicleViewController.swift */,
 				3E3C9C8E22176FAE00A88600 /* SecondViewController.swift */,
 				3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */,
@@ -204,8 +210,8 @@
 		3E3C9CAB22176FB000A88600 /* OpenSpotUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */,
 				3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */,
+				3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */,
 				3E3C9CAE22176FB000A88600 /* Info.plist */,
 			);
 			path = OpenSpotUITests;
@@ -414,6 +420,8 @@
 				"${PODS_ROOT}/Target Support Files/Pods-OpenSpot/Pods-OpenSpot-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI-Auth-Phone/FirebaseAuthUI.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI-Auth-Phone/FirebasePhoneAuthUI.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
@@ -421,6 +429,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -609,6 +619,7 @@
 				3E3C9C8F22176FAE00A88600 /* SecondViewController.swift in Sources */,
 				9C5D93AE22505C3500011FB7 /* VehicleViewController.swift in Sources */,
 				3ED288E5223481C9007E8256 /* UITextFieldExtension.swift in Sources */,
+				9C5D93B62263E70800011FB7 /* CustomMarkerView.swift in Sources */,
 				3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */,
 				9C5D93B0225170D700011FB7 /* VehicleOption.swift in Sources */,
 				9CD5978C2241F60F00302BB1 /* OpenSpotFirebaseUI.swift in Sources */,
@@ -616,6 +627,7 @@
 				3ED288E3223384B8007E8256 /* UserInformationViewController.swift in Sources */,
 				3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */,
 				3E3C9C8B22176FAE00A88600 /* AppDelegate.swift in Sources */,
+				9C5D93B82263E8F800011FB7 /* DrivewayPreviewView.swift in Sources */,
 				3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */,
 				3ED288E122338442007E8256 /* VehicleInformationViewController.swift in Sources */,
 				3E3C9C8D22176FAE00A88600 /* FirstViewController.swift in Sources */,
@@ -797,14 +809,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KBD465JXX;
+				DEVELOPMENT_TEAM = D7ZQ7ZU696;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -817,14 +829,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KBD465JXX;
+				DEVELOPMENT_TEAM = D7ZQ7ZU696;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.sfung1.OpenSpot;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.buffalo.jayll.OpenSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -838,7 +850,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KBD465JXX;
+				DEVELOPMENT_TEAM = D7ZQ7ZU696;
 				INFOPLIST_FILE = OpenSpotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -860,7 +872,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KBD465JXX;
+				DEVELOPMENT_TEAM = D7ZQ7ZU696;
 				INFOPLIST_FILE = OpenSpotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -882,7 +894,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KBD465JXX;
+				DEVELOPMENT_TEAM = D7ZQ7ZU696;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpotUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -906,7 +918,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KBD465JXX;
+				DEVELOPMENT_TEAM = D7ZQ7ZU696;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenSpotUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

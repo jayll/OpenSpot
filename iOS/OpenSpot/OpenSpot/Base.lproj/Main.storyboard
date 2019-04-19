@@ -17,50 +17,15 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kQ0-Lg-waN">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18f-fM-nWD">
-                                <rect key="frame" x="362" y="761" width="45" height="45"/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="0.80492829623287676" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="59W-N4-gcd"/>
-                                    <constraint firstAttribute="height" constant="45" id="bH9-oZ-9Co"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="zoomIcon">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="zoomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="OoF-Ja-fem"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="kQ0-Lg-waN" secondAttribute="bottom" id="4LH-4a-YMw"/>
-                            <constraint firstItem="kQ0-Lg-waN" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="BpI-uC-ada"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="18f-fM-nWD" secondAttribute="trailing" constant="7" id="Egr-Xr-Fsa"/>
-                            <constraint firstItem="kQ0-Lg-waN" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="cVx-4a-55B"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="kQ0-Lg-waN" secondAttribute="trailing" id="dG4-6d-2cK"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="18f-fM-nWD" secondAttribute="bottom" constant="7" id="s3y-oo-TWc"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Parking" image="Parking" id="acW-dT-cKf"/>
-                    <connections>
-                        <outlet property="mapView" destination="kQ0-Lg-waN" id="HYe-Vg-MiC"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Parking" image="Parking" id="6Xx-47-bsp"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="752" y="-344"/>
+            <point key="canvasLocation" x="798.55072463768124" y="-382.36607142857139"/>
         </scene>
         <!--Reservations-->
         <scene sceneID="wg7-f3-ORb">
@@ -465,7 +430,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuy-wP-77j" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="0.0"/>
+            <point key="canvasLocation" x="1584" y="327"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PrR-uU-2eT">
@@ -636,6 +601,5 @@
         <image name="Reservations" width="25" height="25"/>
         <image name="SendMail" width="32" height="32"/>
         <image name="Settings" width="25" height="25"/>
-        <image name="zoomIcon" width="25" height="25"/>
     </resources>
 </document>
