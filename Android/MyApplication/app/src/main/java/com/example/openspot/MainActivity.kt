@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
         val providers = arrayListOf(
-            AuthUI.IdpConfig.PhoneBuilder().build(),
+            AuthUI.IdpConfig.PhoneBuilder().build()
         )
 
         // Create and launch sign-in intent
