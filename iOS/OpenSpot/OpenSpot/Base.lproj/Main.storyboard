@@ -746,21 +746,39 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uhk-bt-8od">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Uhk-bt-8od">
                                                 <rect key="frame" x="0.0" y="23.333333333333314" width="374" height="30"/>
                                                 <subviews>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="0.5" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="pAQ-FI-v5f">
-                                                        <rect key="frame" x="-2" y="0.0" width="308.66666666666669" height="31"/>
-                                                        <connections>
-                                                            <action selector="priceSlider:" destination="oUj-VZ-tBa" eventType="valueChanged" id="T2l-7f-MQK"/>
-                                                        </connections>
-                                                    </slider>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4.00/hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmi-qb-UkM">
-                                                        <rect key="frame" x="319.66666666666669" y="0.0" width="54.333333333333314" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZy-5U-it3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vhc-BD-H8Y">
+                                                        <rect key="frame" x="3" y="0.0" width="0.0" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-bi-I07">
+                                                        <rect key="frame" x="6" y="0.0" width="0.0" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="0.5" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="pAQ-FI-v5f">
+                                                        <rect key="frame" x="7" y="0.0" width="369" height="31"/>
+                                                        <connections>
+                                                            <action selector="priceSlider:" destination="oUj-VZ-tBa" eventType="valueChanged" id="T2l-7f-MQK"/>
+                                                        </connections>
+                                                    </slider>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -848,7 +866,7 @@
                         <outlet property="addressSearchBar" destination="XAn-90-rCN" id="238-S0-lZy"/>
                         <outlet property="addressTextView" destination="4dK-5w-cpS" id="J7r-IJ-VFW"/>
                         <outlet property="availablitySegmentedControl" destination="vkI-eF-ZYc" id="P1l-NI-loF"/>
-                        <outlet property="priceLabel" destination="xmi-qb-UkM" id="hbM-90-JO2"/>
+                        <outlet property="priceLabel" destination="Vhc-BD-H8Y" id="r5e-PH-VjW"/>
                         <outlet property="priceSlide" destination="pAQ-FI-v5f" id="8Nq-Q2-fkz"/>
                         <outlet property="searchDisplayController" destination="YUZ-ep-Dqx" id="oXC-Wf-0PX"/>
                         <outlet property="searchResultTableView" destination="pY6-Dc-yFW" id="QPO-lB-Ltr"/>

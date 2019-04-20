@@ -14,11 +14,11 @@ class DrivewayViewController : UIViewController {
     @IBOutlet weak var searchResultTableView: UITableView!
     @IBOutlet weak var addressSearchBar: UISearchBar!
     @IBOutlet weak var addressTextView: UITextField!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceLabel: UITextField!
     @IBOutlet weak var availablitySegmentedControl: UISegmentedControl!
     @IBOutlet weak var priceSlide: UISlider!
     @IBAction func priceSlider(_ sender: UISlider) {
-        priceLabel.text = "$" + String(format: "%.2f", sender.value.rounded()) + "/hr"
+        priceLabel.text = String(Int(sender.value))
     }
     @IBAction func finishClicked(_ sender: Any) {
         if addressTextView.text == ""{
@@ -29,7 +29,7 @@ class DrivewayViewController : UIViewController {
                 let db = Firestore.firestore()
                 let currentUser = Auth.auth().currentUser
                 db.collection("Users").document((currentUser?.uid)!).getDocument {(value, Error) in
-                    self.addressesArray = [self.addressTextView.text!, self.lat, self.long, String(self.availablitySegmentedControl.selectedSegmentIndex), String(format: "%.2f", self.priceSlide.value.rounded())]
+                    self.addressesArray = [self.addressTextView.text!, self.lat, self.long, String(self.availablitySegmentedControl.selectedSegmentIndex), String(Int( self.priceSlide.value))]
                     db.collection("Users").document((currentUser?.uid)!).updateData([
                         "Addresses": value!["Addresses"] as! [String] + self.addressesArray])
                     let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "DrivewayListViewController") as! DrivewayListViewController
@@ -44,7 +44,7 @@ class DrivewayViewController : UIViewController {
                     getAddressesArray![self.addressIndex!+1] = self.lat
                     getAddressesArray![self.addressIndex!+2] = self.long
                     getAddressesArray![self.addressIndex!+3] = String(self.availablitySegmentedControl.selectedSegmentIndex)
-                    getAddressesArray![self.addressIndex!+4] = String(format: "%.2f", self.priceSlide.value.rounded())
+                    getAddressesArray![self.addressIndex!+4] = String(Int(self.priceSlide.value.rounded()))
                     
                     db.collection("Users").document((currentUser?.uid)!).updateData([
                         "Addresses": getAddressesArray!])
@@ -80,7 +80,7 @@ class DrivewayViewController : UIViewController {
                 self.lat = self.addressesArray[self.addressIndex!+1]
                 self.long = self.addressesArray[self.addressIndex!+2]
                 self.availablitySegmentedControl.selectedSegmentIndex = Int(self.addressesArray[self.addressIndex! + 3])!
-                self.priceLabel.text = "$" + self.addressesArray[self.addressIndex! + 4] + "/hr"
+                self.priceLabel.text = self.addressesArray[self.addressIndex! + 4]
                 self.priceSlide.setValue(Float(self.addressesArray[self.addressIndex! + 4])!, animated: false)
             }
         }
