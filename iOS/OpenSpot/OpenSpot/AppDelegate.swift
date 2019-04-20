@@ -22,6 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSServices.provideAPIKey("AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
         GMSPlacesClient.provideAPIKey("AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+        
+        
+        if Auth.auth().currentUser == nil{
+            let authUI = FUIAuth.defaultAuthUI()
+            FUIAuth.defaultAuthUI()?.shouldHideCancelButton = true
+            let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!)]
+            authUI?.providers = providers
+            let authViewController = OpenSpotFirebaseUI(authUI: authUI!)
+            let navc = UINavigationController(rootViewController: authViewController)
+            window?.rootViewController = navc
+        }
+        
         return true
     }
     

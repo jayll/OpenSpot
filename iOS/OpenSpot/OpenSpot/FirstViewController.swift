@@ -15,17 +15,13 @@ import Firebase
 
 class FirstViewController: UIViewController, FUIAuthDelegate {
     var locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
-    var zoomLevel: Float = 15.0
+    var zoomLevel: Float = 16.0
     var searchLocationMarker: GMSMarker?
     
-    // The currently selected place.
-    var selectedPlace: GMSPlace?
-    
     // A default location to use when location permission is not granted.
-    let defaultLocation = CLLocation(latitude: -33.869405, longitude: 151.199)
+    let defaultLocation = CLLocation(latitude: 43.0008, longitude: 78.7890)
 
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -73,29 +69,8 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ThirdViewController.isLoggedOut = false
-        let db = Firestore.firestore()
-        let currentUser = Auth.auth().currentUser
-        
-        if Auth.auth().currentUser != nil {
-            db.collection("Users").document((currentUser?.uid)!).getDocument{ (document, error) in
-                if let document = document, !document.exists {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "NavigationController")
-                    self.present(controller, animated: false, completion: nil)
-                }
-            }
-        }
-        else {
-            let authUI = FUIAuth.defaultAuthUI()
-            //            authUI?.isSignInWithEmailHidden = true
-            FUIAuth.defaultAuthUI()?.shouldHideCancelButton = true
-            authUI?.delegate = self
-            let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!)]
-            authUI?.providers = providers
-            let authViewController = OpenSpotFirebaseUI(authUI: authUI!)
-            let navc = UINavigationController(rootViewController: authViewController)
-            self.present(navc, animated: false, completion: nil)
-        }
+//        let db = Firestore.firestore()
+//        let currentUser = Auth.auth().currentUser
     }
 }
 

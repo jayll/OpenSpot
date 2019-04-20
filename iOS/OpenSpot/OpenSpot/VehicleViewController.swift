@@ -100,7 +100,7 @@ extension VehicleViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "VehicleInformationViewController") as! VehicleInformationViewController
             destinationVC.passCarIndex = indexPath.row * 5
-            destinationVC.cameFromVehicleMenu=true
+            destinationVC.cameFromVehicleMenu = true
             self.navigationController!.pushViewController(destinationVC, animated: true)
     }
     
