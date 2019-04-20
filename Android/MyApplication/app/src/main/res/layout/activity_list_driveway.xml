@@ -6,21 +6,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ListDrivewayActivity">
-
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:id="@+id/placesContainer"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp">
     <fragment
             android:id="@+id/autocomplete_fragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
             android:layout_marginVertical="8dp"
             android:layout_marginHorizontal="8dp"
             android:layout_alignParentTop="true"/>
+    </LinearLayout>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pricing($)"
             android:textSize="8pt"
-            android:layout_below="@id/autocomplete_fragment"
+            android:layout_below="@id/placesContainer"
             android:id="@+id/pricing"
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"/>
@@ -31,11 +38,12 @@
             android:id="@+id/editPrice"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/pricing"
-            android:text="0"
+            android:text="4"
             android:layout_marginStart="8dp"
             android:digits="1234567890"
             android:inputType="number"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionDone"
+            android:maxLength="2"/>
 
 
     <SeekBar
@@ -47,8 +55,8 @@
               style="@style/Widget.AppCompat.SeekBar"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:max="10"
-              android:progress="0"/>
+              android:max="30"
+              android:progress="4"/>
     <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,5 +79,17 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
             android:layout_alignParentRight="true"/>
-
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="Back"
+            android:textSize="8pt"
+            android:onClick="backButton"
+            android:background="@color/fui_transparent"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/backButton"/>
 </RelativeLayout>

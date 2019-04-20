@@ -99,7 +99,7 @@
             android:layout_alignParentLeft="true"
             android:text="Delete"
             android:background="@color/fui_transparent"
-            android:textSize="10pt"
+            android:textSize="8pt"
             android:textColor="#FF0000"
             android:onClick="deleteButton"/>
 

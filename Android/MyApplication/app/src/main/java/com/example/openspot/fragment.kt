@@ -48,7 +48,6 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
 
     companion object {
         private const val MY_LOCATION_REQUEST_CODE = 1
-        private const val AUTOCOMPLETE_REQUEST_CODE = 2
     }
 
     var markerPin:Marker? = null

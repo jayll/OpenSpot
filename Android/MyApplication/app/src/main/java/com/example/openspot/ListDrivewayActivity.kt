@@ -2,8 +2,10 @@ package com.example.openspot
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -18,6 +20,7 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import java.util.*
 import android.widget.Switch
+import com.google.android.libraries.places.internal.db
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -39,6 +42,7 @@ class ListDrivewayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_list_driveway)
 
         autoComplete()
@@ -56,8 +60,16 @@ class ListDrivewayActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 try {
                     //Update Seekbar value after entering a number
-                    priceBar.progress = s.toString().toInt()
-                    Price = s.toString().toInt()
+                    if(s!!.isEmpty()){
+                        priceBar.progress = 0
+                        Price = 0
+                        editPrice.setSelection(editPrice.text.length)
+                    }
+                    else {
+                        priceBar.progress = s.toString().toInt()
+                        Price = s.toString().toInt()
+                        editPrice.setSelection(editPrice.text.length)
+                    }
                 } catch (ex: Exception) {
                     Toast.makeText(applicationContext, "Input is invalid: $ex", Toast.LENGTH_SHORT).show()
                 }
@@ -119,33 +131,42 @@ class ListDrivewayActivity : AppCompatActivity() {
         })
     }
 
+    fun backButton(v:View){
+        val i = Intent(this@ListDrivewayActivity, DrivewayViewActivity::class.java)
+        startActivity(i)
+    }
+
     fun clickButton(v: View) {
         var drivewayArray: Any?
         var drivewayInfo: MutableList<String>
 
-        val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    drivewayArray = document.data!!["Addresses"]
-                    Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + drivewayArray.toString())
-                    drivewayInfo = drivewayArray as MutableList<String>
-                    drivewayInfo.add(Address.toString())
-                    drivewayInfo.add(Latitude.toString())
-                    drivewayInfo.add(Longitude.toString())
-                    drivewayInfo.add(toggle.toString())
-                    drivewayInfo.add(Price.toString())
+        if(Address ==""){
+            Toast.makeText(applicationContext, "Please fill out all information", Toast.LENGTH_SHORT).show()
+        }else {
+            val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
+            docRef.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        drivewayArray = document.data!!["Addresses"]
+                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + drivewayArray.toString())
+                        drivewayInfo = drivewayArray as MutableList<String>
+                        drivewayInfo.add(Address.toString())
+                        drivewayInfo.add(Latitude.toString())
+                        drivewayInfo.add(Longitude.toString())
+                        drivewayInfo.add(toggle.toString())
+                        drivewayInfo.add(Price.toString())
 
-                    db.collection("Users").document(currentFirebaseUser.uid)
-                        .update("Addresses", drivewayInfo)
-                        .addOnSuccessListener { documentReference ->
-                            val i = Intent(this@ListDrivewayActivity, DrivewayViewActivity::class.java)
-                            startActivity(i)
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w(VehicleInfoActivity.TAG, "Error adding document", e)
-                        }
+                        db.collection("Users").document(currentFirebaseUser.uid)
+                            .update("Addresses", drivewayInfo)
+                            .addOnSuccessListener { documentReference ->
+                                val i = Intent(this@ListDrivewayActivity, DrivewayViewActivity::class.java)
+                                startActivity(i)
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w(VehicleInfoActivity.TAG, "Error adding document", e)
+                            }
+                    }
                 }
-            }
+        }
     }
 }
