@@ -32,6 +32,9 @@
         <activity android:name=".EditVehicleInfoActivity">
         </activity>
         <activity android:name=".VehicleViewActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.openspot.NavigationActivity"/>
         </activity>
         <activity
                 android:name=".ContactActivity"

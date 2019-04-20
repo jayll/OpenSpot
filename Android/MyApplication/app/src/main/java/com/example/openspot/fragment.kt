@@ -24,6 +24,7 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -50,6 +51,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
         private const val AUTOCOMPLETE_REQUEST_CODE = 2
     }
 
+    var markerPin:Marker? = null
     private lateinit var mMap: GoogleMap
     private var gMapView: MapView? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -149,14 +151,16 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
         autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(p0: Place) {
                 Log.d(ListDrivewayActivity.TAG, "Place: " + p0.name + ", " + p0.id)
+                markerPin?.remove()
                 var Address = p0.name
                 var Latitude = p0.latLng!!.latitude
                 var Longitude = p0.latLng!!.longitude
-                 mMap.addMarker(MarkerOptions()
+                markerPin = mMap.addMarker(MarkerOptions()
                             .position(LatLng(Latitude,Longitude))
                             .title(Address)
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(Latitude,Longitude),16f))
+
             }
 
             override fun onError(p0: Status) {
