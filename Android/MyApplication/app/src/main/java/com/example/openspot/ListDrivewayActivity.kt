@@ -18,7 +18,6 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import java.util.*
 import android.widget.Switch
-import com.google.android.libraries.places.internal.db
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -93,7 +92,6 @@ class ListDrivewayActivity : AppCompatActivity() {
     }
 
     private fun autoComplete() {
-        Places.initialize(applicationContext, "AIzaSyDtZ0Q1iHHbGLPMj1hJMxo9Cig5jgLw38A")
         /**
          * Initialize Places. For simplicity, the API key is hard-coded. In a production
          * environment we recommend using a secure mechanism to manage API keys.
@@ -103,7 +101,7 @@ class ListDrivewayActivity : AppCompatActivity() {
         }
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =
-            supportFragmentManager.findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment
+            this.supportFragmentManager.findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment
 
         autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG))
         autocompleteFragment.setHint("Search Driveway Address")

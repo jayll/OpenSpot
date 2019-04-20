@@ -1,5 +1,6 @@
 package com.example.openspot
 
+
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
@@ -14,16 +15,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.firebase.ui.auth.AuthUI
+import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.android.synthetic.main.fragment_home.*
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.*
 
 
 class ReservationFragment : Fragment() {
@@ -38,6 +47,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
 
     companion object {
         private const val MY_LOCATION_REQUEST_CODE = 1
+        private const val AUTOCOMPLETE_REQUEST_CODE = 2
     }
 
     private lateinit var mMap: GoogleMap
@@ -53,6 +63,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        autoCompletePrediction()
         activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         if(activity != null) {
             gMapView = view!!.findViewById(R.id.mapView) as MapView
@@ -66,6 +77,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
+        autoCompletePrediction()
         checkPermission()
     }
     private fun checkPermission() {
@@ -120,6 +132,38 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
             }
         }
     }
+    private fun autoCompletePrediction() {
+        Places.initialize(activity!!.applicationContext, "AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+        /**
+         * Initialize Places. For simplicity, the API key is hard-coded. In a production
+         * environment we recommend using a secure mechanism to manage API keys.
+         */
+        if (!Places.isInitialized()) {
+            Places.initialize(activity!!.applicationContext, "AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+        }
+        // Initialize the AutocompleteSupportFragment.
+        val autocompleteFragment =
+            childFragmentManager?.findFragmentById(R.id.autocomplete_fragment2) as? AutocompleteSupportFragment
+
+        autocompleteFragment?.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
+        autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(p0: Place) {
+                Log.d(ListDrivewayActivity.TAG, "Place: " + p0.name + ", " + p0.id)
+                var Address = p0.name
+                var Latitude = p0.latLng!!.latitude
+                var Longitude = p0.latLng!!.longitude
+                 mMap.addMarker(MarkerOptions()
+                            .position(LatLng(Latitude,Longitude))
+                            .title(Address)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(Latitude,Longitude),16f))
+            }
+
+            override fun onError(p0: Status) {
+                Log.d(ListDrivewayActivity.TAG, "An error occured: $p0")
+            }
+        })
+    }
 }
 
 class SettingFragment : PreferenceFragmentCompat() {
@@ -155,7 +199,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
         val userProfileBtn = findPreference("profile")
         if(currentFirebaseUser != null) {
-            val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
+            val docRef = db.collection("Users").document(currentFirebaseUser.uid)
             docRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
