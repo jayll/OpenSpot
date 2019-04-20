@@ -2,11 +2,16 @@ package com.example.openspot
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +31,9 @@ class NavigationActivity : AppCompatActivity() {
     private val fm = supportFragmentManager
     private var active = fragment11
     private val db = FirebaseFirestore.getInstance()
+
+    //search bar
+    private var mSearchText: EditText? = null
 
 
     private var mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -64,12 +72,12 @@ class NavigationActivity : AppCompatActivity() {
             val docRef = db.collection("Users").document(user.uid)
             docRef.get()
                 .addOnSuccessListener { document ->
-//                    Toast.makeText(applicationContext, "" + user.uid, Toast.LENGTH_SHORT).show()
+                    //                    Toast.makeText(applicationContext, "" + user.uid, Toast.LENGTH_SHORT).show()
 
                     if (!document.exists()) {
-                    val intent = Intent(this@NavigationActivity, VehicleInfoActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                        val intent = Intent(this@NavigationActivity, VehicleInfoActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 }
         }
@@ -93,4 +101,46 @@ class NavigationActivity : AppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
+
+
+    //------OLD SEARCH BAR CODE--------
+//    private fun initialize() {
+//        mSearchText!!.setOnEditorActionListener() { v, actionId, keyEvent ->
+//
+//            if (actionId == EditorInfo.IME_ACTION_SEARCH
+//                || actionId == EditorInfo.IME_ACTION_DONE
+//                || keyEvent.action == KeyEvent.ACTION_DOWN
+//                || keyEvent.action == KeyEvent.KEYCODE_ENTER
+//            ) {
+//
+//                //execute our method for searching the addres that the user typted
+//                geoLocate()
+//                true
+//            }
+//            //do nothing? error handling? say something in a toast?
+//            false
+//        }
+//
+//    }
+//
+//    private fun geoLocate() {
+//        val searchString = mSearchText!!.text.toString()
+//
+//        val geocoder = Geocoder(this@NavigationActivity)
+//        var list: List<Address> = ArrayList()
+//        list = geocoder.getFromLocationName(searchString, 1)
+////        try {
+////            list = geocoder.getFromLocationName(searchString, 1)
+////        } catch (e: IOException) {
+////            Log.e(fragment11.TAG, "geoLocate: IOException: " + e.getMessage())
+////        }
+//
+//        if (list.isNotEmpty()) {
+//            list = geocoder.getFromLocationName(searchString, 1)
+//            val address = list[0]
+//            Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
+//
+//        }
+//    }
+
 }
