@@ -14,42 +14,35 @@ import GooglePlaces
 import Firebase
 
 class FirstViewController: UIViewController, FUIAuthDelegate {
-    
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
-    
-    
-    var likelyPlaces: [GMSPlace] = []
+    var searchLocationMarker: GMSMarker?
     
     // The currently selected place.
     var selectedPlace: GMSPlace?
     
     // A default location to use when location permission is not granted.
     let defaultLocation = CLLocation(latitude: -33.869405, longitude: 151.199)
-    
-    
+
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
-    var resultView: UITextView?
-    
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        locationManager.distanceFilter = 50
+        locationManager.distanceFilter = 15
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
         placesClient = GMSPlacesClient.shared()
         
         // Create a map.
-        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
-                                              longitude: defaultLocation.coordinate.longitude,
-                                              zoom: zoomLevel)
+        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude, longitude: defaultLocation.coordinate.longitude, zoom: zoomLevel)
         mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -65,19 +58,16 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
-        let subView = UIView(frame: CGRect(x: 0, y: 30, width: 350.0, height: 45.0))
-        
-        subView.addSubview((searchController?.searchBar)!)
-        view.addSubview(subView)
+        // Put the search bar in the navigation bar.
         searchController?.searchBar.sizeToFit()
-        searchController?.hidesNavigationBarDuringPresentation = false
+        navigationItem.titleView = searchController?.searchBar
         
         // When UISearchController presents the results view, present it in
         // this view controller, not one further up the chain.
         definesPresentationContext = true
         
-
-        super.viewDidLoad()
+        // Prevent the navigation bar from being hidden when searching.
+        searchController?.hidesNavigationBarDuringPresentation = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,30 +96,21 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
             let navc = UINavigationController(rootViewController: authViewController)
             self.present(navc, animated: false, completion: nil)
         }
-        
     }
-    
-    
 }
 
 extension FirstViewController: CLLocationManagerDelegate {
-    
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         print("Location: \(location)")
-        
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
-        
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
         if mapView.isHidden {
             mapView.isHidden = false
             mapView.camera = camera
         } else {
             mapView.animate(to: camera)
         }
-        
     }
     
     // Handle authorization for the location manager.
@@ -146,6 +127,8 @@ extension FirstViewController: CLLocationManagerDelegate {
         case .authorizedAlways: fallthrough
         case .authorizedWhenInUse:
             print("Location status is OK.")
+        @unknown default:
+            fatalError()
         }
     }
     
@@ -157,20 +140,32 @@ extension FirstViewController: CLLocationManagerDelegate {
 }
 
 extension FirstViewController: GMSAutocompleteResultsViewControllerDelegate {
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didAutocompleteWith place: GMSPlace) {
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didAutocompleteWith place: GMSPlace) {
         let filter = GMSAutocompleteFilter()
-        filter.type = .address
+        filter.country = Locale.current.regionCode
         resultsController.autocompleteFilter = filter
         searchController?.isActive = false
         // Do something with the selected place.
+        
+        
+        let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: zoomLevel)
+        self.mapView.animate(to: camera)
+        
+        searchLocationMarker?.map = nil
+        searchLocationMarker = GMSMarker()
+        searchLocationMarker?.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        searchLocationMarker?.title = place.name
+        searchLocationMarker?.map = self.mapView
+        searchController?.searchBar.text = place.name
+        
         print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        print("Place attributions: \(place.attributions)")
+        print("Place lat: \(place.coordinate.latitude)")
+        print("Place long: \(place.coordinate.longitude)")
+//        print("Place address: \(place.formattedAddress)")
+//        print("Place attributions: \(place.attributions)")
     }
     
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didFailAutocompleteWithError error: Error){
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didFailAutocompleteWithError error: Error){
         // TODO: handle the error.
         print("Error: ", error.localizedDescription)
     }
