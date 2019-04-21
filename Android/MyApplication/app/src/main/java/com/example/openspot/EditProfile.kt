@@ -40,10 +40,10 @@ class EditProfile : AppCompatActivity() {
     }
 
     private fun initialize() {
-        var editEmail: EditText?
+        //var editEmail: EditText?
         FullName = findViewById<View>(R.id.fullNameView) as TextView
         //update email
-        editEmail = findViewById<View>(R.id.emailUpdate) as EditText
+        //editEmail = findViewById<View>(R.id.emailUpdate) as EditText
         birthday = findViewById<View>(R.id.birthdayView) as TextView
         val phoneNumber = findViewById<View>(R.id.phoneNumberView) as TextView
         phoneNumber.text = currentFirebaseUser!!.phoneNumber
@@ -55,43 +55,43 @@ class EditProfile : AppCompatActivity() {
                 if (document!=null){
                     FullName?.text = document.data!!["fullName"].toString()
                     birthday?.text = document.data!!["dateOfBirth"].toString()
-                    editEmail!!.setText(document.data!!["email"].toString())
+                    //editEmail!!.setText(document.data!!["email"].toString())
                 }}
 
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
+//    private fun isValidEmail(email: String): Boolean {
+//        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+//    }
 
-    private fun validForm(): Boolean {
-        var editEmail: EditText?
-        editEmail = findViewById<View>(R.id.emailUpdate) as EditText
-        if (!isValidEmail(editEmail!!.text.toString())) {
-            Toast.makeText(applicationContext, "Please enter valid Email", Toast.LENGTH_LONG)
-                .show()
-            return false
-        } else {
-            return true
-        }
-    }
+//    private fun validForm(): Boolean {
+//        var editEmail: EditText?
+//        editEmail = findViewById<View>(R.id.emailUpdate) as EditText
+//        if (!isValidEmail(editEmail!!.text.toString())) {
+//            Toast.makeText(applicationContext, "Please enter valid Email", Toast.LENGTH_LONG)
+//                .show()
+//            return false
+//        } else {
+//            return true
+//        }
+//    }
 
-    fun clickButton(v:View) {
-        var editEmail: EditText? = findViewById(R.id.emailUpdate)
-        val value = editEmail!!.text.toString()
-        if (validForm()) {
-            db.collection("Users").document(currentFirebaseUser!!.uid)
-                .update("email", value)
-                .addOnSuccessListener {
-                    Log.d(VehicleInfoActivity.TAG, "DocumentSnapshot added with ID: Saved boi")
-                    Toast.makeText(applicationContext, "Email Saved", Toast.LENGTH_LONG)
-                        .show()
-                    val i = Intent(this@EditProfile, NavigationActivity::class.java)
-                    startActivity(i)
-                    finish()
-                }
-        }
-    }
+//    fun clickButton(v:View) {
+//        var editEmail: EditText? = findViewById(R.id.emailUpdate)
+//        val value = editEmail!!.text.toString()
+//        if (validForm()) {
+//            db.collection("Users").document(currentFirebaseUser!!.uid)
+//                .update("email", value)
+//                .addOnSuccessListener {
+//                    Log.d(VehicleInfoActivity.TAG, "DocumentSnapshot added with ID: Saved boi")
+//                    Toast.makeText(applicationContext, "Email Saved", Toast.LENGTH_LONG)
+//                        .show()
+//                    val i = Intent(this@EditProfile, NavigationActivity::class.java)
+//                    startActivity(i)
+//                    finish()
+//                }
+//        }
+//    }
 
 
 }
