@@ -604,7 +604,7 @@
             </objects>
             <point key="canvasLocation" x="3376.811594202899" y="0.0"/>
         </scene>
-        <!--Confirm booking-->
+        <!--Delegate-->
         <scene sceneID="afE-H5-qV6">
             <objects>
                 <viewController storyboardIdentifier="ConfirmBooking" id="NKn-g0-mjp" customClass="ConfirmBooking" customModule="OpenSpot" customModuleProvider="target" sceneMemberID="viewController">
@@ -612,14 +612,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aH-IM-JhM">
-                                <rect key="frame" x="0.0" y="88" width="414" height="214"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6K-mm-lfR" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="214"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="214" id="c4f-Ge-VIT"/>
+                                    <constraint firstAttribute="height" constant="214" id="C9f-1n-NJ1"/>
                                 </constraints>
-                            </mapView>
+                                <connections>
+                                    <outlet property="delegate" destination="NKn-g0-mjp" id="0BD-pP-HI5"/>
+                                </connections>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University at Buffalo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whp-Nw-7vu">
-                                <rect key="frame" x="20" y="316" width="374" height="24"/>
+                                <rect key="frame" x="20" y="272" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -633,13 +637,13 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4/hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k98-eG-v2X">
-                                <rect key="frame" x="20" y="348" width="52" height="25.5"/>
+                                <rect key="frame" x="20" y="304" width="390" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVz-dV-Wv5">
-                                <rect key="frame" x="0.0" y="408.5" width="414" height="89"/>
+                                <rect key="frame" x="0.0" y="364.5" width="414" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-wB-9Zs">
                                         <rect key="frame" x="8" y="52.5" width="53.5" height="20.5"/>
@@ -692,7 +696,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="or8-FZ-mbF">
-                                <rect key="frame" x="14" y="532.5" width="386" height="52.5"/>
+                                <rect key="frame" x="14" y="488.5" width="386" height="52.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select vehicle to be parked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6R-hH-T1v">
                                         <rect key="frame" x="0.0" y="0.0" width="386" height="20.5"/>
@@ -705,6 +709,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -712,22 +719,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="354-jv-oSb" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" constant="30" id="1Lb-gt-zhH"/>
-                            <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="k98-eG-v2X" secondAttribute="trailing" constant="342" id="2Xp-eD-NTx"/>
+                            <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="k98-eG-v2X" secondAttribute="trailing" constant="4" id="2Xp-eD-NTx"/>
                             <constraint firstItem="jVz-dV-Wv5" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" id="5DI-ix-wk3"/>
                             <constraint firstItem="k98-eG-v2X" firstAttribute="top" secondItem="whp-Nw-7vu" secondAttribute="bottom" constant="8" id="7qn-UA-eft"/>
                             <constraint firstItem="or8-FZ-mbF" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" constant="14" id="9TL-zG-hop"/>
-                            <constraint firstItem="3aH-IM-JhM" firstAttribute="top" secondItem="yFM-LC-QJN" secondAttribute="top" id="Bx1-cX-uBz"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="whp-Nw-7vu" secondAttribute="trailing" constant="20" id="I4O-Y5-ocV"/>
-                            <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="3aH-IM-JhM" secondAttribute="trailing" id="PM1-MN-rbZ"/>
                             <constraint firstItem="whp-Nw-7vu" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" constant="20" id="QNE-DE-bvu"/>
                             <constraint firstItem="k98-eG-v2X" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" constant="20" id="WgG-g3-ClS"/>
                             <constraint firstItem="or8-FZ-mbF" firstAttribute="top" secondItem="jVz-dV-Wv5" secondAttribute="bottom" constant="35" id="ZLT-Nl-I4N"/>
                             <constraint firstItem="jVz-dV-Wv5" firstAttribute="top" secondItem="k98-eG-v2X" secondAttribute="bottom" constant="35" id="arq-I0-Wfn"/>
-                            <constraint firstItem="3aH-IM-JhM" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" id="e7z-HP-WaF"/>
-                            <constraint firstItem="whp-Nw-7vu" firstAttribute="top" secondItem="3aH-IM-JhM" secondAttribute="bottom" constant="14" id="hQ3-7B-qPt"/>
+                            <constraint firstItem="whp-Nw-7vu" firstAttribute="top" secondItem="T6K-mm-lfR" secondAttribute="bottom" constant="14" id="f2O-CK-VgP"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="354-jv-oSb" secondAttribute="trailing" constant="20" id="lwK-R1-rtT"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="jVz-dV-Wv5" secondAttribute="trailing" id="oDX-Dj-3lo"/>
+                            <constraint firstItem="T6K-mm-lfR" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" id="wnq-gz-wd9"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="or8-FZ-mbF" secondAttribute="trailing" constant="14" id="yIy-Zd-XBk"/>
+                            <constraint firstItem="T6K-mm-lfR" firstAttribute="top" secondItem="yFM-LC-QJN" secondAttribute="top" id="yrh-Ao-IHl"/>
+                            <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="T6K-mm-lfR" secondAttribute="trailing" id="yve-IY-DZS"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="bottom" secondItem="354-jv-oSb" secondAttribute="bottom" id="zMI-0w-bYk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yFM-LC-QJN"/>
@@ -737,7 +744,7 @@
                         <outlet property="bookDrivewayButton" destination="354-jv-oSb" id="eX9-5h-qn1"/>
                         <outlet property="callButton" destination="Bmm-bZ-GJS" id="Sel-0M-goK"/>
                         <outlet property="drivewayLocationLabel" destination="whp-Nw-7vu" id="TE3-nl-28N"/>
-                        <outlet property="drivewayMapView" destination="3aH-IM-JhM" id="c3k-e5-r1z"/>
+                        <outlet property="drivewayMapView" destination="T6K-mm-lfR" id="YSL-wn-wXm"/>
                         <outlet property="drivewayOwnerLabel" destination="bRs-Sq-yQ3" id="dXB-0F-Ys0"/>
                         <outlet property="priceLabel" destination="k98-eG-v2X" id="cJU-NE-ltR"/>
                         <outlet property="selectCarTextField" destination="WGG-oc-lNz" id="mao-fX-1TP"/>
@@ -745,25 +752,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gD5-c4-mCS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3376.811594202899" y="-775.44642857142856"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Py1-HG-fVJ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aeX-15-GZb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C0A-vB-TCx">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="NKn-g0-mjp" kind="relationship" relationship="rootViewController" id="tcq-gi-rul"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y2B-sj-CF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2534.7826086956525" y="-775.44642857142856"/>
+            <point key="canvasLocation" x="2534.7826086956525" y="-695.08928571428567"/>
         </scene>
         <!--Parking-->
         <scene sceneID="iKx-nk-i3c">

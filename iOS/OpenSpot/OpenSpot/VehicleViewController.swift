@@ -19,7 +19,7 @@ class VehicleViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         getCarArr()
-        self.navigationItem.title="Vehicles"
+        self.navigationItem.title = "Vehicles"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action:  #selector(dismissViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newVehicleViewController))
 

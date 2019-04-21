@@ -19,6 +19,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 16.0
     var searchLocationMarker: GMSMarker?
+    var drivewayInfo:[String] = []
     
     // A default location to use when location permission is not granted.
     let defaultLocation = CLLocation(latitude: 43.0008, longitude: 78.7890)
@@ -31,7 +32,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        locationManager.distanceFilter = 15
+        locationManager.distanceFilter = 100000
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
@@ -43,9 +44,12 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
+        mapView.delegate = self
         
         // Add the map to the view, hide it until we've got a location update.
         view.addSubview(mapView)
+        mapView.settings.tiltGestures = false
+        mapView.settings.rotateGestures = false
         mapView.isHidden = true
         
         resultsViewController = GMSAutocompleteResultsViewController()
@@ -69,8 +73,41 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ThirdViewController.isLoggedOut = false
-//        let db = Firestore.firestore()
-//        let currentUser = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        
+        db.collection("Users").getDocuments { (value, error) in
+            for account in value!.documents{
+                let address = account.data()["Addresses"] as? [String]
+                if address != nil && address!.count > 0{
+                    self.drivewayInfo += address!
+                }
+            }
+            var index = 0
+            while index != self.drivewayInfo.count{
+                if self.drivewayInfo[index + 4] == "1"{
+                    let drivewayMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: Double(self.drivewayInfo[index + 1])!, longitude: Double(self.drivewayInfo[index + 2])!))
+                    let price = "$" + self.drivewayInfo[index + 3] + ".00k"
+                    drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image: #imageLiteral(resourceName: "Border"), price: price)
+                    drivewayMarker.snippet = price + "/hr"
+                    drivewayMarker.title = self.drivewayInfo[index]
+                    drivewayMarker.tracksViewChanges = false
+                    drivewayMarker.map = self.mapView
+                }
+                index += 5
+            }
+        }
+    }
+}
+
+extension FirstViewController: GMSMapViewDelegate{
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print(marker.title)
+        let VC = self.storyboard!.instantiateViewController(withIdentifier: "ConfirmBooking") as! ConfirmBooking
+        VC.price = marker.snippet!
+        VC.coord = marker.position
+        VC.locationName = marker.title
+        let navController = UINavigationController(rootViewController: VC) // Creating a navigation controller with VC1 at the root of the navigation stack.
+        self.present(navController, animated: true, completion: nil)
     }
 }
 
@@ -122,13 +159,11 @@ extension FirstViewController: GMSAutocompleteResultsViewControllerDelegate {
         searchController?.isActive = false
         // Do something with the selected place.
         
-        
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: zoomLevel)
         self.mapView.animate(to: camera)
         
         searchLocationMarker?.map = nil
-        searchLocationMarker = GMSMarker()
-        searchLocationMarker?.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        searchLocationMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         searchLocationMarker?.title = place.name
         searchLocationMarker?.map = self.mapView
         searchController?.searchBar.text = place.name

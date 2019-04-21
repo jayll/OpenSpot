@@ -12,29 +12,26 @@ import UIKit
 class CustomMarkerView: UIView {
     var img: UIImage!
     var borderColor: UIColor!
+    var priceText: String!
     
-    init(frame: CGRect, image: UIImage, borderColor: UIColor, tag: Int) {
+    init(frame: CGRect, image: UIImage, price: String) {
         super.init(frame: frame)
-        self.img=image
-        self.borderColor=borderColor
-        self.tag = tag
+        self.img = image
+        self.priceText = price
         setupViews()
     }
     
     func setupViews() {
         let imgView = UIImageView(image: img)
-        imgView.frame=CGRect(x: 0, y: 0, width: 50, height: 50)
-        imgView.layer.cornerRadius = 25
-        imgView.layer.borderColor=borderColor?.cgColor
-        imgView.layer.borderWidth=4
-        imgView.clipsToBounds=true
-        let lbl=UILabel(frame: CGRect(x: 0, y: 45, width: 50, height: 10))
-        lbl.text = "▾"
-        lbl.font=UIFont.systemFont(ofSize: 24)
-        lbl.textColor = borderColor
+        imgView.frame = CGRect(x: 0, y: 0, width: 50, height: 30)
+        imgView.clipsToBounds = true
+        let lbl = UILabel(frame: CGRect(x: 2.5, y: -2, width: 45, height: 25))
+        lbl.text = priceText
+        lbl.font = UIFont.boldSystemFont(ofSize: 11)
+        lbl.textColor = .white
         lbl.textAlignment = .center
-        
         self.addSubview(imgView)
+        self.bringSubviewToFront(lbl)
         self.addSubview(lbl)
     }
     

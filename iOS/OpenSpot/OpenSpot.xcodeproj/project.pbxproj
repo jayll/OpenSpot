@@ -15,6 +15,7 @@
 		3E3C9C9722176FB000A88600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3C9C9522176FB000A88600 /* LaunchScreen.storyboard */; };
 		3E3C9CA222176FB000A88600 /* OpenSpotTestsSprint1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CA122176FB000A88600 /* OpenSpotTestsSprint1.swift */; };
 		3E3C9CAD22176FB000A88600 /* OpenSpotUITestsSprint1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */; };
+		3E4ED986226C47E200B8FB70 /* ConfirmBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ED985226C47E200B8FB70 /* ConfirmBooking.swift */; };
 		3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */; };
 		3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */; };
 		3E5CA0B4221E2022009954D7 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B3221E2022009954D7 /* MenuOption.swift */; };
@@ -84,6 +85,7 @@
 		3E3C9CA822176FB000A88600 /* OpenSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITestsSprint1.swift; sourceTree = "<group>"; };
 		3E3C9CAE22176FB000A88600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E4ED985226C47E200B8FB70 /* ConfirmBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmBooking.swift; sourceTree = "<group>"; };
 		3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		3E5CA0B3221E2022009954D7 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
@@ -152,8 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				3E3C9C8922176FAE00A88600 /* OpenSpot */,
-				3E3C9CA022176FB000A88600 /* OpenSpotTests */,
 				3E3C9CAB22176FB000A88600 /* OpenSpotUITests */,
+				3E3C9CA022176FB000A88600 /* OpenSpotTests */,
 				3E3C9C8822176FAE00A88600 /* Products */,
 				2B38F6C6474AF87AD05843EF /* Pods */,
 				BCC43BDDBA6F219778930976 /* Frameworks */,
@@ -176,6 +178,7 @@
 				3E3C9C8A22176FAE00A88600 /* AppDelegate.swift */,
 				3E3C9C8C22176FAE00A88600 /* FirstViewController.swift */,
 				9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */,
+				3E4ED985226C47E200B8FB70 /* ConfirmBooking.swift */,
 				3ED288E2223384B8007E8256 /* UserInformationViewController.swift */,
 				3ED288E022338442007E8256 /* VehicleInformationViewController.swift */,
 				9C5D93B52263E70800011FB7 /* CustomMarkerView.swift */,
@@ -630,6 +633,7 @@
 				9C5D93B62263E70800011FB7 /* CustomMarkerView.swift in Sources */,
 				3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */,
 				9C5D93B0225170D700011FB7 /* VehicleOption.swift in Sources */,
+				3E4ED986226C47E200B8FB70 /* ConfirmBooking.swift in Sources */,
 				9CD5978C2241F60F00302BB1 /* OpenSpotFirebaseUI.swift in Sources */,
 				3E5CA0B4221E2022009954D7 /* MenuOption.swift in Sources */,
 				3ED288E3223384B8007E8256 /* UserInformationViewController.swift in Sources */,
