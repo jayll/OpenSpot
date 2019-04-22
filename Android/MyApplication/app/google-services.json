@@ -1,67 +1,37 @@
 {
   "project_info": {
-    "project_number": "109672769853",
-    "firebase_url": "https://openspot-4af8a.firebaseio.com",
-    "project_id": "openspot-4af8a",
-    "storage_bucket": "openspot-4af8a.appspot.com"
+    "project_number": "832425831612",
+    "firebase_url": "https://phone-fiox.firebaseio.com",
+    "project_id": "phone-fiox",
+    "storage_bucket": "phone-fiox.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:109672769853:android:ac2782f6e5e4dfc8",
+        "mobilesdk_app_id": "1:832425831612:android:9ca0f770d49e4741",
         "android_client_info": {
-          "package_name": "com.example.openspot"
+          "package_name": "Fox.dox.h23"
         }
       },
       "oauth_client": [
         {
-          "client_id": "109672769853-l9sg8202mhhurbp6bub8bf7qaotmr3p1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.openspot",
-            "certificate_hash": "fdbbabeed43435931e50cdf9ded1ac36a6ec987d"
-          }
-        },
-        {
-          "client_id": "109672769853-8jkg9l7bncoiqme512g6b3sscvn267hj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.openspot",
-            "certificate_hash": "618da2aca65930b10ed22e6a7de2bebbaef0b421"
-          }
-        },
-        {
-          "client_id": "109672769853-tp3bqsj8u8stvqrur65d1j6sul6qph9d.apps.googleusercontent.com",
+          "client_id": "832425831612-bjfsm0utrjg38r93ar7ne7mb30nfonoc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBSkyu6L6gujjjEwY4PHIcZNEKI_Tjiv2Q"
+          "current_key": "AIzaSyAjNivdaobpQDpt5f1craFJci4avxfDU5k"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "109672769853-tp3bqsj8u8stvqrur65d1j6sul6qph9d.apps.googleusercontent.com",
+              "client_id": "832425831612-bjfsm0utrjg38r93ar7ne7mb30nfonoc.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "109672769853-gvhra3t27k347eutiks5rqg3tp8fk219.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "edu.buffalo.sfung3.OpenSpot"
-              }
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
