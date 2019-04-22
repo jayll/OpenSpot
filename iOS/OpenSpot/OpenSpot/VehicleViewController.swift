@@ -21,7 +21,10 @@ class VehicleViewController: UIViewController{
         getCarArr()
         self.navigationItem.title="Vehicles"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action:  #selector(dismissViewController))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newVehicleViewController))
+        // Sangwoo Kim added trash button. No action implemented.
+        let trash = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
+        let plus = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newVehicleViewController))
+        navigationItem.rightBarButtonItems = [trash, plus]
 
         vehicleTableView.tableFooterView = UIView()
         vehicleTableView.register(MenuOptionCell.self, forCellReuseIdentifier: "cell")
