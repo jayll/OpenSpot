@@ -16,6 +16,7 @@
 		3E3C9CA222176FB000A88600 /* OpenSpotTestsSprint1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CA122176FB000A88600 /* OpenSpotTestsSprint1.swift */; };
 		3E3C9CAD22176FB000A88600 /* OpenSpotUITestsSprint1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */; };
 		3E4ED986226C47E200B8FB70 /* ConfirmBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ED985226C47E200B8FB70 /* ConfirmBooking.swift */; };
+		3E4ED988226D3E5000B8FB70 /* CustomGMSMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ED987226D3E5000B8FB70 /* CustomGMSMarker.swift */; };
 		3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */; };
 		3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */; };
 		3E5CA0B4221E2022009954D7 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B3221E2022009954D7 /* MenuOption.swift */; };
@@ -86,6 +87,7 @@
 		3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITestsSprint1.swift; sourceTree = "<group>"; };
 		3E3C9CAE22176FB000A88600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4ED985226C47E200B8FB70 /* ConfirmBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmBooking.swift; sourceTree = "<group>"; };
+		3E4ED987226D3E5000B8FB70 /* CustomGMSMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGMSMarker.swift; sourceTree = "<group>"; };
 		3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		3E5CA0B3221E2022009954D7 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				3ED288E2223384B8007E8256 /* UserInformationViewController.swift */,
 				3ED288E022338442007E8256 /* VehicleInformationViewController.swift */,
 				9C5D93B52263E70800011FB7 /* CustomMarkerView.swift */,
+				3E4ED987226D3E5000B8FB70 /* CustomGMSMarker.swift */,
 				9C5D93B72263E8F800011FB7 /* DrivewayPreviewView.swift */,
 				9C5D93AD22505C3500011FB7 /* VehicleViewController.swift */,
 				3E3C9C8E22176FAE00A88600 /* SecondViewController.swift */,
@@ -640,6 +643,7 @@
 				3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */,
 				3E3C9C8B22176FAE00A88600 /* AppDelegate.swift in Sources */,
 				9C5D93B82263E8F800011FB7 /* DrivewayPreviewView.swift in Sources */,
+				3E4ED988226D3E5000B8FB70 /* CustomGMSMarker.swift in Sources */,
 				3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */,
 				3ED288E122338442007E8256 /* VehicleInformationViewController.swift in Sources */,
 				3E3C9C8D22176FAE00A88600 /* FirstViewController.swift in Sources */,

@@ -672,7 +672,7 @@
                                         <state key="normal" image="Phone"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stephen's driveway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRs-Sq-yQ3">
-                                        <rect key="frame" x="8" y="16" width="213" height="20.5"/>
+                                        <rect key="frame" x="8" y="16" width="306" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -686,7 +686,7 @@
                                     <constraint firstItem="PFU-bc-5QN" firstAttribute="leading" secondItem="sPX-wB-9Zs" secondAttribute="trailing" constant="8" id="Ioh-wB-fm9"/>
                                     <constraint firstAttribute="bottom" secondItem="8w9-Gh-5fg" secondAttribute="bottom" constant="16" id="L2O-tj-Tcj"/>
                                     <constraint firstAttribute="bottom" secondItem="PFU-bc-5QN" secondAttribute="bottom" constant="16" id="QDJ-0b-83P"/>
-                                    <constraint firstItem="Bmm-bZ-GJS" firstAttribute="leading" secondItem="bRs-Sq-yQ3" secondAttribute="trailing" constant="101" id="SC1-Qx-74X"/>
+                                    <constraint firstItem="Bmm-bZ-GJS" firstAttribute="leading" secondItem="bRs-Sq-yQ3" secondAttribute="trailing" constant="8" id="SC1-Qx-74X"/>
                                     <constraint firstAttribute="height" constant="89" id="T80-8k-do4"/>
                                     <constraint firstAttribute="bottom" secondItem="Bmm-bZ-GJS" secondAttribute="bottom" id="UUK-3J-3NX"/>
                                     <constraint firstItem="Bmm-bZ-GJS" firstAttribute="top" secondItem="jVz-dV-Wv5" secondAttribute="top" id="aVm-02-onb"/>

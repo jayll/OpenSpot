@@ -19,27 +19,37 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 16.0
     var searchLocationMarker: GMSMarker?
-    var drivewayInfo:[String] = []
     
-    // A default location to use when location permission is not granted.
-    let defaultLocation = CLLocation(latitude: 43.0008, longitude: 78.7890)
-
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
+    lazy var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpLocationManager()
+        setUpMap()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ThirdViewController.isLoggedOut = false
+        self.getAvailableDriveways()
+    }
+    
+    func setUpLocationManager(){
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 100000
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
-        
+    }
+    
+    func setUpMap(){
         placesClient = GMSPlacesClient.shared()
         
         // Create a map.
-        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude, longitude: defaultLocation.coordinate.longitude, zoom: zoomLevel)
+        let camera = GMSCameraPosition.camera(withLatitude: 43.0008, longitude: 78.7890, zoom: zoomLevel)
         mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -70,42 +80,43 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         searchController?.hidesNavigationBarDuringPresentation = false
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        ThirdViewController.isLoggedOut = false
-        let db = Firestore.firestore()
-        
+    func getAvailableDriveways(){
         db.collection("Users").getDocuments { (value, error) in
             for account in value!.documents{
                 let address = account.data()["Addresses"] as? [String]
                 if address != nil && address!.count > 0{
-                    self.drivewayInfo += address!
+                    var index = 0
+                    while index != address!.count{
+                        if address![index + 4] == "1"{
+                            let drivewayMarker = CustomGMSMarker(position: CLLocationCoordinate2D(latitude: Double(address![index + 1])!, longitude: Double(address![index + 2])!))
+                            let price = "$" + address![index + 3] + ".00"
+                            drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image: #imageLiteral(resourceName: "Border"), price: price)
+                            drivewayMarker.snippet = price + "/hr"
+                            drivewayMarker.title = address![index]
+                            drivewayMarker.tracksViewChanges = false
+                            drivewayMarker.map = self.mapView
+                            drivewayMarker.phoneNumber = account.data()["phoneNumber"] as! String
+                            drivewayMarker.drivewayOwnerName = account.data()["fullName"] as! String
+                        }
+                        index += 5
+                    }
                 }
             }
-            var index = 0
-            while index != self.drivewayInfo.count{
-                if self.drivewayInfo[index + 4] == "1"{
-                    let drivewayMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: Double(self.drivewayInfo[index + 1])!, longitude: Double(self.drivewayInfo[index + 2])!))
-                    let price = "$" + self.drivewayInfo[index + 3] + ".00k"
-                    drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image: #imageLiteral(resourceName: "Border"), price: price)
-                    drivewayMarker.snippet = price + "/hr"
-                    drivewayMarker.title = self.drivewayInfo[index]
-                    drivewayMarker.tracksViewChanges = false
-                    drivewayMarker.map = self.mapView
-                }
-                index += 5
-            }
+            
         }
     }
 }
 
 extension FirstViewController: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print(marker.title)
+        print(marker.title!)
         let VC = self.storyboard!.instantiateViewController(withIdentifier: "ConfirmBooking") as! ConfirmBooking
         VC.price = marker.snippet!
         VC.coord = marker.position
         VC.locationName = marker.title
+        let a = marker as! CustomGMSMarker
+        VC.phoneNumber = a.phoneNumber
+        VC.drivewayOwnerName = a.drivewayOwnerName
         let navController = UINavigationController(rootViewController: VC) // Creating a navigation controller with VC1 at the root of the navigation stack.
         self.present(navController, animated: true, completion: nil)
     }
@@ -171,8 +182,8 @@ extension FirstViewController: GMSAutocompleteResultsViewControllerDelegate {
         print("Place name: \(place.name)")
         print("Place lat: \(place.coordinate.latitude)")
         print("Place long: \(place.coordinate.longitude)")
-//        print("Place address: \(place.formattedAddress)")
-//        print("Place attributions: \(place.attributions)")
+        //        print("Place address: \(place.formattedAddress)")
+        //        print("Place attributions: \(place.attributions)")
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didFailAutocompleteWithError error: Error){

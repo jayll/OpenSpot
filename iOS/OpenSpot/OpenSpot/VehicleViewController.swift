@@ -15,6 +15,8 @@ class VehicleViewController: UIViewController{
     var numofCars = 0
     var carArray = [String]()
     var index = 0
+    let db = Firestore.firestore()
+    let currentUser = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +43,6 @@ class VehicleViewController: UIViewController{
     }
     
     func getCarArr(){
-        let db = Firestore.firestore()
-        let currentUser = Auth.auth().currentUser
         db.collection("Users").document((currentUser?.uid)!).getDocument {(value, Error) in
             let getCarArray = value!["Cars"] as? [String]
                 self.carArray = getCarArray!
@@ -80,8 +80,6 @@ extension VehicleViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let db = Firestore.firestore()
-            let currentUser = Auth.auth().currentUser
             let user = db.collection("Users").document((currentUser?.uid)!)
             user.getDocument { (value, Error) in
                 var getCarArray = (value!["Cars"] as? [String])!

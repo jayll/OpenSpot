@@ -22,9 +22,10 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
     var fullName = String?("")
     var email = String?("")
     var dateOfBirth = String?("")
-    
     var passCarIndex = 0
     var cameFromVehicleMenu = false
+    let db = Firestore.firestore()
+    let currentUser = Auth.auth().currentUser
     
     let statesArr = ["Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut","District of Columbia","Delaware", "Florida", "Georgia", "Guam","Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana","Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina","North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma","Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas","Utah","Virginia", "Virgin Islands","Vermont","Washington","Wisconsin","West Virginia","Wyoming"]
     
@@ -205,9 +206,6 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
         }
         return ""
     }
-    
-    let db = Firestore.firestore()
-    let currentUser = Auth.auth().currentUser
     
     @IBAction func skipClicked(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

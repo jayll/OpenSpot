@@ -13,6 +13,8 @@ import Firebase
 class ThirdViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var menuTableView: UITableView!
     static var isLoggedOut: Bool = false
+    lazy var db = Firestore.firestore()
+    lazy var currentUser = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +50,6 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource{
         cell.iconImageView.image = menuOption?.image
         
         if indexPath.row == 0 {
-            let db = Firestore.firestore()
-            let currentUser = Auth.auth().currentUser
             db.collection("Users").document((currentUser?.uid)!).getDocument { (value, Error) in
                 cell.descriptionLabel.text = value!["fullName"] as? String
             }
