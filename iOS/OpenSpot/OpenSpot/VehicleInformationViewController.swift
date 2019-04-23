@@ -233,12 +233,13 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func finishClicked(_ sender: UIButton) {
+        
         var check = false
-        if(state.text=="" || make.text=="" || model.text=="" || color.text==""||state.text=="-SELECT-" || make.text=="-SELECT-" || model.text=="-SELECT-" || color.text=="-SELECT-"){
+        if(state.text == "" || make.text == "" || model.text == "" || color.text == ""||state.text == "-SELECT-" || make.text == "-SELECT-" || model.text == "-SELECT-" || color.text == "-SELECT-"){
             let alertController = UIAlertController(title: "OpenSpot", message: "please fill out all information", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
-        }else if((state.text != "" || make.text != "" || model.text != "" || color.text != "" || state.text != "-SELECT-" || make.text != "-SELECT-"  || model.text != "-SELECT-"  || color.text != "-SELECT-")&&((license.text?.count)!<=2)){
+        }else if((state.text != "" || make.text != "" || model.text != "" || color.text != "" || state.text != "-SELECT-" || make.text != "-SELECT-"  || model.text != "-SELECT-"  || color.text != "-SELECT-") && ((license.text?.count)! <= 2)){
             let alertController1 = UIAlertController(title: "OpenSpot", message: "please enter a valid license plate number", preferredStyle: UIAlertController.Style.alert)
             alertController1.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController1, animated: true, completion: nil)
@@ -247,7 +248,6 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
         }
         
         if (check == true) {
-
             if (isSignedUpVar==false){
                 db.collection("Users").document((currentUser?.uid)!).setData([
                     "phoneNumber": currentUser?.phoneNumber! as Any,
@@ -292,21 +292,21 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
                         user.updateData([
                             "Cars":carArray,
                             ])
-                        
+
                     }
                     self.cameFromVehicleMenu = true
                 }
-                
+
+            }
+
+            if(self.cameFromVehicleMenu){
+                self.navigationController?.popViewController(animated: true)
+            }
+            else{
+                self.navigationController?.dismiss(animated: true, completion:nil);
 
             }
         }
-        if(self.cameFromVehicleMenu){
-            self.navigationController?.popViewController(animated: true)
-        }else{
-            self.navigationController?.dismiss(animated: true, completion:nil);
-
-        }
-        
     }
     
 }
