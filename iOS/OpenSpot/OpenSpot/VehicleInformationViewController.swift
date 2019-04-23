@@ -167,7 +167,12 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
             return makeArr.count
         }else if (pickerView == modelPicker){
             let modelArr = carDict[make.text!]
-            return modelArr!.count
+            if modelArr == nil{
+                return 0
+            }else{
+                return modelArr!.count
+            }
+            
         }else if(pickerView == colorsPicker){
             return colorsArr.count
         }
@@ -187,7 +192,12 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
             }
         }else if (pickerView == modelPicker){
             let modelArr = carDict[make.text!]
-            model.text = modelArr![row]
+            if modelArr == nil{
+                model.text=""
+            }else{
+                model.text = modelArr![row]
+            }
+            
         }else if(pickerView == colorsPicker){
             color.text = colorsArr[row]
         }
@@ -228,7 +238,7 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
             let alertController = UIAlertController(title: "OpenSpot", message: "please fill out all information", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
-        }else if((state.text != "" || make.text != "" || model.text != "" || color.text != "")&&((license.text?.count)!<=2)){
+        }else if((state.text != "" || make.text != "" || model.text != "" || color.text != "" || state.text != "-SELECT-" || make.text != "-SELECT-"  || model.text != "-SELECT-"  || color.text != "-SELECT-")&&((license.text?.count)!<=2)){
             let alertController1 = UIAlertController(title: "OpenSpot", message: "please enter a valid license plate number", preferredStyle: UIAlertController.Style.alert)
             alertController1.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController1, animated: true, completion: nil)

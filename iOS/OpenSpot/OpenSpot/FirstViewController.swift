@@ -84,6 +84,13 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         searchController?.searchBar.sizeToFit()
         navigationItem.titleView = searchController?.searchBar
         
+//        var navcontroller = UINavigationBar.self
+//        navigationController.
+//        var navigationBarAppearace = UINavigationBar.appearance()
+//        navigationBarAppearace.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+//        navigationBarAppearace.barTintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+//        searchController.tint
+        
         // When UISearchController presents the results view, present it in
         // this view controller, not one further up the chain.
         definesPresentationContext = true
@@ -190,6 +197,8 @@ extension FirstViewController: GMSAutocompleteResultsViewControllerDelegate {
         searchLocationMarker?.title = place.name
         searchLocationMarker?.map = self.mapView
         searchController?.searchBar.text = place.name
+
+
         
         print("Place name: \(place.name!)")
         print("Place lat: \(place.coordinate.latitude)")

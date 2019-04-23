@@ -24,7 +24,7 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
     var price = String?("")
     var drivewayOwnerName = String?("")
     var phoneNumber = String?("")
-    var carsArray: [String] = []
+    var carsArray: [String] = ["-SELECT-"]
     let db = Firestore.firestore()
     let currentUser = Auth.auth().currentUser
     var carPicker = UIPickerView()
@@ -79,7 +79,15 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
     }
     
     @objc func bookDriveway(){
+//        var check = false
+        if(selectCarTextField.text == "" || selectCarTextField.text == "-SELECT-"){
+            let alertController = UIAlertController(title: "OpenSpot", message: "Please select a car", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+//            check=true
         self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
