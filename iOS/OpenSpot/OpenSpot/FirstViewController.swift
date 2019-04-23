@@ -23,6 +23,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     lazy var db = Firestore.firestore()
+    lazy var currentUser = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,17 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ThirdViewController.isLoggedOut = false
+        
+        if Auth.auth().currentUser != nil {
+            db.collection("Users").document((currentUser?.uid)!).getDocument{ (document, error) in
+                if let document = document, !document.exists {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "NavigationController")
+                    self.present(controller, animated: false, completion: nil)
+                }
+            }
+        }
+
         self.getAvailableDriveways()
     }
     
@@ -179,7 +191,7 @@ extension FirstViewController: GMSAutocompleteResultsViewControllerDelegate {
         searchLocationMarker?.map = self.mapView
         searchController?.searchBar.text = place.name
         
-        print("Place name: \(place.name)")
+        print("Place name: \(place.name!)")
         print("Place lat: \(place.coordinate.latitude)")
         print("Place long: \(place.coordinate.longitude)")
         //        print("Place address: \(place.formattedAddress)")
