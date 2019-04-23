@@ -1,8 +1,12 @@
 package com.example.openspot
 
+
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.location.Location
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -13,6 +17,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.openspot.DrivewayViewActivity.Companion.TAG
 import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -24,6 +29,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import org.jetbrains.anko.dip
+import java.io.BufferedInputStream
+import java.io.InputStream
 
 
 class ReservationFragment : PreferenceFragmentCompat() {
@@ -48,18 +56,18 @@ class ReservationFragment : PreferenceFragmentCompat() {
 
     }
 }
-
 class HomeFragment : Fragment(),OnMapReadyCallback{
 
     companion object {
         private const val MY_LOCATION_REQUEST_CODE = 1
     }
 
+    var markerPin:Marker? = null
     private lateinit var mMap: GoogleMap
     private var gMapView: MapView? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
-
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -68,6 +76,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        autoCompletePrediction()
         activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         if(activity != null) {
             gMapView = view!!.findViewById(R.id.mapView) as MapView
@@ -81,7 +90,9 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
+        autoCompletePrediction()
         checkPermission()
+        availableDriveways()
     }
     private fun checkPermission() {
         if (ActivityCompat.checkSelfPermission(
@@ -111,6 +122,48 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
         }
     }
 
+    fun writeTextOnDrawable(drawableId: Int, text: String) =
+        DrawableUtil.writeTextOnDrawableInternal(activity!!.applicationContext, drawableId, text, 25, -2, 0)
+
+    object DrawableUtil {
+
+        fun writeTextOnDrawableInternal(context: Context, drawableId: Int, text: String,
+                                        textSizeDp: Int, horizontalOffset: Int, verticalOffset: Int): BitmapDrawable {
+
+            val bm = BitmapFactory.decodeResource(context.resources, drawableId)
+                .copy(Bitmap.Config.ARGB_8888, true)
+
+            val tf = Typeface.create("Helvetica", Typeface.BOLD)
+
+            val paint = Paint()
+            paint.style = Paint.Style.FILL
+            paint.color = Color.WHITE
+            paint.typeface = tf
+            paint.textAlign = Paint.Align.LEFT
+            paint.textSize = context.dip(textSizeDp).toFloat()
+
+            val textRect = Rect()
+            paint.getTextBounds(text, 0, text.length, textRect)
+
+            val canvas = Canvas(bm)
+
+            //If the text is bigger than the canvas , reduce the font size
+            if (textRect.width() >= canvas.width - 4)
+            //the padding on either sides is considered as 4, so as to appropriately fit in the text
+                paint.textSize = context.dip(12).toFloat()
+
+            //Calculate the positions
+            val xPos = canvas.width.toFloat()/2 + horizontalOffset
+
+            //"- ((paint.descent() + paint.ascent()) / 2)" is the distance from the baseline to the center.
+            val yPos = (canvas.height / 2 - (paint.descent() + paint.ascent()) / 2) + verticalOffset
+
+            canvas.drawText(text, xPos, yPos, paint)
+
+            return BitmapDrawable(context.resources, bm)
+        }
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
             if (permissions.size == 1 &&
@@ -134,6 +187,99 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
                 Snackbar.make(view,"No current location without permission",Snackbar.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun autoCompletePrediction() {
+        Places.initialize(activity!!.applicationContext, "AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+        /**
+         * Initialize Places. For simplicity, the API key is hard-coded. In a production
+         * environment we recommend using a secure mechanism to manage API keys.
+         */
+        if (!Places.isInitialized()) {
+            Places.initialize(activity!!.applicationContext, "AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+        }
+        // Initialize the AutocompleteSupportFragment.
+        val autocompleteFragment =
+            childFragmentManager?.findFragmentById(R.id.autocomplete_fragment2) as? AutocompleteSupportFragment
+
+        autocompleteFragment?.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
+        autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(p0: Place) {
+                Log.d(ListDrivewayActivity.TAG, "Place: " + p0.name + ", " + p0.id)
+                markerPin?.remove()
+                val Address = p0.name
+                val Latitude = p0.latLng!!.latitude
+                val Longitude = p0.latLng!!.longitude
+                markerPin = mMap.addMarker(MarkerOptions()
+                    .position(LatLng(Latitude,Longitude))
+                    .title(Address)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(Latitude,Longitude),16f))
+
+            }
+
+            override fun onError(p0: Status) {
+                Log.d(ListDrivewayActivity.TAG, "An error occured: $p0")
+            }
+        })
+    }
+    private fun availableDriveways() {
+        var addressArray:Any?
+        var drivewayAddress = ""
+        var drivewayLat = 0.0
+        var drivewayLong = 0.0
+        var drivewayPrice = 0.00
+        var drivewayMarker:Marker
+        val docRef = db.collection("Users")
+        docRef.get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "HELLO:${document.id} => ${document.data}")
+                    addressArray = document!!.data["Addresses"]
+                    val a  = addressArray as? MutableList<String>?
+                    if (a != null) {
+                        for (item in a.indices) {
+                            when(item % 5){
+                                0 ->{
+                                    drivewayAddress = a[item]
+                                }
+                                1 ->{
+                                    drivewayLat = a[item].toDouble()
+                                }
+                                2 ->{
+                                    drivewayLong = a[item].toDouble()
+                                }
+                                3 ->{
+                                    drivewayPrice = a[item].toDouble()
+                                }
+                                4->{
+                                    if(a[item] == "1"){
+                                        val conf = Bitmap.Config.ARGB_8888
+                                        val bmp = Bitmap.createBitmap(200, 120, conf)
+                                        val canvas1 = Canvas(bmp)
+
+                                        // paint defines the text color, stroke width and size
+                                        val color = Paint()
+                                        color.textSize = 40.0F
+                                        color.isFakeBoldText = true
+                                        color.color = Color.WHITE
+
+                                        // modify canvas
+                                        canvas1.drawBitmap(BitmapFactory.decodeResource(
+                                            resources, R.drawable.google_maps_marker), 0f,0f, color)
+                                        canvas1.drawText("$"+drivewayPrice+"0/hr", 20f, 60f, color)
+
+                                        drivewayMarker= mMap.addMarker(MarkerOptions()
+                                            .position(LatLng(drivewayLat,drivewayLong))
+                                            .title(drivewayAddress)
+                                            .icon(BitmapDescriptorFactory.fromBitmap(bmp)))
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
     }
 }
 
@@ -170,7 +316,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
         val userProfileBtn = findPreference("profile")
         if(currentFirebaseUser != null) {
-            val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
+            val docRef = db.collection("Users").document(currentFirebaseUser.uid)
             docRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
@@ -181,6 +327,13 @@ class SettingFragment : PreferenceFragmentCompat() {
         userProfileBtn.setOnPreferenceClickListener {
             AuthUI.getInstance()
             startActivity(Intent(activity, EditProfile::class.java))
+            true
+        }
+
+        val listYourDriveWayBtn = findPreference("driveway")
+        listYourDriveWayBtn.setOnPreferenceClickListener {
+            AuthUI.getInstance()
+            startActivity(Intent(activity, DrivewayViewActivity::class.java))
             true
         }
     }
