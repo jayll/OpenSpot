@@ -27,14 +27,15 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
     let db = Firestore.firestore()
     let currentUser = Auth.auth().currentUser
     
-    let statesArr = ["Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut","District of Columbia","Delaware", "Florida", "Georgia", "Guam","Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana","Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina","North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma","Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas","Utah","Virginia", "Virgin Islands","Vermont","Washington","Wisconsin","West Virginia","Wyoming"]
+    let statesArr = ["-SELECT-","Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut","District of Columbia","Delaware", "Florida", "Georgia", "Guam","Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana","Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina","North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma","Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas","Utah","Virginia", "Virgin Islands","Vermont","Washington","Wisconsin","West Virginia","Wyoming"]
     
-    var makeArr = ["Acura", "Alfa Romeo", "Aston Martin", "Audi",  "Bentley", "BMW", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Dodge","Ferrari", "FIAT","Ford","Freightliner","Genesis","GMC","Honda", "Hyundai","INFINITI","Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus", "Maserati","MAZDA","McLaren","Mercedes-Benz","MINI","Mitsubishi","Nissan","Porsche","Ram","Rolls-Royce","smart","Subaru","Tesla","Toyota","Volkswagen","Volvo"]
+    var makeArr = ["-SELECT-","Acura", "Alfa Romeo", "Aston Martin", "Audi",  "Bentley", "BMW", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Dodge","Ferrari", "FIAT","Ford","Freightliner","Genesis","GMC","Honda", "Hyundai","INFINITI","Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus", "Maserati","MAZDA","McLaren","Mercedes-Benz","MINI","Mitsubishi","Nissan","Porsche","Ram","Rolls-Royce","smart","Subaru","Tesla","Toyota","Volkswagen","Volvo"]
     
     
-    var colorsArr = ["Black","Blue","Brown","Gold","Green","Red","Silver", "White", "Yellow"]
+    var colorsArr = ["-SELECT-","Black","Blue","Brown","Gold","Green","Red","Silver", "White", "Yellow"]
     
-    var carDict: [String: [String]] = ["Acura": ["ILX", "MDX", "MDX Sport Hybrid", "NSX", "RDX", "RLX", "RLX Sport Hybrid", "TLX"],
+    var carDict: [String: [String]] = ["-SELECT-": ["-SELECT-"],
+                                       "Acura": ["ILX", "MDX", "MDX Sport Hybrid", "NSX", "RDX", "RLX", "RLX Sport Hybrid", "TLX"],
                                        "Alfa Romeo": ["4C", "4C Spider", "Giulia", "Stelvio"],
                                        "Aston Martin": ["DB11", "Vanquish S"],
                                        "Audi": ["A3", "A3 Sportback e-tron", "A4", "A4 allroad", "A5", "A6", "A7", "A8", "e-tron", "Q3", "Q5", "Q7", "Q8", "R8", "RS 3", "RS 5", "RS 7", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "TT"],
@@ -223,7 +224,7 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
     
     @IBAction func finishClicked(_ sender: UIButton) {
         var check = false
-        if(state.text=="" || make.text=="" || model.text=="" || color.text==""){
+        if(state.text=="" || make.text=="" || model.text=="" || color.text==""||state.text=="-SELECT-" || make.text=="-SELECT-" || model.text=="-SELECT-" || color.text=="-SELECT-"){
             let alertController = UIAlertController(title: "OpenSpot", message: "please fill out all information", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
