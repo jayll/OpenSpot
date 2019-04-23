@@ -1,12 +1,10 @@
 package com.example.openspot
 
 
-import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
 import android.location.Location
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -19,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.openspot.DrivewayViewActivity.Companion.TAG
 import com.firebase.ui.auth.AuthUI
+import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -27,11 +26,19 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_home.*
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import org.jetbrains.anko.dip
 import java.io.BufferedInputStream
 import java.io.InputStream
+import java.util.*
 
 
 class ReservationFragment : PreferenceFragmentCompat() {
@@ -122,48 +129,6 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
         }
     }
 
-    fun writeTextOnDrawable(drawableId: Int, text: String) =
-        DrawableUtil.writeTextOnDrawableInternal(activity!!.applicationContext, drawableId, text, 25, -2, 0)
-
-    object DrawableUtil {
-
-        fun writeTextOnDrawableInternal(context: Context, drawableId: Int, text: String,
-                                        textSizeDp: Int, horizontalOffset: Int, verticalOffset: Int): BitmapDrawable {
-
-            val bm = BitmapFactory.decodeResource(context.resources, drawableId)
-                .copy(Bitmap.Config.ARGB_8888, true)
-
-            val tf = Typeface.create("Helvetica", Typeface.BOLD)
-
-            val paint = Paint()
-            paint.style = Paint.Style.FILL
-            paint.color = Color.WHITE
-            paint.typeface = tf
-            paint.textAlign = Paint.Align.LEFT
-            paint.textSize = context.dip(textSizeDp).toFloat()
-
-            val textRect = Rect()
-            paint.getTextBounds(text, 0, text.length, textRect)
-
-            val canvas = Canvas(bm)
-
-            //If the text is bigger than the canvas , reduce the font size
-            if (textRect.width() >= canvas.width - 4)
-            //the padding on either sides is considered as 4, so as to appropriately fit in the text
-                paint.textSize = context.dip(12).toFloat()
-
-            //Calculate the positions
-            val xPos = canvas.width.toFloat()/2 + horizontalOffset
-
-            //"- ((paint.descent() + paint.ascent()) / 2)" is the distance from the baseline to the center.
-            val yPos = (canvas.height / 2 - (paint.descent() + paint.ascent()) / 2) + verticalOffset
-
-            canvas.drawText(text, xPos, yPos, paint)
-
-            return BitmapDrawable(context.resources, bm)
-        }
-    }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
             if (permissions.size == 1 &&
@@ -203,6 +168,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
 
         autocompleteFragment?.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
         autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+
             override fun onPlaceSelected(p0: Place) {
                 Log.d(ListDrivewayActivity.TAG, "Place: " + p0.name + ", " + p0.id)
                 markerPin?.remove()
@@ -228,7 +194,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
         var drivewayLat = 0.0
         var drivewayLong = 0.0
         var drivewayPrice = 0.00
-        var drivewayMarker:Marker
+        var drivewayMarker: Marker
         val docRef = db.collection("Users")
         docRef.get()
             .addOnSuccessListener { result ->
@@ -254,7 +220,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
                                 4->{
                                     if(a[item] == "1"){
                                         val conf = Bitmap.Config.ARGB_8888
-                                        val bmp = Bitmap.createBitmap(200, 120, conf)
+                                        val bmp = Bitmap.createBitmap(200, 150, conf)
                                         val canvas1 = Canvas(bmp)
 
                                         // paint defines the text color, stroke width and size
@@ -266,9 +232,10 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
                                         // modify canvas
                                         canvas1.drawBitmap(BitmapFactory.decodeResource(
                                             resources, R.drawable.google_maps_marker), 0f,0f, color)
-                                        canvas1.drawText("$"+drivewayPrice+"0/hr", 20f, 60f, color)
+                                        canvas1.drawText("$"+drivewayPrice+"0/hr", 20f, 70f, color)
 
-                                        drivewayMarker= mMap.addMarker(MarkerOptions()
+                                        drivewayMarker= mMap.addMarker(
+                                            MarkerOptions()
                                             .position(LatLng(drivewayLat,drivewayLong))
                                             .title(drivewayAddress)
                                             .icon(BitmapDescriptorFactory.fromBitmap(bmp)))

@@ -4,16 +4,11 @@
               xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
+
     <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mapViewBooking"/>
-    <fragment
-            android:layout_width="match_parent"
-            android:layout_height="266dp"
-            android:name="com.example.openspot.HomeFragment"
-            android:id="@+id/fragment3"
-            android:layout_marginVertical="12dp"/>
+            android:layout_height="100dp"/>
     <TextView
             android:text="1458 Address St, Buffalo NY 14226"
             android:layout_width="match_parent"
