@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <com.google.android.gms.maps.MapView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mapViewBooking"/>
+    <fragment
+            android:layout_width="match_parent"
+            android:layout_height="266dp"
+            android:name="com.example.openspot.HomeFragment"
+            android:id="@+id/fragment3"
+            android:layout_marginVertical="12dp"/>
+    <TextView
+            android:text="1458 Address St, Buffalo NY 14226"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/address"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+    <TextView
+            android:text="$price/hr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/price"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"
+            android:textSize="18dp"/>
+    <android.support.v7.widget.CardView
+            android:layout_width="430dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_marginVertical="8dp"/>
+    <TextView
+            android:text="Username's Driveway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/usernameDriveway"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"/>
+    <TextView
+            android:text="Rating: 5.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rating"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"/>
+    <android.support.v7.widget.CardView
+            android:layout_width="430dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"/>
+    <TextView
+            android:text="Select Vehicle to be Parked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/vehicle"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"/>
+    <Spinner
+            android:id="@+id/vehicleSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/dummy"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+            android:spinnerMode="dialog"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginVertical="8dp"/>
+
+</LinearLayout>
