@@ -610,7 +610,7 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
                             carInfo.add(carStateSpinner.selectedItem.toString())
                             carInfo.add(value)
 
-                            db.collection("Users").document(currentFirebaseUser!!.uid)
+                            db.collection("Users").document(currentFirebaseUser.uid)
                                 .update("Cars", carInfo)
                                 .addOnSuccessListener { documentReference ->
                                     if(VehicleInfoActivity.fromVehicleView) {
