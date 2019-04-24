@@ -99,7 +99,7 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
                         while index != address!.count{
                             if ((address![index + 1] == String(self.coord.latitude)) && (address![index + 2] == String(self.coord.longitude))){
                                 documentID = account.documentID
-                                updatedAddress![index+4] = "0"
+                                updatedAddress![index + 3] = "0"
 //                                updatedAddress = [address![index],address![index + 1],address![index + 2],address![index + 3],"0" ]
                                 updatedAddress1 = updatedAddress!
                                 break
@@ -125,15 +125,13 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
 extension ConfirmBooking: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let source = MKMapItem(placemark: MKPlacemark(coordinate: coord))
-//        source.name = drivewayOwnerLabel.text
-        
+        source.name = locationName
         MKMapItem.openMaps(with: [source], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         let source = MKMapItem(placemark: MKPlacemark(coordinate: coord))
-//        source.name = drivewayOwnerLabel.text
-        
+        source.name = locationName
         MKMapItem.openMaps(with: [source], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
         return true
     }

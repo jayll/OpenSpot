@@ -822,7 +822,7 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="or8-FZ-mbF">
-                                <rect key="frame" x="10" y="315" width="394" height="70"/>
+                                <rect key="frame" x="10" y="315" width="394" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University at Buffalo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whp-Nw-7vu">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
@@ -866,6 +866,15 @@
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-oc-lNz">
+                                        <rect key="frame" x="0.0" y="90" width="394" height="24"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="354-jv-oSb">
@@ -876,19 +885,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-oc-lNz">
-                                <rect key="frame" x="8" y="505" width="398" height="24"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="WGG-oc-lNz" secondAttribute="trailing" constant="8" id="5EW-sE-1Gs"/>
                             <constraint firstItem="T6K-mm-lfR" firstAttribute="top" secondItem="yFM-LC-QJN" secondAttribute="top" id="5NZ-8g-upf"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="bottom" secondItem="354-jv-oSb" secondAttribute="bottom" constant="10" id="5bI-dZ-Cfv"/>
                             <constraint firstItem="T6K-mm-lfR" firstAttribute="trailing" secondItem="yFM-LC-QJN" secondAttribute="trailing" id="Kgv-1s-Qn0"/>
@@ -896,8 +895,6 @@
                             <constraint firstItem="354-jv-oSb" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" constant="10" id="WQN-bJ-JJy"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="or8-FZ-mbF" secondAttribute="trailing" constant="10" id="ctf-TH-ceJ"/>
                             <constraint firstItem="or8-FZ-mbF" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" constant="10" id="rJl-IH-RMc"/>
-                            <constraint firstItem="WGG-oc-lNz" firstAttribute="top" secondItem="or8-FZ-mbF" secondAttribute="bottom" constant="120" id="tGx-ni-MBl"/>
-                            <constraint firstItem="WGG-oc-lNz" firstAttribute="leading" secondItem="yFM-LC-QJN" secondAttribute="leading" constant="8" id="ufb-QU-goY"/>
                             <constraint firstItem="or8-FZ-mbF" firstAttribute="top" secondItem="T6K-mm-lfR" secondAttribute="bottom" constant="20" id="vs8-Zs-nzt"/>
                             <constraint firstItem="yFM-LC-QJN" firstAttribute="trailing" secondItem="354-jv-oSb" secondAttribute="trailing" constant="10" id="yxU-bk-90m"/>
                         </constraints>
@@ -922,7 +919,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C5i-1g-UlF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Parking" id="6Xx-47-bsp"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="98x-T2-ZpU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="98x-T2-ZpU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.34509803921568627" green="0.54509803921568623" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>

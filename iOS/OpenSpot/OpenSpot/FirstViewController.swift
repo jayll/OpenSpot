@@ -103,9 +103,9 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
                 if address != nil && address!.count > 0{
                     var index = 0
                     while index != address!.count{
-                        if address![index + 4] == "1"{
+                        if address![index + 3] == "1"{
                             let drivewayMarker = CustomGMSMarker(position: CLLocationCoordinate2D(latitude: Double(address![index + 1])!, longitude: Double(address![index + 2])!))
-                            let price = "$" + address![index + 3] + ".00"
+                            let price = "$" + address![index + 4] + ".00"
                             drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image: #imageLiteral(resourceName: "Border"), price: price)
                             drivewayMarker.snippet = price + "/hr"
                             drivewayMarker.title = address![index]
