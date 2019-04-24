@@ -53,13 +53,13 @@ extension DrivewayListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuOptionCell
-        if drivewayArray[indexPath.row * 5 + 3] == "1"{
+        if drivewayArray[indexPath.row * 5 + 4] == "1"{
             cell.iconImageView.image = #imageLiteral(resourceName: "DrivewayOpen")
-            cell.subDescriptionLabel.text = "Active: " + "$" + drivewayArray[indexPath.row * 5 + 4] + "/hr"
+            cell.subDescriptionLabel.text = "Active: " + "$" + drivewayArray[indexPath.row * 5 + 3] + "/hr"
         }
         else{
             cell.iconImageView.image = #imageLiteral(resourceName: "DrivewayClosed")
-            cell.subDescriptionLabel.text = "Inactive: " + "$" + drivewayArray[indexPath.row * 5 + 4] + "/hr"
+            cell.subDescriptionLabel.text = "Inactive: " + "$" + drivewayArray[indexPath.row * 5 + 3] + "/hr"
         }
         cell.descriptionLabel.text = drivewayArray[indexPath.row * 5]
         return cell
@@ -67,7 +67,7 @@ extension DrivewayListViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var switchStatus: UITableViewRowAction
-        if drivewayArray[indexPath.row * 5 + 3] == "1"{
+        if drivewayArray[indexPath.row * 5 + 4] == "1"{
             switchStatus = UITableViewRowAction(style: .normal, title: "Deactivate") { action, index in
                 self.switchStatusFunc(indexPath: indexPath)
             }
@@ -94,10 +94,10 @@ extension DrivewayListViewController: UITableViewDelegate, UITableViewDataSource
         let currentUser = Auth.auth().currentUser
         let user = db.collection("Users").document((currentUser?.uid)!)
         user.getDocument { (value, Error) in
-            if self.drivewayArray[indexPath.row * 5 + 3] == "1"{
-                self.drivewayArray[indexPath.row * 5 + 3] = "0"
+            if self.drivewayArray[indexPath.row * 5 + 4] == "1"{
+                self.drivewayArray[indexPath.row * 5 + 4] = "0"
             }else{
-                self.drivewayArray[indexPath.row * 5 + 3] = "1"
+                self.drivewayArray[indexPath.row * 5 + 4] = "1"
             }
             self.drivewayTableView.reloadData()
             user.updateData(["Addresses" : self.drivewayArray])

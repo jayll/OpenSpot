@@ -29,7 +29,7 @@ class DrivewayViewController : UIViewController {
                 let db = Firestore.firestore()
                 let currentUser = Auth.auth().currentUser
                 db.collection("Users").document((currentUser?.uid)!).getDocument {(value, Error) in
-                    self.addressesArray = [self.addressTextView.text!, self.lat, self.long, String(self.availablitySegmentedControl.selectedSegmentIndex), String(Int( self.priceSlide.value))]
+                    self.addressesArray = [self.addressTextView.text!, self.lat, self.long, String(Int( self.priceSlide.value)), String(self.availablitySegmentedControl.selectedSegmentIndex)]
                     db.collection("Users").document((currentUser?.uid)!).updateData([
                         "Addresses": value!["Addresses"] as! [String] + self.addressesArray])
                     let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "DrivewayListViewController") as! DrivewayListViewController
@@ -43,8 +43,8 @@ class DrivewayViewController : UIViewController {
                     getAddressesArray![self.addressIndex!] = self.addressTextView.text!
                     getAddressesArray![self.addressIndex!+1] = self.lat
                     getAddressesArray![self.addressIndex!+2] = self.long
-                    getAddressesArray![self.addressIndex!+3] = String(self.availablitySegmentedControl.selectedSegmentIndex)
-                    getAddressesArray![self.addressIndex!+4] = String(Int(self.priceSlide.value.rounded()))
+                    getAddressesArray![self.addressIndex!+3] = String(Int(self.priceSlide.value.rounded()))
+                    getAddressesArray![self.addressIndex!+4] = String(self.availablitySegmentedControl.selectedSegmentIndex)
                     
                     db.collection("Users").document((currentUser?.uid)!).updateData([
                         "Addresses": getAddressesArray!])
@@ -79,9 +79,9 @@ class DrivewayViewController : UIViewController {
                 self.addressTextView.text = self.addressesArray[self.addressIndex!]
                 self.lat = self.addressesArray[self.addressIndex!+1]
                 self.long = self.addressesArray[self.addressIndex!+2]
-                self.availablitySegmentedControl.selectedSegmentIndex = Int(self.addressesArray[self.addressIndex! + 3])!
-                self.priceLabel.text = self.addressesArray[self.addressIndex! + 4]
-                self.priceSlide.setValue(Float(self.addressesArray[self.addressIndex! + 4])!, animated: false)
+                self.priceLabel.text = self.addressesArray[self.addressIndex! + 3]
+                self.priceSlide.setValue(Float(self.addressesArray[self.addressIndex! + 3])!, animated: false)
+                self.availablitySegmentedControl.selectedSegmentIndex = Int(self.addressesArray[self.addressIndex! + 4])!
             }
         }
     }
