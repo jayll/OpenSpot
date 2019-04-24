@@ -69,9 +69,9 @@ class NavigationActivity : AppCompatActivity() {
 //                    Toast.makeText(applicationContext, "" + user.uid, Toast.LENGTH_SHORT).show()
 
                     if (!document.exists()) {
-                    val intent = Intent(this@NavigationActivity, VehicleInfoActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                        val intent = Intent(this@NavigationActivity, userProfile::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 }
         }
@@ -86,6 +86,7 @@ class NavigationActivity : AppCompatActivity() {
             fromVehiclePage = false
             fromContactPage = false
             fromEditProfile = false
+            fromDrivewayPage = false
         }
         else{
             fm.beginTransaction().add(R.id.container, fragment33, "3").hide(fragment33).commit()

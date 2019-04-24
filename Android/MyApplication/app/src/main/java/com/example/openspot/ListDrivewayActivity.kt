@@ -23,6 +23,7 @@ import android.widget.Switch
 import com.google.android.libraries.places.internal.db
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_navigation.*
 
 
 class ListDrivewayActivity : AppCompatActivity() {
@@ -44,7 +45,7 @@ class ListDrivewayActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_list_driveway)
-
+        NavigationActivity.fromDrivewayPage = true
         autoComplete()
 
         val editPrice = findViewById<EditText>(R.id.editPrice)

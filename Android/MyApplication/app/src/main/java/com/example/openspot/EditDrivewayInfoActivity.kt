@@ -43,7 +43,7 @@ class EditDrivewayInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
         setContentView(R.layout.activity_edit_driveway_info)
-
+        NavigationActivity.fromDrivewayPage = true
         autoComplete()
 
         val extras = intent.extras

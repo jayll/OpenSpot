@@ -446,22 +446,6 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
         carColorDataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         carColorSpinner.adapter = carColorDataAdapter
 
-//        carColorSpinner.onItemSelectedListener = object :  AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(parent : AdapterView<*>, view: View ,position:Int, id:Long) {
-//                var selectedItemText =  parent.getItemAtPosition(position)
-//                // If user change the default selection
-//                // First item is disable and it is used for hint
-//                if(position > 0) {
-//                    // Notify the selected item text
-//                    Toast.makeText(applicationContext, "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//            }
-//        }
         //*****************State Location Spinner********************//
         val carStates = arrayListOf("Select a State","Alabama",
             "Alaska",
@@ -533,23 +517,6 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
         }
         carStateDataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         carStateSpinner.adapter = carStateDataAdapter
-
-//        carStateSpinner.onItemSelectedListener = object :  AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(parent : AdapterView<*>, view: View ,position:Int, id:Long) {
-//                var selectedItemText =  parent.getItemAtPosition(position)
-//                // If user change the default selection
-//                // First item is disable and it is used for hint
-//                if(position > 0) {
-//                    // Notify the selected item text
-//                    Toast.makeText(applicationContext, "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//            }
-//        }
     }
 
     private fun saveVehicleInfo(v :View){
@@ -640,11 +607,20 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
         saveVehicleInfo(v)
     }
 
-    fun skipButton(){
-        val users = HashMap<String, ArrayList<String>>()
-        users["Cars"]= arrayListOf()
-        users["Addresses"] = arrayListOf()
-        db.collection("Users").document(currentFirebaseUser!!.uid)
+    private fun skipButton(){
+        val extras = intent.extras
+        val fullName = extras.getString("fullName")
+        val email = extras.getString("email")
+        val dateofBirth = extras.getString("dateOfBirth")
+        Log.d(TAG,"HELLO WORLD::::")
+        val users = HashMap<String, Any?>()
+        users["fullName"]= fullName
+        users["email"]= email
+        users["dateOfBirth"]= dateofBirth
+        users["phoneNumber"]= currentFirebaseUser!!.phoneNumber
+        users["Cars"]= arrayListOf<String>()
+        users["Addresses"] = arrayListOf<String>()
+        db.collection("Users").document(currentFirebaseUser.uid)
             .set(users)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: HELLLLLLLLLLO")

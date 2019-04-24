@@ -203,11 +203,10 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
                                 2 ->{
                                     drivewayLong = a[item].toDouble()
                                 }
-                                3 ->{
-                                    drivewayPrice = a[item].toDouble()
-                                }
+
                                 4->{
-                                    if(a[item] == "1"){
+                                    drivewayPrice = a[item].toDouble()
+                                    if(a[item-1] == "1"){
                                         val conf = Bitmap.Config.ARGB_8888
                                         val bmp = Bitmap.createBitmap(200, 150, conf)
                                         val canvas1 = Canvas(bmp)
@@ -221,7 +220,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
                                         // modify canvas
                                         canvas1.drawBitmap(BitmapFactory.decodeResource(
                                             resources, R.drawable.google_maps_marker), 0f,0f, color)
-                                        canvas1.drawText("$"+drivewayPrice+"0/hr", 20f, 70f, color)
+                                        canvas1.drawText("$"+drivewayPrice+"0", 20f, 70f, color)
 
                                         drivewayMarker= mMap.addMarker(
                                                 MarkerOptions()
@@ -240,21 +239,21 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
             val latLong = p0!!.position
             val intent = Intent(activity, BookDrivewayActivity::class.java)
 
-            intent.putExtra("latitude", latLong.latitude)
-            intent.putExtra("longitude", latLong.longitude)
-            intent.putExtra("prices",p0.snippet)
-            intent.putExtra("addressss",p0.title)
+            intent.putExtra("clickedMarkerLatitude", latLong.latitude)
+            intent.putExtra("clickedMarkerLongitude", latLong.longitude)
+            intent.putExtra("clickedMarkerPrices",p0.snippet)
+            intent.putExtra("clickedMarkerAddress",p0.title)
 
-            Toast.makeText(
-                activity!!.baseContext,
-                "" + drivewayLat.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
-            Toast.makeText(
-                activity!!.baseContext,
-                "" + drivewayLong.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                activity!!.baseContext,
+//                "" + drivewayLat.toString(),
+//                Toast.LENGTH_SHORT
+//            ).show()
+//            Toast.makeText(
+//                activity!!.baseContext,
+//                "" + drivewayLong.toString(),
+//                Toast.LENGTH_SHORT
+//            ).show()
 
             startActivity(intent)
         }

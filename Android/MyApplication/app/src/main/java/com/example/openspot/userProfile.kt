@@ -230,18 +230,6 @@ class userProfile : AppCompatActivity() {
             i.putExtra("fullName", editFullName!!.text.toString())
             i.putExtra("email", editEmail!!.text.toString())
             i.putExtra("dateOfBirth", dateAssembmly())
-//            i.putExtra("DOB", editDOB!!.text.toString())
-
-            //this code is for the next vehicle info activity to use these inputs
-//            val extras = intent.extras
-//            if (extras != null) {
-//                val value = extras.getString("fullName")
-//                val value = extras.getString("email")
-//                val value = extras.getString("dateOfBirth")
-//                //The key argument here must match that used in the other activity
-//            }
-
-
             startActivity(i)
             finish()
         }

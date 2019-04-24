@@ -1,5 +1,6 @@
 package com.example.openspot
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -27,21 +28,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
 
-    companion object {
-        private const val MY_LOCATION_REQUEST_CODE = 1
-    }
-
     private var mMap: GoogleMap? = null
     private val db = FirebaseFirestore.getInstance()
     private val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
 
-    //map vars
-//    var markerPin: Marker? = null
-//    private lateinit var mMap: GoogleMap
-//    private var gMapView: MapView? = null
-//    private lateinit var fusedLocationClient: FusedLocationProviderClient
-//    private lateinit var lastLocation: Location
-
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         super.onCreate(savedInstanceState)
@@ -55,18 +46,12 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         supportActionBar?.title = "Confirm Booking"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //delete if not needed
-//            gMapView = findViewById(R.id.mapViewBooking) as MapView
-//            mapView.onCreate(savedInstanceState)
-//            mapView.onResume()
-//            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         val extras = intent.extras
-        var addressData : String? = extras!!.getString("Address")
-        var priceData : String? = extras!!.getString("Price")
+        val addressData : String? = extras?.getString("clickedMarkerAddress")
+        val priceData : String? = extras?.getString("clickedMarkerPrices")
         var carArray: Any?
         var name = ""
-        var usersCar = arrayListOf<String>()
+        val usersCar = arrayListOf("Please select a vehicle")
         var carInfo :MutableList<String>
         val docRef = db.collection("Users").document(currentFirebaseUser?.uid.toString())
         docRef.get()
@@ -75,20 +60,22 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
                     carArray = document.data!!["Cars"]
                     Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + carArray.toString())
                     carInfo = carArray as MutableList<String>
-                    for(i in 0..4){
-                        when(i) {
-                            0 -> {
-                                name += carInfo[i]
-                            }
+                    if (carInfo.size > 5) {
+                        for (i in 0..4) {
+                            when (i) {
+                                0 -> {
+                                    name += carInfo[i]
+                                }
 
-                            1 -> {
-                                name += " " + carInfo[i] +": "
-                            }
+                                1 -> {
+                                    name += " " + carInfo[i] + ": "
+                                }
 
-                            4 -> {
-                                name +=  carInfo[i]
-                                usersCar.add(name)
-                                name = ""
+                                4 -> {
+                                    name += carInfo[i]
+                                    usersCar.add(name)
+                                    name = ""
+                                }
                             }
                         }
                     }
@@ -99,7 +86,7 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         markerAddress.text = addressData
 
         val markerPrice = findViewById<TextView>(R.id.price)
-        markerPrice.text = priceData
+        markerPrice.text = "$"+priceData+"0/hr"
 
         val currentSpinner : Spinner = findViewById(R.id.vehicleSpinner)
         val currentSpinnerDataAdapter = object : ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, usersCar) {
@@ -123,20 +110,21 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         }
         currentSpinnerDataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         currentSpinner.adapter = currentSpinnerDataAdapter
-//        currentSpinner.setSelection(position)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val extras = intent.extras
-        val lat = extras!!.getDouble("latitude")
-        val lng = extras!!.getDouble("longitude")
+        val lat = extras!!.getDouble("clickedMarkerLatitude")
+        val lng = extras.getDouble("clickedMarkerLongitude")
 
-        // Add a marker in Sydney, Australia, and move the camera.
         mMap!!.uiSettings.isScrollGesturesEnabled = false
         mMap!!.uiSettings.isMyLocationButtonEnabled = false
         mMap!!.uiSettings.isZoomGesturesEnabled = false
         mMap!!.uiSettings.isZoomControlsEnabled = false
+        mMap!!.uiSettings.isRotateGesturesEnabled = false
+        mMap!!.uiSettings.isTiltGesturesEnabled = false
+        mMap!!.uiSettings.isCompassEnabled = false
 
         mMap!!.setOnMapClickListener {
             val intent = Intent(
@@ -152,6 +140,10 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lat, lng), 16f))
         mMap!!.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         mMap!!.setOnMarkerClickListener { true }
+    }
+
+    fun bookNow(v:View){
+
     }
 
 
