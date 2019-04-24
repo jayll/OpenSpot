@@ -14,11 +14,12 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
     @IBOutlet weak var drivewayMapView: GMSMapView!
     @IBOutlet weak var drivewayLocationLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var drivewayOwnerLabel: UILabel!
-    @IBOutlet weak var callButton: UIButton!
+//    @IBOutlet weak var drivewayOwnerLabel: UILabel!
+//    @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var selectCarTextField: UITextField!
     @IBOutlet weak var bookDrivewayButton: UIButton!
     
+    //default value that is overwritten by FirstViewControllerVC
     lazy var coord = CLLocationCoordinate2D(latitude: 43.0008, longitude: 78.7890)
     var locationName = String?("")
     var price = String?("")
@@ -62,21 +63,21 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
         drivewayMapView.settings.setAllGesturesEnabled(false)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissVC))
-        callButton.addTarget(self, action: #selector(clickCallButton), for: .touchUpInside)
+//        callButton.addTarget(self, action: #selector(clickCallButton), for: .touchUpInside)
         bookDrivewayButton.addTarget(self, action: #selector(bookDriveway), for: .touchUpInside)
         
-        drivewayOwnerLabel.text = drivewayOwnerName! + "'s driveway"
+//        drivewayOwnerLabel.text = drivewayOwnerName! + "'s driveway"
     }
     
     @objc func dismissVC() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func clickCallButton() {
-        if let url = URL(string: "tel://\(phoneNumber!)") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
-    }
+//    @objc func clickCallButton() {
+//        if let url = URL(string: "tel://\(phoneNumber!)") {
+//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        }
+//    }
     
     @objc func bookDriveway(){
 //        var check = false
@@ -86,7 +87,33 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
             self.present(alertController, animated: true, completion: nil)
         }else{
 //            check=true
-        self.dismiss(animated: true, completion: nil)
+            var documentID = ""
+            let database1 = db.collection("Users")
+            var updatedAddress1 = [String]()
+            database1.getDocuments{ (value, error) in
+                for account in value!.documents{
+                    let address = account.data()["Addresses"] as? [String]
+                    if address != nil && address!.count > 0{
+                        var updatedAddress = address
+                        var index = 0
+                        while index != address!.count{
+                            if ((address![index + 1] == String(self.coord.latitude)) && (address![index + 2] == String(self.coord.longitude))){
+                                documentID = account.documentID
+                                updatedAddress![index+4] = "0"
+//                                updatedAddress = [address![index],address![index + 1],address![index + 2],address![index + 3],"0" ]
+                                updatedAddress1 = updatedAddress!
+                                break
+                            }
+                            index += 5
+                        }
+                    }
+                }
+                database1.document(documentID).updateData([
+                    "Addresses": updatedAddress1,
+                    ])
+            }
+
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -98,14 +125,14 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
 extension ConfirmBooking: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let source = MKMapItem(placemark: MKPlacemark(coordinate: coord))
-        source.name = drivewayOwnerLabel.text
+//        source.name = drivewayOwnerLabel.text
         
         MKMapItem.openMaps(with: [source], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         let source = MKMapItem(placemark: MKPlacemark(coordinate: coord))
-        source.name = drivewayOwnerLabel.text
+//        source.name = drivewayOwnerLabel.text
         
         MKMapItem.openMaps(with: [source], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
         return true
