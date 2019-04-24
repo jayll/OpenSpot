@@ -42,26 +42,11 @@ import java.io.InputStream
 import java.util.*
 
 
-class ReservationFragment : PreferenceFragmentCompat() {
+class ReservationFragment : Fragment() {
 
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//        return inflater.inflate(R.layout.reservation, container, false)
-//    }
-
-    fun confirmBooking(v: View) {
-        startActivity(Intent(activity, BookDrivewayActivity::class.java))
-    }
-
-    override fun onCreatePreferences(savedInstanceState: Bundle?, root_key: String?) {
-        setPreferencesFromResource(R.xml.test_preference, root_key)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        val book = findPreference("confirmBooking")
-        book.setOnPreferenceClickListener {
-            startActivity(Intent(activity, BookDrivewayActivity::class.java))
-            true
-        }
-
+        return   inflater.inflate(R.layout.reservation, container, false)
     }
 }
 
