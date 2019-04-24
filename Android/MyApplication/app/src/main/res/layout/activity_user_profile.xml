@@ -64,11 +64,13 @@
             <!--android:layout_below="@id/blank"-->
             <!--android:inputType="textEmailAddress" />-->
 
-    <!--<TextView android:id="@+id/showMyDate"-->
-              <!--android:layout_width="wrap_content"-->
-              <!--android:layout_height="wrap_content"-->
-              <!--android:textSize="20dp"-->
-              <!--android:layout_below="@id/myDatePickerButton"/>-->
+    <TextView android:id="@+id/phoneNumber"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="20dp"
+              android:layout_below="@id/myDatePickerButton"
+              android:focusable="false"
+              android:focusableInTouchMode="false"/>
 
 
         <!--//button to register user info, but we have image button rn thats buggy-->

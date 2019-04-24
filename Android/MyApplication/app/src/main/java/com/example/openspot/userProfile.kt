@@ -5,10 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -16,6 +12,7 @@ import java.util.*
 import java.util.regex.Pattern
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_user_profile.*
 
@@ -77,6 +74,8 @@ class userProfile : AppCompatActivity() {
         editFullName = findViewById<View>(R.id.full_name) as EditText
         editEmail = findViewById<View>(R.id.email) as EditText
 //      editDOB = findViewById<View>(R.id.dob) as EditText
+        val phone = findViewById<TextView>(R.id.phoneNumber)
+        phone.text = user!!.phoneNumber
         nextButton = findViewById<View>(R.id.user_profile_button) as ImageButton
 
 //        mDatabase = FirebaseDatabase.getInstance()
