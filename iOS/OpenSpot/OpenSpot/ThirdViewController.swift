@@ -27,13 +27,13 @@ class ThirdViewController: UIViewController, FUIAuthDelegate {
         if let index = self.menuTableView.indexPathForSelectedRow{
             self.menuTableView.deselectRow(at: index, animated: false)
         }
+        menuTableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if ThirdViewController.isLoggedOut == true{
             self.tabBarController?.selectedIndex = 0
         }
-        menuTableView.reloadData()
     }
     
 }

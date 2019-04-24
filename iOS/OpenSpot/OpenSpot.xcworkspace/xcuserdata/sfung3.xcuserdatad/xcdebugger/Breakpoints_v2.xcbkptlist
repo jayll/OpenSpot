@@ -182,7 +182,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpot/ThirdViewController.swift"
-            timestampString = "577588924.4912699"
+            timestampString = "577765210.459915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -198,13 +198,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpot/FirstViewController.swift"
-            timestampString = "577756840.05202"
+            timestampString = "577765043.415289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "getAvailableDriveways()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenSpot/ThirdViewController.swift"
+            timestampString = "577765369.002524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
