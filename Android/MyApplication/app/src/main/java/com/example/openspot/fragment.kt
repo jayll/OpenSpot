@@ -1,6 +1,7 @@
 package com.example.openspot
 
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
@@ -35,7 +36,7 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import org.jetbrains.anko.dip
+//import org.jetbrains.anko.dip
 import java.io.BufferedInputStream
 import java.io.InputStream
 import java.util.*
@@ -104,12 +105,12 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
     private fun checkPermission() {
         if (ActivityCompat.checkSelfPermission(
                 context!!,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             requestPermissions(
                 arrayOf(
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                    Manifest.permission.ACCESS_FINE_LOCATION
                 ),
                 MY_LOCATION_REQUEST_CODE
             )
@@ -132,7 +133,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == MY_LOCATION_REQUEST_CODE) {
             if (permissions.size == 1 &&
-                permissions[0] == android.Manifest.permission.ACCESS_FINE_LOCATION &&
+                permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
                 grantResults[0] == PackageManager.PERMISSION_GRANTED
             ) {
                 checkPermission()
@@ -167,7 +168,8 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
             childFragmentManager?.findFragmentById(R.id.autocomplete_fragment2) as? AutocompleteSupportFragment
 
         autocompleteFragment?.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
-        autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+        autocompleteFragment!!.view!!.setBackgroundColor(Color.WHITE)
+        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
 
             override fun onPlaceSelected(p0: Place) {
                 Log.d(ListDrivewayActivity.TAG, "Place: " + p0.name + ", " + p0.id)

@@ -23,9 +23,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_list_driveway.*
 
 
-class ListDrivewayActivity : AppCompatActivity() {
+class EditDrivewayInfoActivity : AppCompatActivity() {
     companion object {
-        const val TAG = "ListDrivewayActivity"
+        const val TAG = "EditDrivewayInfoActivity"
         var fromEditDrivewayPage = false
 
     }
@@ -42,12 +42,12 @@ class ListDrivewayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
-        setContentView(R.layout.activity_list_driveway)
+        setContentView(R.layout.activity_edit_driveway_info)
 
         autoComplete()
 
         val extras = intent.extras
-        var AddressData :String = extras!!.getString("Address")
+        var AddressData :String? = extras!!.getString("Address")
         var LatitudeData:String? = extras!!.getString("Latitude")
         var LongitudeData:String? = extras!!.getString("Longitude")
         var ActiveData:String? = extras!!.getString("Active")
@@ -196,6 +196,12 @@ class ListDrivewayActivity : AppCompatActivity() {
 
                             }
                             3 -> {
+                                drivewayInfo[((drivewayNumber-48) * 5) + i] = value
+                                name += "\n" + value
+                                Preference(this).title = name
+                            }
+                            4 ->
+                            {
                                 if (switch.text.toString() == "Active"){
                                     drivewayInfo[((drivewayNumber-48) * 5) + i] = "1"
                                     name += "\n" + "1"
@@ -205,18 +211,13 @@ class ListDrivewayActivity : AppCompatActivity() {
                                     name += "\n" + "0"
                                 }
                             }
-                            4 -> {
-                                drivewayInfo[((drivewayNumber-48) * 5) + i] = value
-                                name += "\n" + value
-                                Preference(this).title = name
-                            }
                         }
                     }
 
                     db.collection("Users").document(currentFirebaseUser.uid)
                         .update("Addresses", drivewayInfo)
                         .addOnSuccessListener { documentReference ->
-                            val i = Intent(this@ListDrivewayActivity, DrivewayViewActivity::class.java)
+                            val i = Intent(this@EditDrivewayInfoActivity, DrivewayViewActivity::class.java)
                             startActivity(i)
                         }
                         .addOnFailureListener { e ->
@@ -247,7 +248,7 @@ class ListDrivewayActivity : AppCompatActivity() {
                     db.collection("Users").document(currentFirebaseUser.uid)
                         .update("Addresses", drivewayInfo)
                         .addOnSuccessListener { documentReference ->
-                            val i = Intent(this@ListDrivewayActivity, DrivewayViewActivity::class.java)
+                            val i = Intent(this@EditDrivewayInfoActivity, DrivewayViewActivity::class.java)
                             startActivity(i)
                         }
                         .addOnFailureListener { e ->
@@ -258,7 +259,7 @@ class ListDrivewayActivity : AppCompatActivity() {
     }
 
     fun clickButton(v:View){
-        ListDrivewayActivity.fromEditDrivewayPage = true
+        EditDrivewayInfoActivity.fromEditDrivewayPage = true
         saveDrivewayInfo(v)
     }
 
