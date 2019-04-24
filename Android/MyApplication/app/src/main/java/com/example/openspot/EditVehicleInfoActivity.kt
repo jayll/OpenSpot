@@ -596,7 +596,7 @@ EditVehicleInfoActivity : AppCompatActivity(){
         carColorSpinner.setSelection(carColorSpinnerPosition)
 
             val editText = findViewById<EditText>(R.id.edit_license)
-            editText.setText(carLicensePlate)
+            editText.setText(carLicensePlate!!.toUpperCase())
 
             val carStateSpinnerPosition = carStateDataAdapter.getPosition(carStateData)
             carStateSpinner.setSelection(carStateSpinnerPosition)
@@ -604,7 +604,7 @@ EditVehicleInfoActivity : AppCompatActivity(){
 
     private fun saveVehicleInfo(v :View){
         val editText = findViewById<EditText>(R.id.edit_license)
-        val value = editText.text.toString()
+        val value = editText.text.toString().toUpperCase()
         var carArray: Any?
         var name =""
         var carInfo :MutableList<String>

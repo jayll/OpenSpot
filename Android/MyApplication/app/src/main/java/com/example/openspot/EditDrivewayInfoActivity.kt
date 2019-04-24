@@ -196,20 +196,18 @@ class EditDrivewayInfoActivity : AppCompatActivity() {
 
                             }
                             3 -> {
-                                drivewayInfo[((drivewayNumber-48) * 5) + i] = value
-                                name += "\n" + value
-                                Preference(this).title = name
-                            }
-                            4 ->
-                            {
                                 if (switch.text.toString() == "Active"){
                                     drivewayInfo[((drivewayNumber-48) * 5) + i] = "1"
-                                    name += "\n" + "1"
                                 }
                                 else{
                                     drivewayInfo[((drivewayNumber-48) * 5) + i] = "0"
-                                    name += "\n" + "0"
                                 }
+                            }
+                            4 ->
+                            {
+                                drivewayInfo[((drivewayNumber-48) * 5) + i] = value
+                                name += "\n" + value
+                                Preference(this).title = name
                             }
                         }
                     }

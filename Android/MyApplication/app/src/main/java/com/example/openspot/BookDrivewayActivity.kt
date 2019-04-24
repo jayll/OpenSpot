@@ -53,16 +53,16 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         var name = ""
         val usersCar = arrayListOf("Please select a vehicle")
         var carInfo :MutableList<String>
-        val docRef = db.collection("Users").document(currentFirebaseUser?.uid.toString())
+        val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     carArray = document.data!!["Cars"]
                     Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + carArray.toString())
                     carInfo = carArray as MutableList<String>
-                    if (carInfo.size > 5) {
-                        for (i in 0..4) {
-                            when (i) {
+                    if (carInfo.isNotEmpty()) {
+                        for (i in carInfo.indices) {
+                            when (i%5) {
                                 0 -> {
                                     name += carInfo[i]
                                 }
@@ -86,7 +86,9 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         markerAddress.text = addressData
 
         val markerPrice = findViewById<TextView>(R.id.price)
-        markerPrice.text = "$"+priceData+"0/hr"
+//        markerPrice.text = "$"+priceData+"0/hr"
+        markerPrice.text = "Price: " + priceData
+
 
         val currentSpinner : Spinner = findViewById(R.id.vehicleSpinner)
         val currentSpinnerDataAdapter = object : ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, usersCar) {
