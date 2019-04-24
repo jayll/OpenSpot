@@ -18,7 +18,7 @@ class DrivewayViewController : UIViewController {
     @IBOutlet weak var availablitySegmentedControl: UISegmentedControl!
     @IBOutlet weak var priceSlide: UISlider!
     @IBAction func priceSlider(_ sender: UISlider) {
-        priceLabel.text = String(Int(sender.value))
+        priceLabel.text = "$" + String(Int(sender.value)) + "/hr"
     }
     @IBAction func finishClicked(_ sender: Any) {
         if addressTextView.text == ""{
@@ -79,7 +79,7 @@ class DrivewayViewController : UIViewController {
                 self.addressTextView.text = self.addressesArray[self.addressIndex!]
                 self.lat = self.addressesArray[self.addressIndex!+1]
                 self.long = self.addressesArray[self.addressIndex!+2]
-                self.priceLabel.text = self.addressesArray[self.addressIndex! + 3]
+                self.priceLabel.text = "$" + self.addressesArray[self.addressIndex! + 3] + "/hr"
                 self.priceSlide.setValue(Float(self.addressesArray[self.addressIndex! + 3])!, animated: false)
                 self.availablitySegmentedControl.selectedSegmentIndex = Int(self.addressesArray[self.addressIndex! + 4])!
             }
