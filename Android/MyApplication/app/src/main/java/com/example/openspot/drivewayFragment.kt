@@ -58,13 +58,13 @@ class DrivewayFragment : PreferenceFragmentCompat() {
                                 val drivewayButton = findPreference("Driveway$counter")
                                 drivewayButton.setOnPreferenceClickListener {
                                     AuthUI.getInstance()
-                                    val intent = Intent(activity!!.baseContext, ListDrivewayActivity::class.java)
+                                    val intent = Intent(activity!!.baseContext, EditDrivewayInfoActivity::class.java)
                                     intent.putExtra("Address", a[i - 4])
                                     intent.putExtra("Latitude", a[i - 3])
                                     intent.putExtra("Longitude", a[i - 2])
                                     intent.putExtra("Active", a[i - 1])
                                     intent.putExtra("Price", a[i])
-                                    intent.putExtra("counter", drivewayButton.key)
+                                    intent.putExtra("counter2", drivewayButton.key)
                                     startActivity(intent)
                                     true
                                 }
