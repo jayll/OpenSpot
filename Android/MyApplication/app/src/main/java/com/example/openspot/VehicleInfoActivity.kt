@@ -521,7 +521,7 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
 
     private fun saveVehicleInfo(v :View){
         val editText = findViewById<EditText>(R.id.edit_license)
-        val value = editText.text.toString()
+        val value = editText.text.toString().toUpperCase()
         var carArray: Any?
         var carInfo :MutableList<String>
 
