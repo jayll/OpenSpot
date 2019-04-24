@@ -34,9 +34,7 @@ class VehicleViewController: UIViewController{
         if let index = self.vehicleTableView.indexPathForSelectedRow{
             self.vehicleTableView.deselectRow(at: index, animated: true)
         }
-
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         getCarArr()
@@ -45,7 +43,7 @@ class VehicleViewController: UIViewController{
     func getCarArr(){
         db.collection("Users").document((currentUser?.uid)!).getDocument {(value, Error) in
             let getCarArray = value!["Cars"] as? [String]
-                self.carArray = getCarArray!
+            self.carArray = getCarArray!
             self.vehicleTableView.reloadData()
         }
     }

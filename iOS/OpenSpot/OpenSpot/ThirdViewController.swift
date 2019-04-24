@@ -70,6 +70,9 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource{
             print("0")
         case 1:
             print("1")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "ListDrivewayNavigationController")
+            self.present(controller, animated: false)
         case 2:
             print("2")
         case 3:
