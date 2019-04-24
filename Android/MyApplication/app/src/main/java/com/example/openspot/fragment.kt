@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.openspot.DrivewayViewActivity.Companion.TAG
 import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.common.api.Status
@@ -63,6 +64,7 @@ class ReservationFragment : PreferenceFragmentCompat() {
 
     }
 }
+
 class HomeFragment : Fragment(),OnMapReadyCallback{
 
     companion object {
@@ -164,7 +166,7 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
         }
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =
-            childFragmentManager?.findFragmentById(R.id.autocomplete_fragment2) as? AutocompleteSupportFragment
+            childFragmentManager.findFragmentById(R.id.autocomplete_fragment2) as? AutocompleteSupportFragment
 
         autocompleteFragment?.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
         autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
@@ -235,20 +237,44 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
                                         canvas1.drawText("$"+drivewayPrice+"0/hr", 20f, 70f, color)
 
                                         drivewayMarker= mMap.addMarker(
-                                            MarkerOptions()
-                                            .position(LatLng(drivewayLat,drivewayLong))
-                                            .title(drivewayAddress)
-                                            .icon(BitmapDescriptorFactory.fromBitmap(bmp)))
-
+                                                MarkerOptions()
+                                                .position(LatLng(drivewayLat,drivewayLong))
+                                                .title(drivewayAddress)
+                                                .snippet("$"+drivewayPrice+"0/hr")
+                                                .icon(BitmapDescriptorFactory.fromBitmap(bmp)))
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }
+        mMap.setOnInfoWindowClickListener { p0 ->
+            val latLong = p0!!.position
+            val intent = Intent(activity, BookDrivewayActivity::class.java)
+
+            intent.putExtra("latitude", latLong.latitude)
+            intent.putExtra("longitude", latLong.longitude)
+            intent.putExtra("prices",p0.snippet)
+            intent.putExtra("addressss",p0.title)
+
+            Toast.makeText(
+                activity!!.baseContext,
+                "" + drivewayLat.toString(),
+                Toast.LENGTH_SHORT
+            ).show()
+            Toast.makeText(
+                activity!!.baseContext,
+                "" + drivewayLong.toString(),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            startActivity(intent)
+        }
     }
 }
+
+
 
 class SettingFragment : PreferenceFragmentCompat() {
 
