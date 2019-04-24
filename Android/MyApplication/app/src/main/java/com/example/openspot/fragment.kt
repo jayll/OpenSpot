@@ -142,13 +142,12 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
         }
     }
     private fun autoCompletePrediction() {
-        Places.initialize(activity!!.applicationContext, "AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
         /**
          * Initialize Places. For simplicity, the API key is hard-coded. In a production
          * environment we recommend using a secure mechanism to manage API keys.
          */
         if (!Places.isInitialized()) {
-            Places.initialize(activity!!.applicationContext, "AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+            Places.initialize(activity!!.applicationContext, "AIzaSyDi9cU1TQ3J-M2sEty4HteQq_ttIaLrJMU")
         }
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =

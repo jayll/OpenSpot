@@ -110,7 +110,7 @@ class ListDrivewayActivity : AppCompatActivity() {
          * environment we recommend using a secure mechanism to manage API keys.
          */
         if (!Places.isInitialized()) {
-            Places.initialize(applicationContext, "AIzaSyBuQ8aNzH2t7-bkfYUz2llMRTCfRAHvqzU")
+            Places.initialize(applicationContext, "AIzaSyDi9cU1TQ3J-M2sEty4HteQq_ttIaLrJMU")
         }
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =

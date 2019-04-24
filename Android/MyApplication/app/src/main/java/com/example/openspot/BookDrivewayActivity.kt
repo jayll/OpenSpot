@@ -28,6 +28,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
 
+    companion object {
+        private const val TAG = "BookDrivewayActivity"
+    }
+
     private var mMap: GoogleMap? = null
     private val db = FirebaseFirestore.getInstance()
     private val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
@@ -86,8 +90,7 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         markerAddress.text = addressData
 
         val markerPrice = findViewById<TextView>(R.id.price)
-//        markerPrice.text = "$"+priceData+"0/hr"
-        markerPrice.text = "Price: " + priceData
+        markerPrice.text = "Price: $priceData"
 
 
         val currentSpinner : Spinner = findViewById(R.id.vehicleSpinner)
@@ -144,13 +147,54 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
         mMap!!.setOnMarkerClickListener { true }
     }
 
-    fun bookNow(v:View){
+    private fun bookNowFunctionality(){
+        var addressArray:Any?
+        var counter = 0
+        val extras = intent.extras
+        val lat = extras!!.getDouble("clickedMarkerLatitude")
+        val lng = extras.getDouble("clickedMarkerLongitude")
+        val docRef = db.collection("Users")
+        docRef.get()
+            .addOnSuccessListener { result ->
+                loop@ for (document in result) {
+                    var tempLatitude = 0.0
+                    var tempLongitude = 0.0
+                    addressArray = document!!.data["Addresses"]
+                    val a = addressArray as? MutableList<String>?
+                    if (a != null) {
+                        for (item in a.indices) {
+                            when(item % 5){
+                                1 -> {
+                                    tempLatitude = a[item].toDouble()
+                                }
+                                2 -> {
+                                    tempLongitude = a[item].toDouble()
+                                }
+                            }
+                            counter++
 
+                            if((tempLatitude == lat) && (tempLongitude == lng)){
+                                Log.d(TAG, "HELLO::: $counter")
+                                a[counter] = "0"
+                                db.collection("Users").document(document.id)
+                                    .update("Addresses", a)
+                                    .addOnSuccessListener { documentReference ->
+                                        val i = Intent(this@BookDrivewayActivity, NavigationActivity::class.java)
+                                        startActivity(i)
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w(VehicleInfoActivity.TAG, "Error adding document", e)
+                                    }
+                                break@loop
+                            }
+                        }
+                        counter = 0
+                    }
+                }
+            }
     }
 
-
-
-
-
-
+    fun bookNow(v:View){
+        bookNowFunctionality()
+    }
 }
