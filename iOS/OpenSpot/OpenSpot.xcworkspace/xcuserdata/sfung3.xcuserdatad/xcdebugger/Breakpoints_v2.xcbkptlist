@@ -182,12 +182,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpot/ThirdViewController.swift"
-            timestampString = "577765210.459915"
+            timestampString = "577775285.834262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "logOut()"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -205,8 +205,6 @@
             endingLineNumber = "113"
             landmarkName = "getAvailableDriveways()"
             landmarkType = "7">
-            landmarkName = "FirstViewController"
-            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -216,7 +214,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpot/ThirdViewController.swift"
-            timestampString = "577765369.002524"
+            timestampString = "577775285.83469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
