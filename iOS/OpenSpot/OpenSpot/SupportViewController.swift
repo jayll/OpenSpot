@@ -31,7 +31,6 @@ class SupportViewController: UIViewController, UITextViewDelegate{
         btnBack.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.2319215834, green: 0.5326585174, blue: 0.9921949506, alpha: 1)], for: .normal)
         self.navigationItem.setLeftBarButton(btnBack, animated: true)
         
-        
     }
     
     @objc func dismissVC() {

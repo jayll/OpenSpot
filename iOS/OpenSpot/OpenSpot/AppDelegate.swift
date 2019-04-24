@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        GMSServices.provideAPIKey("AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+        GMSPlacesClient.provideAPIKey("AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
+        
+        
+        if Auth.auth().currentUser == nil{
+            let authUI = FUIAuth.defaultAuthUI()
+            FUIAuth.defaultAuthUI()?.shouldHideCancelButton = true
+            let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!)]
+            authUI?.providers = providers
+            let authViewController = OpenSpotFirebaseUI(authUI: authUI!)
+            let navc = UINavigationController(rootViewController: authViewController)
+            window?.rootViewController = navc
+        }
+        
         return true
     }
     

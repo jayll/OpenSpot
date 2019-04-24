@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>109672769853-gvhra3t27k347eutiks5rqg3tp8fk219.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.109672769853-gvhra3t27k347eutiks5rqg3tp8fk219</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>109672769853-frs8o05blbgp7j55opeoac6ks8fs5vm2.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBKL-tfXz4J5Lydzny9_RppKZlnWplh2vE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>109672769853</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.buffalo.sfung3.OpenSpot</string>
+	<key>PROJECT_ID</key>
+	<string>openspot-4af8a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>openspot-4af8a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:109672769853:ios:6cdd783d3b86a68b</string>
+	<key>DATABASE_URL</key>
+	<string>https://openspot-4af8a.firebaseio.com</string>
+</dict>
+</plist>

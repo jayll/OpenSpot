@@ -19,6 +19,9 @@ class UserInformationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
     var newUser = true
+    let db = Firestore.firestore()
+    let currentUser = Auth.auth().currentUser
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,8 +43,6 @@ class UserInformationViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkAccountExists(){
-        let db = Firestore.firestore()
-        let currentUser = Auth.auth().currentUser
         db.collection("Users").document((currentUser?.uid)!).getDocument { (value, Error) in
             if value?["fullName"] != nil{
                 self.newUser = false
@@ -134,9 +135,6 @@ extension UserInformationViewController: UIAlertViewDelegate{
             self.navigationController!.pushViewController(destinationVC, animated: true)
         }
         else{
-            let db = Firestore.firestore()
-            let currentUser = Auth.auth().currentUser
-            
             db.collection("Users").document((currentUser?.uid)!).updateData([
                 "phoneNumber": currentUser?.phoneNumber! as Any,
                 "fullName": fullNameTextField.text!,
