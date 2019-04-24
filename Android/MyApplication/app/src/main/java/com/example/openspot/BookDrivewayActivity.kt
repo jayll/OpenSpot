@@ -20,6 +20,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.firebase.auth.FirebaseAuth
@@ -195,6 +196,13 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
     }
 
     fun bookNow(v:View){
-        bookNowFunctionality()
+        val currentSpinner : Spinner = findViewById(R.id.vehicleSpinner)
+        if(currentSpinner.selectedItem.toString() == "Please select a vehicle"){
+            Toast.makeText(applicationContext, "Please select a vehicle", Toast.LENGTH_LONG)
+                .show()
+        }
+        else{
+            bookNowFunctionality()
+        }
     }
 }
