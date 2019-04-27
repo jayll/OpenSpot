@@ -76,136 +76,180 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="HQO-P4-W3W">
-                                <rect key="frame" x="15" y="193.33333333333337" width="384" height="197"/>
+                                <rect key="frame" x="15" y="193.33333333333334" width="384" height="271.66666666666663"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ix7-La-GdO">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="h6c-C7-IQw"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FSM-8A-Fab">
-                                        <rect key="frame" x="0.0" y="58" width="384" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="q7r-mE-Abo"/>
-                                        </connections>
-                                    </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSa-tx-18t">
-                                        <rect key="frame" x="0.0" y="115.99999999999997" width="384" height="23"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Oc9-cM-bkW">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="42"/>
                                         <subviews>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJD-CS-tnh">
-                                                <rect key="frame" x="0.0" y="0.0" width="32" height="23"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="32" id="zAf-gE-u8F"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2q-2J-xE9">
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ix7-La-GdO">
+                                                <rect key="frame" x="0.0" y="19" width="384" height="23"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="rQo-Ym-ttq"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="/" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5b3-Gs-FMM">
-                                                <rect key="frame" x="32" y="0.0" width="16" height="23"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="16" id="o6b-Jf-tJH"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="Rzg-cM-0SB"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="DD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K39-h4-qme">
-                                                <rect key="frame" x="48" y="0.0" width="32" height="23"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="32" id="QQw-et-ni4"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="ez1-1G-9xa"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="/" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhC-VF-4uK">
-                                                <rect key="frame" x="80" y="0.0" width="16" height="23"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="16" id="8LY-5p-waW"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="dYD-BD-mXh"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oza-Am-tJd">
-                                                <rect key="frame" x="96" y="0.0" width="48" height="23"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="48" id="iML-OC-mle"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="54h-2O-uKl"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e1S-iO-UNo">
-                                                <rect key="frame" x="144" y="0.0" width="240" height="23"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="v1e-ez-wD5"/>
+                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="h6c-C7-IQw"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RG6-Pp-wrv">
-                                        <rect key="frame" x="0.0" y="173.99999999999997" width="384" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="ZxE-2B-s1y"/>
-                                        </connections>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zZP-gZ-wxd">
+                                        <rect key="frame" x="0.0" y="76.999999999999972" width="384" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66x-Rr-ag7">
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FSM-8A-Fab">
+                                                <rect key="frame" x="0.0" y="19" width="384" height="23"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="q7r-mE-Abo"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="FLy-lq-wxU">
+                                        <rect key="frame" x="0.0" y="153.99999999999997" width="384" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50x-Up-zEI">
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSa-tx-18t">
+                                                <rect key="frame" x="0.0" y="19" width="384" height="23"/>
+                                                <subviews>
+                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJD-CS-tnh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="32" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="32" id="zAf-gE-u8F"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="rQo-Ym-ttq"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="/" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5b3-Gs-FMM">
+                                                        <rect key="frame" x="32" y="0.0" width="16" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="o6b-Jf-tJH"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="Rzg-cM-0SB"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="DD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K39-h4-qme">
+                                                        <rect key="frame" x="48" y="0.0" width="32" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="32" id="QQw-et-ni4"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="ez1-1G-9xa"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="/" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhC-VF-4uK">
+                                                        <rect key="frame" x="80" y="0.0" width="16" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="8LY-5p-waW"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="dYD-BD-mXh"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oza-Am-tJd">
+                                                        <rect key="frame" x="96" y="0.0" width="48" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="48" id="iML-OC-mle"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="54h-2O-uKl"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e1S-iO-UNo">
+                                                        <rect key="frame" x="144" y="0.0" width="240" height="23"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="IbB-Kr-WLg" id="v1e-ez-wD5"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iCp-fj-A7O">
+                                        <rect key="frame" x="0.0" y="230.99999999999997" width="384" height="40.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJw-hi-Mdg">
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="15.666666666666666"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RG6-Pp-wrv">
+                                                <rect key="frame" x="0.0" y="17.666666666666686" width="384" height="23"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="IbB-Kr-WLg" id="ZxE-2B-s1y"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please enter your information in order to be able to start booking driveways" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOI-He-oFH">
@@ -278,53 +322,108 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="J8h-oV-21o">
-                                <rect key="frame" x="20" y="174.33333333333337" width="374" height="255"/>
+                                <rect key="frame" x="20" y="174.33333333333337" width="374" height="350"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="make" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1w-MR-j4s">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="model" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hqN-RN-VFc">
-                                        <rect key="frame" x="0.0" y="58" width="374" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="color" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-Fm-zBt">
-                                        <rect key="frame" x="0.0" y="115.99999999999997" width="374" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="state" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSm-D0-MRJ">
-                                        <rect key="frame" x="0.0" y="173.99999999999997" width="374" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="license plate number(no dashes)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jrL-xP-J73">
-                                        <rect key="frame" x="0.0" y="231.99999999999997" width="374" height="23"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0j4-fr-Hnx">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyT-wN-E9d">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1w-MR-j4s">
+                                                <rect key="frame" x="0.0" y="19" width="374" height="23"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zmw-Wx-ul3">
+                                        <rect key="frame" x="0.0" y="77" width="374" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjQ-kP-QXu">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hqN-RN-VFc">
+                                                <rect key="frame" x="0.0" y="18.999999999999972" width="374" height="23"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="W58-uM-mvM">
+                                        <rect key="frame" x="0.0" y="153.99999999999997" width="374" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQo-ac-WdR">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-Fm-zBt">
+                                                <rect key="frame" x="0.0" y="19" width="374" height="23"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Rra-8d-B2G">
+                                        <rect key="frame" x="0.0" y="230.99999999999997" width="374" height="42.000000000000028"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSC-1R-P9E">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSm-D0-MRJ">
+                                                <rect key="frame" x="0.0" y="19" width="374" height="23"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="VcW-8F-Fni">
+                                        <rect key="frame" x="0.0" y="308" width="374" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxX-hh-tY4">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jrL-xP-J73">
+                                                <rect key="frame" x="0.0" y="19" width="374" height="23"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -598,28 +697,39 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="DwI-w0-FlA">
-                                <rect key="frame" x="20" y="149.33333333333337" width="374" height="200.66666666666663"/>
+                                <rect key="frame" x="20" y="149.33333333333337" width="374" height="209.66666666666663"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Driveway Location" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dK-5w-cpS">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="26"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="oUj-VZ-tBa" id="caG-Hz-83f"/>
-                                        </connections>
-                                    </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="QZn-IU-UpA">
-                                        <rect key="frame" x="0.0" y="61" width="374" height="53.333333333333343"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-6k-F2d">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driveway Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41B-RA-RQQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dK-5w-cpS">
+                                                <rect key="frame" x="0.0" y="19" width="374" height="26"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="oUj-VZ-tBa" id="caG-Hz-83f"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="QZn-IU-UpA">
+                                        <rect key="frame" x="0.0" y="80" width="374" height="47.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Per Hour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWv-qH-7dj">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="15.666666666666666"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Uhk-bt-8od">
-                                                <rect key="frame" x="0.0" y="23.333333333333314" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="17.666666666666657" width="374" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$4/hr" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vhc-BD-H8Y">
                                                         <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
@@ -641,17 +751,17 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="uD3-xK-ZfA">
-                                        <rect key="frame" x="0.0" y="149.33333333333334" width="374" height="51.333333333333343"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uD3-xK-ZfA">
+                                        <rect key="frame" x="0.0" y="162.66666666666666" width="374" height="47"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gw0-8J-6ev">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6kB-F9-Bof">
-                                                <rect key="frame" x="0.0" y="23.333333333333314" width="374" height="28"/>
+                                                <rect key="frame" x="0.0" y="19" width="374" height="28"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vkI-eF-ZYc">
                                                         <rect key="frame" x="0.0" y="0.0" width="165" height="29"/>
@@ -822,11 +932,11 @@
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="or8-FZ-mbF">
-                                <rect key="frame" x="10" y="315" width="394" height="114"/>
+                                <rect key="frame" x="10" y="315" width="394" height="131"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University at Buffalo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whp-Nw-7vu">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -843,7 +953,7 @@
                                                 <rect key="frame" x="197" y="0.0" width="197" height="20"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-wB-9Zs">
-                                                        <rect key="frame" x="141.33333333333331" y="-1.6666666666666856" width="25.333333333333343" height="21.666666666666668"/>
+                                                        <rect key="frame" x="147.33333333333331" y="-1.6666666666666856" width="25.333333333333343" height="21.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -861,20 +971,31 @@
                                                     <constraint firstAttribute="trailing" secondItem="8w9-Gh-5fg" secondAttribute="trailing" id="Evo-nm-Wzm"/>
                                                     <constraint firstAttribute="bottom" secondItem="8w9-Gh-5fg" secondAttribute="bottom" id="L2O-tj-Tcj"/>
                                                     <constraint firstAttribute="height" constant="20" id="T80-8k-do4"/>
-                                                    <constraint firstItem="8w9-Gh-5fg" firstAttribute="leading" secondItem="sPX-wB-9Zs" secondAttribute="trailing" constant="10" id="wqu-BM-mwJ"/>
+                                                    <constraint firstItem="8w9-Gh-5fg" firstAttribute="leading" secondItem="sPX-wB-9Zs" secondAttribute="trailing" constant="4" id="wqu-BM-mwJ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-oc-lNz">
-                                        <rect key="frame" x="0.0" y="90" width="394" height="24"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gpB-gV-Cwi">
+                                        <rect key="frame" x="0.0" y="90" width="394" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfX-UI-ZCO">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-oc-lNz">
+                                                <rect key="frame" x="0.0" y="19" width="394" height="22"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="354-jv-oSb">
@@ -941,6 +1062,6 @@
         <image name="Reservations" width="25" height="25"/>
         <image name="SendMail" width="32" height="32"/>
         <image name="Settings" width="25" height="25"/>
-        <image name="Star" width="64" height="64"/>
+        <image name="Star" width="48" height="48"/>
     </resources>
 </document>
