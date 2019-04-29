@@ -18,6 +18,10 @@ class ReservationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        // Do any additional setup after loading the view, typically from a nib.
         getReservations()
     }
     
@@ -39,8 +43,8 @@ extension ReservationsViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReservationsOptionCell
         
         cell.addressCell.text = reservationsArray[indexPath.row * 5]
-        cell.priceLabel.text = "$" + reservationsArray[indexPath.row * 5 + 1] + "/hr"
-        cell.timeLabel.text = reservationsArray[indexPath.row * 5 + 2] + " " + reservationsArray[indexPath.row * 5 + 3]
+        cell.priceLabel.text = reservationsArray[indexPath.row * 5 + 1] 
+        cell.timeLabel.text = reservationsArray[indexPath.row * 5 + 2] + "  " + reservationsArray[indexPath.row * 5 + 3]
         cell.starsLabel.text = reservationsArray[indexPath.row * 5 + 4]
         
         return cell

@@ -95,10 +95,19 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
     func getTime() -> String{
         let date = Date()
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour,.minute], from: date)
-        let hour = components.hour
-        let minute = components.minute
-        return String(hour ?? 12) + ":" + String(minute ?? 00)
+        let components = calendar.dateComponents([.hour], from: date)
+        var hour = components.hour
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "mm"
+        let newDateString = dateFormatter.string(from: date)
+        
+        if(hour!>13){
+            hour! = hour! - 12
+            return String(hour ?? 12) + ":" + newDateString+"PM"
+        }else{
+            return String(hour ?? 12) + ":" + newDateString+"AM"
+        }
+    
     }
     
     @objc func bookDriveway(){
@@ -134,8 +143,8 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
                 database1.document(documentID).updateData([
                     "Addresses": updatedAddress1,
                     ])
-                let currentAddress = updatedAddress1[0]
-                let getPrice = updatedAddress1[4]
+                let currentAddress = self.drivewayLocationLabel.text
+                let getPrice = self.priceLabel.text
                 let date = self.getDate()
                 let time = self.getTime()
                 
@@ -143,8 +152,8 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
                 var reservationsArray = [String]()
                 user.getDocument { (value, Error) in
                     reservationsArray = (value!["Reservations"] as? [String])!
-                    reservationsArray.append(currentAddress)
-                    reservationsArray.append(getPrice)
+                    reservationsArray.append(currentAddress!)
+                    reservationsArray.append(getPrice!)
                     reservationsArray.append(date)
                     reservationsArray.append(time)
                     reservationsArray.append("5.0")
