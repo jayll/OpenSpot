@@ -14,8 +14,8 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
     @IBOutlet weak var drivewayMapView: GMSMapView!
     @IBOutlet weak var drivewayLocationLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-//    @IBOutlet weak var drivewayOwnerLabel: UILabel!
-//    @IBOutlet weak var callButton: UIButton!
+    //    @IBOutlet weak var drivewayOwnerLabel: UILabel!
+    //    @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var selectCarTextField: UITextField!
     @IBOutlet weak var bookDrivewayButton: UIButton!
     
@@ -63,30 +63,52 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
         drivewayMapView.settings.setAllGesturesEnabled(false)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(dismissVC))
-//        callButton.addTarget(self, action: #selector(clickCallButton), for: .touchUpInside)
+        //        callButton.addTarget(self, action: #selector(clickCallButton), for: .touchUpInside)
         bookDrivewayButton.addTarget(self, action: #selector(bookDriveway), for: .touchUpInside)
         
-//        drivewayOwnerLabel.text = drivewayOwnerName! + "'s driveway"
+        //        drivewayOwnerLabel.text = drivewayOwnerName! + "'s driveway"
     }
     
     @objc func dismissVC() {
         self.dismiss(animated: true, completion: nil)
     }
     
-//    @objc func clickCallButton() {
-//        if let url = URL(string: "tel://\(phoneNumber!)") {
-//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//        }
-//    }
+    //    @objc func clickCallButton() {
+    //        if let url = URL(string: "tel://\(phoneNumber!)") {
+    //            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    //        }
+    //    }
+    
+    func getDate() -> String{
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.month, .day,.year], from: date)
+        let month = components.month
+        let day = components.day
+        let year = components.year
+        print(month as Any)
+        print(day as Any)
+        return months[month!-1] + " " + String(day ?? 1) + ", " + String(year ?? 2019)
+    }
+    
+    func getTime() -> String{
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour,.minute], from: date)
+        let hour = components.hour
+        let minute = components.minute
+        return String(hour ?? 12) + ":" + String(minute ?? 00)
+    }
     
     @objc func bookDriveway(){
-//        var check = false
+        //        var check = false
         if(selectCarTextField.text == "" || selectCarTextField.text == "-SELECT-"){
             let alertController = UIAlertController(title: "OpenSpot", message: "Please select a car", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }else{
-//            check=true
+            //            check=true
             var documentID = ""
             let database1 = db.collection("Users")
             var updatedAddress1 = [String]()
@@ -100,7 +122,7 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
                             if ((address![index + 1] == String(self.coord.latitude)) && (address![index + 2] == String(self.coord.longitude))){
                                 documentID = account.documentID
                                 updatedAddress![index + 3] = "0"
-//                                updatedAddress = [address![index],address![index + 1],address![index + 2],address![index + 3],"0" ]
+                                //                                updatedAddress = [address![index],address![index + 1],address![index + 2],address![index + 3],"0" ]
                                 updatedAddress1 = updatedAddress!
                                 break
                             }
@@ -108,11 +130,32 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
                         }
                     }
                 }
+                
                 database1.document(documentID).updateData([
                     "Addresses": updatedAddress1,
                     ])
+                let currentAddress = updatedAddress1[0]
+                let getPrice = updatedAddress1[4]
+                let date = self.getDate()
+                let time = self.getTime()
+                
+                let user = self.db.collection("Users").document((self.currentUser?.uid)!)
+                var reservationsArray = [String]()
+                user.getDocument { (value, Error) in
+                    reservationsArray = (value!["Reservations"] as? [String])!
+                    reservationsArray.append(currentAddress)
+                    reservationsArray.append(getPrice)
+                    reservationsArray.append(date)
+                    reservationsArray.append(time)
+                    reservationsArray.append("5.0")
+                    user.updateData([
+                        "Reservations":reservationsArray,
+                        ])
+                }
+                
+                
             }
-
+            
             self.dismiss(animated: true, completion: nil)
         }
     }
