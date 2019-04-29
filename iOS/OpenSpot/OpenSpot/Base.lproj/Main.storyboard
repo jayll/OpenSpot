@@ -153,6 +153,9 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Reservations" image="Reservations" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="reservationsTableView" destination="0ZU-qB-6dX" id="iE3-3e-RFq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
