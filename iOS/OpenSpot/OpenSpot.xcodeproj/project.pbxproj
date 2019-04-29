@@ -12,7 +12,7 @@
 		3E2342E62261802E0061A6AE /* DrivewayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2342E52261802E0061A6AE /* DrivewayViewController.swift */; };
 		3E3C9C8B22176FAE00A88600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8A22176FAE00A88600 /* AppDelegate.swift */; };
 		3E3C9C8D22176FAE00A88600 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8C22176FAE00A88600 /* FirstViewController.swift */; };
-		3E3C9C8F22176FAE00A88600 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8E22176FAE00A88600 /* SecondViewController.swift */; };
+		3E3C9C8F22176FAE00A88600 /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8E22176FAE00A88600 /* ReservationsViewController.swift */; };
 		3E3C9C9222176FAE00A88600 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3C9C9022176FAE00A88600 /* Main.storyboard */; };
 		3E3C9C9722176FB000A88600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3C9C9522176FB000A88600 /* LaunchScreen.storyboard */; };
 		3E3C9CA222176FB000A88600 /* OpenSpotTestsSprint1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9CA122176FB000A88600 /* OpenSpotTestsSprint1.swift */; };
@@ -81,7 +81,7 @@
 		3E3C9C8722176FAE00A88600 /* OpenSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3C9C8A22176FAE00A88600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E3C9C8C22176FAE00A88600 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3E3C9C8E22176FAE00A88600 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3E3C9C8E22176FAE00A88600 /* ReservationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsViewController.swift; sourceTree = "<group>"; };
 		3E3C9C9122176FAE00A88600 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E3C9C9622176FB000A88600 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E3C9C9822176FB000A88600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,15 +194,15 @@
 				3E4ED987226D3E5000B8FB70 /* CustomGMSMarker.swift */,
 				9C5D93B52263E70800011FB7 /* CustomMarkerView.swift */,
 				3E4ED985226C47E200B8FB70 /* ConfirmBooking.swift */,
-				3E3C9C8E22176FAE00A88600 /* SecondViewController.swift */,
+				3E3C9C8E22176FAE00A88600 /* ReservationsViewController.swift */,
+				3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */,
 				3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */,
 				3EC2373C224F0B5400DD6905 /* SupportViewController.swift */,
 				3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */,
-				3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */,
-				3E5CA0B3221E2022009954D7 /* MenuOption.swift */,
 				9C5D93AF225170D700011FB7 /* VehicleOption.swift */,
 				3ED288E4223481C9007E8256 /* UITextFieldExtension.swift */,
 				9C5D93B72263E8F800011FB7 /* DrivewayPreviewView.swift */,
+				3E5CA0B3221E2022009954D7 /* MenuOption.swift */,
 				3E5CA0B5221E29A1009954D7 /* Assets.xcassets */,
 				3E3C9C9022176FAE00A88600 /* Main.storyboard */,
 				3E3C9C9522176FB000A88600 /* LaunchScreen.storyboard */,
@@ -640,7 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E2342E422617CB00061A6AE /* DrivewayListViewController.swift in Sources */,
-				3E3C9C8F22176FAE00A88600 /* SecondViewController.swift in Sources */,
+				3E3C9C8F22176FAE00A88600 /* ReservationsViewController.swift in Sources */,
 				3E2342E62261802E0061A6AE /* DrivewayViewController.swift in Sources */,
 				9C5D93AE22505C3500011FB7 /* VehicleViewController.swift in Sources */,
 				3ED288E5223481C9007E8256 /* UITextFieldExtension.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RservationsOptionCell: UITableViewCell{
+class ReservationsOptionCell: UITableViewCell{
     @IBOutlet weak var addressCell: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
