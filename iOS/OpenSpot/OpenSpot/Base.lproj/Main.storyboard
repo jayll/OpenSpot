@@ -149,7 +149,7 @@
         <scene sceneID="iuR-yL-2ID">
             <objects>
                 <viewController storyboardIdentifier="UserInformationViewController" id="IbB-Kr-WLg" customClass="UserInformationViewController" customModule="OpenSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="52T-2v-Wbz">
+                    <view key="view" contentMode="scaleToFill" id="52T-2v-Wbz" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -383,7 +383,7 @@
         <scene sceneID="Akv-LJ-ThC">
             <objects>
                 <viewController storyboardIdentifier="VehicleInformationViewController" title="Vehicle Information" id="R2d-aa-8Z1" customClass="VehicleInformationViewController" customModule="OpenSpot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NJk-dh-CbP">
+                    <view key="view" contentMode="scaleToFill" id="NJk-dh-CbP" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
