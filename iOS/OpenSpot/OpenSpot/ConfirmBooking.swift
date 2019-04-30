@@ -32,7 +32,7 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectCarTextField.underlined()
+        selectCarTextField.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
         getCarsArray()
         setUpView()
         

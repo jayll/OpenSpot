@@ -11,6 +11,7 @@ import Firebase
 import FirebaseUI
 import GoogleMaps
 import GooglePlaces
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
         GMSPlacesClient.provideAPIKey("AIzaSyBtFb-gk11ernuxryXKzj5G3pMPPIDa7gA")
         
+        IQKeyboardManager.shared.enable = true
         
         if Auth.auth().currentUser == nil{
             let authUI = FUIAuth.defaultAuthUI()

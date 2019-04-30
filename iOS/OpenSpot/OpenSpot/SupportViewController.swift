@@ -20,7 +20,7 @@ class SupportViewController: UIViewController, UITextViewDelegate{
         super.viewDidLoad()
         self.bodyTextView.text = "\n\n\n\n\n ------------------------------------------ \nPlease enter your questions/comments above this line" + "\n\nUID: " + Auth.auth().currentUser!.uid + "\nMetadata: " + Auth.auth().currentUser!.metadata.description + "\n"
         
-        subjectTextField.underlined()
+        subjectTextField.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
         bodyTextView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         bodyTextView.layer.borderWidth = 0.5
         bodyTextView.clipsToBounds = true

@@ -65,27 +65,17 @@ extension UITextField{
         self.resignFirstResponder()
     }
     
-    func underlined(){
+    func underlined(color: CGColor){
         let border = CALayer()
         let width = CGFloat(1.5)
-        let purple = #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1)
-        border.borderColor = purple.cgColor
+        border.borderColor = color
         border.frame = CGRect(x: 0, y: self.frame.size.height + 0.6 - width , width:  self.frame.size.width, height: self.frame.size.height)
         border.borderWidth = width
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true
-    }
-    
-    func underlinedBlack(){
-        let border = CALayer()
-        let width = CGFloat(1.5)
-        let purple = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        border.borderColor = purple.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height + 0.6 - width , width:  self.frame.size.width, height: self.frame.size.height)
-        border.borderWidth = width
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
-        self.isEnabled = false
+        if color == #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1) {
+            self.isEnabled = false
+        }
     }
     
 }
