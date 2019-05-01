@@ -13,5 +13,12 @@ class ReservationsOptionCell: UITableViewCell{
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
-    
+    @IBOutlet weak var phoneNumber: UILabel!
+    @IBAction func callButton(_ sender: Any) {
+        if let url = URL(string: "tel://\(phoneNumber.text)") {
+            print(phoneNumber.text)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+        
 }

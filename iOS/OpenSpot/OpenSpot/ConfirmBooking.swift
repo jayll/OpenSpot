@@ -157,6 +157,7 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
                     reservationsArray.append(date)
                     reservationsArray.append(time)
                     reservationsArray.append("5.0")
+                    reservationsArray.append(self.phoneNumber!)
                     user.updateData([
                         "Reservations":reservationsArray,
                         ])

@@ -42,10 +42,13 @@ extension ReservationsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReservationsOptionCell
         
-        cell.addressCell.text = reservationsArray[indexPath.row * 5]
-        cell.priceLabel.text = reservationsArray[indexPath.row * 5 + 1] 
-        cell.timeLabel.text = reservationsArray[indexPath.row * 5 + 2] + "  " + reservationsArray[indexPath.row * 5 + 3]
-        cell.starsLabel.text = reservationsArray[indexPath.row * 5 + 4] + " ★"
+        cell.addressCell.text = reservationsArray[indexPath.row * 6]
+        cell.priceLabel.text = reservationsArray[indexPath.row * 6 + 1]
+        cell.timeLabel.text = reservationsArray[indexPath.row * 6 + 2] + "  " + reservationsArray[indexPath.row * 6 + 3]
+        cell.starsLabel.text = reservationsArray[indexPath.row * 6 + 4] + " ★"
+        cell.phoneNumber.text = reservationsArray[indexPath.row * 6 + 5]
+        cell.callButton(self)
+        
         
         return cell
     }
