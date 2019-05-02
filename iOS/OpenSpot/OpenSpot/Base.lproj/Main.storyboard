@@ -90,10 +90,10 @@
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-fY-DCE">
-                                                            <rect key="frame" x="366" y="93" width="30" height="30"/>
+                                                            <rect key="frame" x="346" y="73" width="50" height="50"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="Abf-PY-Bav"/>
-                                                                <constraint firstAttribute="height" constant="30" id="TvV-M7-auw"/>
+                                                                <constraint firstAttribute="width" constant="50" id="Abf-PY-Bav"/>
+                                                                <constraint firstAttribute="height" constant="50" id="TvV-M7-auw"/>
                                                             </constraints>
                                                             <state key="normal" image="Phone"/>
                                                             <connections>
@@ -819,7 +819,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dK-5w-cpS">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dK-5w-cpS">
                                                 <rect key="frame" x="0.0" y="19" width="374" height="26"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>

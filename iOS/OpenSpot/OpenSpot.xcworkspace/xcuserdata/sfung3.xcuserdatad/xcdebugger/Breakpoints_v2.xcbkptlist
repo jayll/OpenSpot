@@ -102,7 +102,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpot/SupportViewController.swift"
-            timestampString = "578290629.6988159"
+            timestampString = "578441133.118242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -156,22 +156,6 @@
             startingLineNumber = "239"
             endingLineNumber = "239"
             landmarkName = "testSendToFirebase_40()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OpenSpot/ReservationsOptionCell.swift"
-            timestampString = "578433336.059574"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "callButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

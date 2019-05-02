@@ -47,8 +47,6 @@ extension ReservationsViewController: UITableViewDataSource{
         cell.timeLabel.text = reservationsArray[indexPath.row * 6 + 2] + "  " + reservationsArray[indexPath.row * 6 + 3]
         cell.starsLabel.text = reservationsArray[indexPath.row * 6 + 4] + " ★"
         cell.phoneNumber.text = reservationsArray[indexPath.row * 6 + 5]
-        cell.callButton(self)
-        
         
         return cell
     }

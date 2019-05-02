@@ -15,8 +15,7 @@ class ReservationsOptionCell: UITableViewCell{
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBAction func callButton(_ sender: Any) {
-        if let url = URL(string: "tel://\(phoneNumber.text)") {
-            print(phoneNumber.text)
+        if let url = URL(string: "tel://\(phoneNumber.text ?? "+16464724896")") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
