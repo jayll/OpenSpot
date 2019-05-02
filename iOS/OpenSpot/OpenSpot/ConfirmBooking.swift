@@ -23,7 +23,7 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
     lazy var coord = CLLocationCoordinate2D(latitude: 43.0008, longitude: 78.7890)
     var locationName = String?("")
     var price = String?("")
-    var drivewayOwnerName = String?("")
+    var documentID = String?("")
     var phoneNumber = String?("")
     var carsArray: [String] = ["-SELECT-"]
     let db = Firestore.firestore()

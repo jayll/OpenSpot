@@ -11,5 +11,5 @@ import GoogleMaps
 
 class CustomGMSMarker: GMSMarker{
     var phoneNumber = ""
-    var drivewayOwnerName = ""
+    var documentID = ""
 }
