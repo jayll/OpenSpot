@@ -118,29 +118,22 @@ class ConfirmBooking: UIViewController, UIPickerViewDataSource{
             self.present(alertController, animated: true, completion: nil)
         }else{
             //            check=true
-            var documentID = ""
+
             let database1 = db.collection("Users")
             var updatedAddress1 = [String]()
-            database1.getDocuments{ (value, error) in
-                for account in value!.documents{
-                    let address = account.data()["Addresses"] as? [String]
-                    if address != nil && address!.count > 0{
-                        var updatedAddress = address
-                        var index = 0
-                        while index != address!.count{
-                            if ((address![index + 1] == String(self.coord.latitude)) && (address![index + 2] == String(self.coord.longitude))){
-                                documentID = account.documentID
-                                updatedAddress![index + 3] = "0"
-                                //                                updatedAddress = [address![index],address![index + 1],address![index + 2],address![index + 3],"0" ]
-                                updatedAddress1 = updatedAddress!
-                                break
-                            }
-                            index += 5
-                        }
+            database1.document(self.documentID!).getDocument{(value,error) in
+                var updatedAddress = (value!["Addresses"] as? [String])!
+                var index = 0
+                while index != updatedAddress.count{
+                    if ((updatedAddress[index + 1] == String(self.coord.latitude)) && (updatedAddress[index + 2] == String(self.coord.longitude))){
+                        updatedAddress[index + 3] = "0"
+                        updatedAddress1 = updatedAddress
+                        break
                     }
+                    index += 5
                 }
-                
-                database1.document(documentID).updateData([
+            
+                database1.document(self.documentID!).updateData([
                     "Addresses": updatedAddress1,
                     ])
                 let currentAddress = self.drivewayLocationLabel.text
