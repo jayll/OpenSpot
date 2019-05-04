@@ -55,7 +55,8 @@ class EditProfile : AppCompatActivity() {
                 if (document!=null){
                     FullName?.text = document.data!!["fullName"].toString()
                     birthday?.text = document.data!!["dateOfBirth"].toString()
-                    editEmail!!.setText(document.data!!["email"].toString())
+                    editEmail.setText(document.data!!["email"].toString())
+                    editEmail.setSelection(document.data!!["email"].toString().length)
                 }}
 
     }

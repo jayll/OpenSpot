@@ -53,9 +53,6 @@ class userProfile : AppCompatActivity() {
         setTheme(R.style.FragmentTheme)
         setContentView(R.layout.activity_user_profile)
 
-        supportActionBar?.title = "User Profile"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         val docRef = db.collection("Users").document(user!!.uid)
         docRef.get()
             .addOnSuccessListener { document ->

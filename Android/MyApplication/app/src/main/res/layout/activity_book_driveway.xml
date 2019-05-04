@@ -70,6 +70,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
             android:text="Book Now"
+            android:background="@color/colorPrimary"
             android:onClick="bookNow"/>
 
 </LinearLayout>

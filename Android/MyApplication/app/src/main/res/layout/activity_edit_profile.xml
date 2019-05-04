@@ -1,69 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.example.openspot.EditProfile">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.example.openspot.EditProfile"
+              android:orientation="vertical"
+              android:weightSum="3">
 
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.25"
+        android:background="@drawable/gradient"
+        android:orientation="vertical">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/user_profile" />
 
     <TextView
-            android:id="@+id/fullNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Welcome"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+
+</LinearLayout>
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.75"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="45dp">
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
-            android:textSize="22dp"
-            android:inputType="textPersonName"
-            android:textColor="#A9A9A9"
-    />
-
-    <EditText
-            android:id="@+id/emailUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_below="@id/fullNameView"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-
-    <TextView
-            android:id="@+id/birthdayView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/emailUpdate"
-            android:text="Date of Birth"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="8dp"
-            android:textSize="22dp"
-            android:textColor="#A9A9A9"
-    />
-
-    <TextView
-            android:id="@+id/phoneNumberView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_below="@+id/birthdayView"
-            android:text="Phone Number"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
-            android:textSize="22dp"
-            android:textColor="#A9A9A9"
-    />
-
-
-    <ImageButton
-            android:id="@+id/checkmark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/check_mark"
-            android:background="@color/fui_transparent"
-            android:onClick="clickButton"
-            android:layout_alignParentBottom="true"
-            android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
-            android:layout_alignParentRight="true"/>
+            android:orientation="horizontal"
+            android:paddingLeft="45dp">
 
-</RelativeLayout>
+        <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_person_black_24dp" />
+
+        <TextView
+                android:id="@+id/fullNameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="10pt"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:orientation="horizontal"
+            android:paddingLeft="45dp">
+
+        <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_date_range_black_24dp" />
+
+        <TextView
+                android:id="@+id/birthdayView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:textSize="10pt"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:orientation="horizontal"
+            android:paddingLeft="45dp">
+
+        <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_email_black_24dp" />
+
+        <EditText
+                android:id="@+id/emailUpdate"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:textSize="10pt"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:imeOptions="actionDone"
+                android:singleLine="true"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:orientation="horizontal"
+            android:paddingLeft="45dp">
+
+        <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_phone_android_black_24dp" />
+
+        <TextView
+                android:id="@+id/phoneNumberView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:textSize="10pt"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
+
+<ImageButton
+        android:id="@+id/checkmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        android:background="@null"
+        android:onClick="clickButton"
+        android:src="@drawable/check_mark"
+        android:layout_gravity="right"/>
+</LinearLayout>
