@@ -10,6 +10,9 @@
 		10842C440DAF198B62A35BDB /* Pods_OpenSpotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C58D57680DEC30632C6525 /* Pods_OpenSpotUITests.framework */; };
 		3E2342E422617CB00061A6AE /* DrivewayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2342E322617CB00061A6AE /* DrivewayListViewController.swift */; };
 		3E2342E62261802E0061A6AE /* DrivewayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2342E52261802E0061A6AE /* DrivewayViewController.swift */; };
+		3E2622EE227CDCE800214D93 /* OpenSpotTestsSprint3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2622ED227CDCE800214D93 /* OpenSpotTestsSprint3.swift */; };
+		3E2622F0227CDD0500214D93 /* OpenSpotUITestsSprint3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2622EF227CDD0500214D93 /* OpenSpotUITestsSprint3.swift */; };
+		3E2622F1227CEEE600214D93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3C9C9022176FAE00A88600 /* Main.storyboard */; };
 		3E3C9C8B22176FAE00A88600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8A22176FAE00A88600 /* AppDelegate.swift */; };
 		3E3C9C8D22176FAE00A88600 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8C22176FAE00A88600 /* FirstViewController.swift */; };
 		3E3C9C8F22176FAE00A88600 /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9C8E22176FAE00A88600 /* ReservationsViewController.swift */; };
@@ -79,6 +82,8 @@
 		33547ADBA8A2B1DB1F15F228 /* Pods-OpenSpotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenSpotUITests.release.xcconfig"; path = "Target Support Files/Pods-OpenSpotUITests/Pods-OpenSpotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3E2342E322617CB00061A6AE /* DrivewayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivewayListViewController.swift; sourceTree = "<group>"; };
 		3E2342E52261802E0061A6AE /* DrivewayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivewayViewController.swift; sourceTree = "<group>"; };
+		3E2622ED227CDCE800214D93 /* OpenSpotTestsSprint3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotTestsSprint3.swift; sourceTree = "<group>"; };
+		3E2622EF227CDD0500214D93 /* OpenSpotUITestsSprint3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITestsSprint3.swift; sourceTree = "<group>"; };
 		3E3C9C8722176FAE00A88600 /* OpenSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3C9C8A22176FAE00A88600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E3C9C8C22176FAE00A88600 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +225,7 @@
 			children = (
 				3E3C9CA122176FB000A88600 /* OpenSpotTestsSprint1.swift */,
 				3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */,
+				3E2622ED227CDCE800214D93 /* OpenSpotTestsSprint3.swift */,
 				3E3C9CA322176FB000A88600 /* Info.plist */,
 			);
 			path = OpenSpotTests;
@@ -228,8 +234,9 @@
 		3E3C9CAB22176FB000A88600 /* OpenSpotUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */,
 				3E3C9CAC22176FB000A88600 /* OpenSpotUITestsSprint1.swift */,
+				3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */,
+				3E2622EF227CDD0500214D93 /* OpenSpotUITestsSprint3.swift */,
 				3E3C9CAE22176FB000A88600 /* Info.plist */,
 			);
 			path = OpenSpotUITests;
@@ -393,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2622F1227CEEE600214D93 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,7 +419,10 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities-00567490/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -424,7 +435,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -604,6 +618,8 @@
 				"${PODS_ROOT}/Target Support Files/Pods-OpenSpotUITests/Pods-OpenSpotUITests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI-Auth-Phone/FirebaseAuthUI.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI-Auth-Phone/FirebasePhoneAuthUI.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
@@ -611,6 +627,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -678,6 +696,7 @@
 			files = (
 				3E6525BE2257381600941F27 /* OpenSpotTestsSprint2.swift in Sources */,
 				3E3C9CA222176FB000A88600 /* OpenSpotTestsSprint1.swift in Sources */,
+				3E2622EE227CDCE800214D93 /* OpenSpotTestsSprint3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +704,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2622F0227CDD0500214D93 /* OpenSpotUITestsSprint3.swift in Sources */,
 				3E6525BC225737FE00941F27 /* OpenSpotUITestsSprint2.swift in Sources */,
 				3E3C9CAD22176FB000A88600 /* OpenSpotUITestsSprint1.swift in Sources */,
 			);

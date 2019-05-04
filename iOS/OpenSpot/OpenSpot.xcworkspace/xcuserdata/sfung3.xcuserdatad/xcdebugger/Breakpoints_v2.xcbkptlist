@@ -118,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpotUITests/OpenSpotUITestsSprint2.swift"
-            timestampString = "577567340.178913"
+            timestampString = "578615035.675411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
             landmarkName = "testEditVehicles_44()"
             landmarkType = "7">
          </BreakpointContent>
@@ -134,11 +134,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpotUITests/OpenSpotUITestsSprint2.swift"
-            timestampString = "577567340.179078"
+            timestampString = "578615035.6755199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "testEditVehicles_44()"
             landmarkType = "7">
          </BreakpointContent>
@@ -150,12 +150,42 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenSpotUITests/OpenSpotUITestsSprint2.swift"
-            timestampString = "577567340.179116"
+            timestampString = "578615035.675595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "testSendToFirebase_40()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenSpotUITests/OpenSpotUITestsSprint3.swift"
+            timestampString = "578617067.557395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenSpotUITests/OpenSpotUITestsSprint3.swift"
+            timestampString = "578617067.5575089"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "testEditDriveway_63()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

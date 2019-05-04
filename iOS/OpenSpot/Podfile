@@ -30,6 +30,11 @@ pod 'FirebaseUI/Auth'
 pod 'FirebaseUI/Phone'
 pod 'Firebase/Firestore'
 pod 'Firebase/Core'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'IQKeyboardManagerSwift'
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
+pod "ViewAnimator"
   end
 end
 
