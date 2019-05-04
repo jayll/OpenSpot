@@ -15,15 +15,39 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme.Launcher">
-        <activity android:name=".EditProfile"
-                  android:parentActivityName=".NavigationActivity">
+        <activity android:name=".BookDrivewayActivity"
+                    android:value="com.example.openspot.NavigationActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.example.openspot.NavigationActivity"/>
         </activity>
+        <activity android:name=".EditDrivewayInfoActivity">
+
+        </activity>
+        <activity android:name=".DrivewayViewActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.openspot.NavigationActivity"/>
+        </activity>
+
+        <activity android:name=".ListDrivewayActivity">
+        </activity>
+
+        <activity
+                android:name=".EditProfile"
+                android:parentActivityName=".NavigationActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.openspot.NavigationActivity"/>
+        </activity>
+
         <activity android:name=".EditVehicleInfoActivity">
         </activity>
+
         <activity android:name=".VehicleViewActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.openspot.NavigationActivity"/>
         </activity>
         <activity
                 android:name=".ContactActivity"
@@ -37,9 +61,6 @@
                 android:name=".userProfile"
                 android:parentActivityName=".NavigationActivity"/>
 
-        <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.openspot.NavigationActivity"/>
 
         <activity android:name=".VehicleInfoActivity">
         </activity>
@@ -63,7 +84,7 @@
         -->
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyDtZ0Q1iHHbGLPMj1hJMxo9Cig5jgLw38A"/>
+                android:value="AIzaSyDi9cU1TQ3J-M2sEty4HteQq_ttIaLrJMU"/>
         <meta-data
                 android:name="com.google.android.gms.version"
                 android:value="@integer/google_play_services_version"/>

@@ -11,30 +11,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" tools:ignore="MissingConstraints">
 
-        <!--<TextView-->
-                <!--android:id="@+id/your_name"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:paddingLeft="3dp"-->
-                <!--android:text="@string/contact_form_name"-->
-                <!--android:textSize="18sp" />-->
-
-        <!--<TextView-->
-                <!--android:id="@+id/your_email"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:paddingLeft="3dp"-->
-                <!--android:text="@string/contact_form_email"-->
-                <!--android:textSize="18sp" />-->
-
-        <!--<TextView-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:paddingLeft="3dp"-->
-                <!--android:text="@string/contact_form_subject"-->
-                <!--android:textAllCaps="true"-->
-                <!--android:textColor="@color/colorPrimary"-->
-                <!--android:textSize="18sp" />-->
 
         <EditText
                 android:id="@+id/your_subject"
@@ -49,15 +25,6 @@
                 android:inputType="text"
                 android:singleLine="true"
                 android:textSize="18sp" />
-
-        <!--<TextView-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="32dp"-->
-                <!--android:paddingLeft="3dp"-->
-                <!--android:text="@string/contact_form_message"-->
-                <!--android:textAllCaps="true"-->
-                <!--android:textColor="@color/colorPrimary"-->
-                <!--android:textSize="18sp" />-->
 
         <EditText
                 android:id="@+id/your_message"

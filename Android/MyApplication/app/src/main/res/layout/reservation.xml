@@ -10,4 +10,19 @@
             android:text="Reservation"
             android:gravity="center_vertical|center_horizontal"/>
 
+    <!--Button to test Book Driveway activity view-->
+    <!--<Button-->
+            <!--android:id="@+id/confirmBooking"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:elevation="3dp"-->
+            <!--android:paddingLeft="15dp"-->
+            <!--android:paddingRight="15dp"-->
+            <!--android:text="@string/contact_form_button"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="18sp"-->
+            <!--android:onClick="confirmBooking"/>-->
+
 </LinearLayout>
