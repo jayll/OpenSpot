@@ -25,6 +25,8 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
@@ -36,6 +38,7 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
     private var mMap: GoogleMap? = null
     private val db = FirebaseFirestore.getInstance()
     private val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+    private var phoneNumber = ""
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -177,6 +180,7 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
                             if((tempLatitude == lat) && (tempLongitude == lng)){
                                 Log.d(TAG, "HELLO::: $counter")
                                 a[counter] = "0"
+                                phoneNumber = document.data["phoneNumber"] as String
                                 db.collection("Users").document(document.id)
                                     .update("Addresses", a)
                                     .addOnSuccessListener { documentReference ->
@@ -195,14 +199,59 @@ class BookDrivewayActivity : AppCompatActivity(),OnMapReadyCallback{
             }
     }
 
-    fun bookNow(v:View){
-        val currentSpinner : Spinner = findViewById(R.id.vehicleSpinner)
-        if(currentSpinner.selectedItem.toString() == "Please select a vehicle"){
+    private fun sendToReservation() {
+        val extras = intent.extras
+        val addressData : String? = extras?.getString("clickedMarkerAddress")
+        val priceData : String? = extras?.getString("clickedMarkerPrices")
+        var reservationArray: Any?
+        var reservationInfo: MutableList<String>
+
+        val time = Calendar.getInstance().time
+        val df = SimpleDateFormat("MMMM dd, yyyy")
+        val tf = SimpleDateFormat("h:mma")
+        val formattedDate = df.format(time)
+        val formattedTime = tf.format(time)
+
+        val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
+        docRef.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        reservationArray = document.data!!["Reservations"]
+                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + addressData.toString())
+                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + priceData.toString())
+                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + formattedDate)
+                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + formattedTime)
+                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + "5.0")
+                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + currentFirebaseUser.phoneNumber.toString())
+
+                        reservationInfo = reservationArray as MutableList<String>
+                        reservationInfo.add(addressData.toString())
+                        reservationInfo.add(priceData.toString())
+                        reservationInfo.add(formattedDate)
+                        reservationInfo.add(formattedTime)
+                        reservationInfo.add("5.0")
+                        reservationInfo.add(phoneNumber)
+
+
+                        db.collection("Users").document(currentFirebaseUser.uid)
+                                .update("Reservations", reservationInfo)
+                                .addOnSuccessListener { documentReference ->
+                                        NavigationActivity.fromReservationPage = true
+                                        val i = Intent(this@BookDrivewayActivity, NavigationActivity::class.java)
+                                        startActivity(i)
+                                }
+                    }
+                }
+    }
+
+    fun bookNow(v: View) {
+        val currentSpinner: Spinner = findViewById(R.id.vehicleSpinner)
+        if (currentSpinner.selectedItem.toString() == "Please select a vehicle") {
             Toast.makeText(applicationContext, "Please select a vehicle", Toast.LENGTH_LONG)
-                .show()
-        }
-        else{
+                    .show()
+        } else {
             bookNowFunctionality()
+            sendToReservation()
         }
     }
 }

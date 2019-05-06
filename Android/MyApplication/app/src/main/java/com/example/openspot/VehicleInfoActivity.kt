@@ -550,6 +550,7 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
                 users["phoneNumber"]= currentFirebaseUser!!.phoneNumber
                 users["Cars"]= arrayListOf(carMakeSpinner.selectedItem.toString(),carModelSpinner.selectedItem.toString(),carColorSpinner.selectedItem.toString(),carStateSpinner.selectedItem.toString(),value)
                 users["Addresses"] = arrayListOf<String>()
+                users["Reservations"] = arrayListOf<String>()
 
                 db.collection("Users").document(currentFirebaseUser!!.uid)
                     .set(users)
@@ -620,6 +621,7 @@ class VehicleInfoActivity : AppCompatActivity(),AdapterView.OnItemSelectedListen
         users["phoneNumber"]= currentFirebaseUser!!.phoneNumber
         users["Cars"]= arrayListOf<String>()
         users["Addresses"] = arrayListOf<String>()
+        users["Reservations"] = arrayListOf<String>()
         db.collection("Users").document(currentFirebaseUser.uid)
             .set(users)
             .addOnSuccessListener { documentReference ->
