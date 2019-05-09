@@ -9,10 +9,14 @@
 import UIKit
 import FirebaseUI
 import Firebase
+import ViewAnimator
 
 class ThirdViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var menuTableView: UITableView!
     static var isLoggedOut: Bool = false
+    lazy var db = Firestore.firestore()
+    lazy var currentUser = Auth.auth().currentUser
+    private let animations = [AnimationType.from(direction: .top, offset: 30.0)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +29,14 @@ class ThirdViewController: UIViewController, FUIAuthDelegate {
         if let index = self.menuTableView.indexPathForSelectedRow{
             self.menuTableView.deselectRow(at: index, animated: false)
         }
+        menuTableView.reloadData()
+        UIView.animate(views: menuTableView.visibleCells, animations: animations)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if ThirdViewController.isLoggedOut == true{
             self.tabBarController?.selectedIndex = 0
         }
-        menuTableView.reloadData()
     }
     
 }
@@ -42,14 +47,13 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
         let cell: MenuOptionCell
         cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuOptionCell
         let menuOption = MenuOption(rawValue: indexPath.row)
         cell.iconImageView.image = menuOption?.image
         
         if indexPath.row == 0 {
-            let db = Firestore.firestore()
-            let currentUser = Auth.auth().currentUser
             db.collection("Users").document((currentUser?.uid)!).getDocument { (value, Error) in
                 cell.descriptionLabel.text = value!["fullName"] as? String
             }
@@ -70,6 +74,9 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource{
             print("0")
         case 1:
             print("1")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "ListDrivewayNavigationController")
+            self.present(controller, animated: false)
         case 2:
             print("2")
         case 3:

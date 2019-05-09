@@ -11,7 +11,6 @@ import Firebase
 @testable import OpenSpot
 
 class OpenSpotUITestsSprint2: XCTestCase {
-    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
@@ -27,7 +26,7 @@ class OpenSpotUITestsSprint2: XCTestCase {
     }
     
     //    Stephen
-    func testAddGeneralData_38() {
+    func testAddGeneralDataNewUser_38() {
         let app = XCUIApplication()
         if app.scrollViews.otherElements.buttons["Sign in with phone"].exists{
             app.scrollViews.otherElements.buttons["Sign in with phone"].tap()
@@ -77,12 +76,12 @@ class OpenSpotUITestsSprint2: XCTestCase {
             app.toolbars["Toolbar"].buttons["Done"].tap()
             app.buttons["NextArrow"].tap()
             while !app.navigationBars["Vehicle Information"].exists {}
-            app.buttons["Skip"].tap()
+            sleep(2)
         }
     }
     
     //    Jay
-    func testInputVehicle_39() {
+    func testAddVehicleNewUser_39() {
         let app = XCUIApplication()
         if app.scrollViews.otherElements.buttons["Sign in with phone"].exists{
             app.scrollViews.otherElements.buttons["Sign in with phone"].tap()
@@ -301,9 +300,9 @@ class OpenSpotUITestsSprint2: XCTestCase {
         app/*@START_MENU_TOKEN@*/.keys["delete"]/*[[".keyboards.keys[\"delete\"]",".keys[\"delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.keys["delete"].tap()
         app/*@START_MENU_TOKEN@*/.keys["delete"]/*[[".keyboards.keys[\"delete\"]",".keys[\"delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.keys["c"]/*[[".keyboards.keys[\"c\"]",".keys[\"c\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.keys["o"]/*[[".keyboards.keys[\"o\"]",".keys[\"o\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.keys["m"]/*[[".keyboards.keys[\"m\"]",".keys[\"m\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.keys["e"].tap()
+        app.keys["d"].tap()
+        app.keys["u"].tap()
         app.toolbars["Toolbar"].buttons["Done"].tap()
         app.buttons["NextArrow"].tap()
         while !app.tabBars.buttons["Settings"].exists {}

@@ -4,13 +4,17 @@
 target 'OpenSpot' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for OpenSpot
 pod 'FirebaseUI/Auth'
 pod 'FirebaseUI/Phone'
 pod 'Firebase/Firestore'
 pod 'Firebase/Core'
-
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'IQKeyboardManagerSwift'
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
+pod "ViewAnimator"
 
   target 'OpenSpotTests' do
     inherit! :search_paths
@@ -26,6 +30,11 @@ pod 'FirebaseUI/Auth'
 pod 'FirebaseUI/Phone'
 pod 'Firebase/Firestore'
 pod 'Firebase/Core'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'IQKeyboardManagerSwift'
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
+pod "ViewAnimator"
   end
 end
 
