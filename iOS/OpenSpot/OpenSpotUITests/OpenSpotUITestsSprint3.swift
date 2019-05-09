@@ -25,9 +25,75 @@ class OpenSpotUITestsSprint3: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-//    //    Jay
-//    func testAddLocationSearchBar_59() {
-//    }
+    //    Jay
+    func testAddLocationSearchBar_59() {
+        let app = XCUIApplication()
+        if app.scrollViews.otherElements.buttons["Sign in with phone"].exists{
+            app.scrollViews.otherElements.buttons["Sign in with phone"].tap()
+            let key = app.keyboards.keys["2"]
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Enter phone number"].buttons["Verify"].tap()
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Verify phone number"].buttons["Next"].tap()
+        }
+        sleep(3)
+        if app.textFields["Full Name"].exists{
+            app.textFields["Full Name"].tap()
+            app.textFields["Full Name"].typeText("Jay Stephen")
+            
+            app.textFields["Email"].tap()
+            app.textFields["Email"].typeText("jaystephen@gmail.com")
+            
+            app.textFields["MM"].tap()
+            app.textFields["MM"].typeText("09141998")
+            
+            while !app.toolbars["Toolbar"].buttons["Done"].exists{}
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["NextArrow"].tap()
+            while !app.navigationBars["Vehicle Information"].exists{}
+            
+            app.textFields["state"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Alaska"]/*[[".pickers.pickerWheels[\"Alaska\"]",".pickerWheels[\"Alaska\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "New York")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["license plate number(no dashes)"].tap()
+            app.textFields["license plate number(no dashes)"].typeText("BAV234")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["make"].tap()
+            app.pickerWheels["Acura"].adjust(toPickerWheelValue: "Audi")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["model"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["A3"]/*[[".pickers.pickerWheels[\"A3\"]",".pickerWheels[\"A3\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "R8")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["color"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Black"]/*[[".pickers.pickerWheels[\"Black\"]",".pickerWheels[\"Black\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "White")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["Check"].tap()
+        }
+        app.navigationBars["OpenSpot.FirstView"].searchFields["Search"].tap()
+        app/*@START_MENU_TOKEN@*/.keys["B"]/*[[".keyboards.keys[\"B\"]",".keys[\"B\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.keys["u"]/*[[".keyboards.keys[\"u\"]",".keys[\"u\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.tables["Search results"].staticTexts["Genesee Street, Buffalo, NY, USA"]/*[[".otherElements[\"Double-tap to dismiss\"].tables[\"Search results\"]",".cells.staticTexts[\"Genesee Street, Buffalo, NY, USA\"]",".staticTexts[\"Genesee Street, Buffalo, NY, USA\"]",".tables[\"Search results\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
+        sleep(2)
+        
+    }
     
     //    Stephen
     func testAddDriveway_61() {
@@ -181,8 +247,6 @@ class OpenSpotUITestsSprint3: XCTestCase {
         app.tables/*@START_MENU_TOKEN@*/.staticTexts["List your driveway"]/*[[".cells.staticTexts[\"List your driveway\"]",".staticTexts[\"List your driveway\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.tables.staticTexts["Seneca Niagara Resort & Casino"].swipeLeft()
         app.tables.staticTexts["Seneca Niagara Resort & Casino"].swipeLeft()
-        
-        
         sleep(2)
     }
     
@@ -259,15 +323,240 @@ class OpenSpotUITestsSprint3: XCTestCase {
         sleep(2)
     }
     
-//    //    Jay
-//    func testViewReservationAddress_83() {
-//    }
-//
-//    //    Jay
-//    func testViewReservationPirce_84() {
-//    }
-//
-//    //    Jay
-//    func testContactDrivewayOnwer_85() {
-//    }
+    //    Jay
+    func testViewReservationAddress_83() {
+        let app = XCUIApplication()
+        if app.scrollViews.otherElements.buttons["Sign in with phone"].exists{
+            app.scrollViews.otherElements.buttons["Sign in with phone"].tap()
+            let key = app.keyboards.keys["2"]
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Enter phone number"].buttons["Verify"].tap()
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Verify phone number"].buttons["Next"].tap()
+        }
+        sleep(3)
+        if app.textFields["Full Name"].exists{
+            app.textFields["Full Name"].tap()
+            app.textFields["Full Name"].typeText("Jay Stephen")
+            
+            app.textFields["Email"].tap()
+            app.textFields["Email"].typeText("jaystephen@gmail.com")
+            
+            app.textFields["MM"].tap()
+            app.textFields["MM"].typeText("09141998")
+            
+            while !app.toolbars["Toolbar"].buttons["Done"].exists{}
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["NextArrow"].tap()
+            while !app.navigationBars["Vehicle Information"].exists{}
+            
+            app.textFields["state"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Alaska"]/*[[".pickers.pickerWheels[\"Alaska\"]",".pickerWheels[\"Alaska\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "New York")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["license plate number(no dashes)"].tap()
+            app.textFields["license plate number(no dashes)"].typeText("BAV234")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["make"].tap()
+            app.pickerWheels["Acura"].adjust(toPickerWheelValue: "Audi")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["model"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["A3"]/*[[".pickers.pickerWheels[\"A3\"]",".pickerWheels[\"A3\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "R8")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["color"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Black"]/*[[".pickers.pickerWheels[\"Black\"]",".pickerWheels[\"Black\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "White")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["Check"].tap()
+        }
+        app.tabBars.buttons["Reservations"].tap()
+        sleep(2)
+        if (app.tables.cells.count < 1){
+            app.tabBars.buttons["Home"].tap()
+            while !app.navigationBars["Confirm Booking"].exists {
+            }
+            let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element
+            element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textField).element.tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["-SELECT-"]/*[[".pickers.pickerWheels[\"-SELECT-\"]",".pickerWheels[\"-SELECT-\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["Book Now"].tap()
+            app.tabBars.buttons["Reservations"].tap()
+        }
+        sleep(1)
+    }
+
+    //    Jay
+    func testViewReservationPrice_84() {
+        let app = XCUIApplication()
+        if app.scrollViews.otherElements.buttons["Sign in with phone"].exists{
+            app.scrollViews.otherElements.buttons["Sign in with phone"].tap()
+            let key = app.keyboards.keys["2"]
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Enter phone number"].buttons["Verify"].tap()
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Verify phone number"].buttons["Next"].tap()
+        }
+        sleep(3)
+        if app.textFields["Full Name"].exists{
+            app.textFields["Full Name"].tap()
+            app.textFields["Full Name"].typeText("Jay Stephen")
+            
+            app.textFields["Email"].tap()
+            app.textFields["Email"].typeText("jaystephen@gmail.com")
+            
+            app.textFields["MM"].tap()
+            app.textFields["MM"].typeText("09141998")
+            
+            while !app.toolbars["Toolbar"].buttons["Done"].exists{}
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["NextArrow"].tap()
+            while !app.navigationBars["Vehicle Information"].exists{}
+            
+            app.textFields["state"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Alaska"]/*[[".pickers.pickerWheels[\"Alaska\"]",".pickerWheels[\"Alaska\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "New York")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["license plate number(no dashes)"].tap()
+            app.textFields["license plate number(no dashes)"].typeText("BAV234")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["make"].tap()
+            app.pickerWheels["Acura"].adjust(toPickerWheelValue: "Audi")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["model"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["A3"]/*[[".pickers.pickerWheels[\"A3\"]",".pickerWheels[\"A3\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "R8")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["color"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Black"]/*[[".pickers.pickerWheels[\"Black\"]",".pickerWheels[\"Black\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "White")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["Check"].tap()
+        }
+        app.tabBars.buttons["Reservations"].tap()
+        sleep(2)
+        if (app.tables.cells.count < 1){
+            app.tabBars.buttons["Home"].tap()
+            while !app.navigationBars["Confirm Booking"].exists {
+            }
+            let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element
+            element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textField).element.tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["-SELECT-"]/*[[".pickers.pickerWheels[\"-SELECT-\"]",".pickerWheels[\"-SELECT-\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["Book Now"].tap()
+            app.tabBars.buttons["Reservations"].tap()
+        }
+        sleep(1)
+    }
+
+    //    Jay
+    func testContactDrivewayOnwer_85() {
+        let app = XCUIApplication()
+        if app.scrollViews.otherElements.buttons["Sign in with phone"].exists{
+            app.scrollViews.otherElements.buttons["Sign in with phone"].tap()
+            let key = app.keyboards.keys["2"]
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Enter phone number"].buttons["Verify"].tap()
+            while !key.exists {
+            }
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            key.tap()
+            app.navigationBars["Verify phone number"].buttons["Next"].tap()
+        }
+        sleep(3)
+        if app.textFields["Full Name"].exists{
+            app.textFields["Full Name"].tap()
+            app.textFields["Full Name"].typeText("Jay Stephen")
+            
+            app.textFields["Email"].tap()
+            app.textFields["Email"].typeText("jaystephen@gmail.com")
+            
+            app.textFields["MM"].tap()
+            app.textFields["MM"].typeText("09141998")
+            
+            while !app.toolbars["Toolbar"].buttons["Done"].exists{}
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["NextArrow"].tap()
+            while !app.navigationBars["Vehicle Information"].exists{}
+            
+            app.textFields["state"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Alaska"]/*[[".pickers.pickerWheels[\"Alaska\"]",".pickerWheels[\"Alaska\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "New York")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["license plate number(no dashes)"].tap()
+            app.textFields["license plate number(no dashes)"].typeText("BAV234")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["make"].tap()
+            app.pickerWheels["Acura"].adjust(toPickerWheelValue: "Audi")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["model"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["A3"]/*[[".pickers.pickerWheels[\"A3\"]",".pickerWheels[\"A3\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "R8")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.textFields["color"].tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["Black"]/*[[".pickers.pickerWheels[\"Black\"]",".pickerWheels[\"Black\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "White")
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["Check"].tap()
+        }
+        app.tabBars.buttons["Reservations"].tap()
+        sleep(2)
+        if (app.tables.cells.count < 1){
+            app.tabBars.buttons["Home"].tap()
+            while !app.navigationBars["Confirm Booking"].exists {
+            }
+            let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element
+            element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textField).element.tap()
+            app/*@START_MENU_TOKEN@*/.pickerWheels["-SELECT-"]/*[[".pickers.pickerWheels[\"-SELECT-\"]",".pickerWheels[\"-SELECT-\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+            app.toolbars["Toolbar"].buttons["Done"].tap()
+            app.buttons["Book Now"].tap()
+            app.tabBars.buttons["Reservations"].tap()
+        }
+        sleep(1)
+        app.tables/*@START_MENU_TOKEN@*/.buttons["Phone"]/*[[".cells.buttons[\"Phone\"]",".buttons[\"Phone\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(2)
+        
+    }
 }
