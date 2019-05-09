@@ -112,7 +112,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
                             drivewayMarker.tracksViewChanges = false
                             drivewayMarker.map = self.mapView
                             drivewayMarker.phoneNumber = account.data()["phoneNumber"] as! String
-                            drivewayMarker.drivewayOwnerName = account.data()["fullName"] as! String
+                            drivewayMarker.documentID = account.documentID
                         }
                         index += 5
                     }
@@ -132,7 +132,8 @@ extension FirstViewController: GMSMapViewDelegate{
         VC.locationName = marker.title
         let a = marker as! CustomGMSMarker
         VC.phoneNumber = a.phoneNumber
-        VC.drivewayOwnerName = a.drivewayOwnerName
+        VC.documentID = a.documentID
+        print(a.documentID)
         let navController = UINavigationController(rootViewController: VC) // Creating a navigation controller with VC1 at the root of the navigation stack.
         self.present(navController, animated: true, completion: nil)
     }

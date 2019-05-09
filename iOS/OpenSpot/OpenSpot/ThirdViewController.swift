@@ -9,12 +9,14 @@
 import UIKit
 import FirebaseUI
 import Firebase
+import ViewAnimator
 
 class ThirdViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var menuTableView: UITableView!
     static var isLoggedOut: Bool = false
     lazy var db = Firestore.firestore()
     lazy var currentUser = Auth.auth().currentUser
+    private let animations = [AnimationType.from(direction: .top, offset: 30.0)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,7 @@ class ThirdViewController: UIViewController, FUIAuthDelegate {
             self.menuTableView.deselectRow(at: index, animated: false)
         }
         menuTableView.reloadData()
+        UIView.animate(views: menuTableView.visibleCells, animations: animations)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +47,7 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
         let cell: MenuOptionCell
         cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuOptionCell
         let menuOption = MenuOption(rawValue: indexPath.row)

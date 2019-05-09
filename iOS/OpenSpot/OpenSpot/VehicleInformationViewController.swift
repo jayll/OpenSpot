@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import SwiftValidator
 
-class VehicleInformationViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate {
+class VehicleInformationViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var state: UITextField!
     @IBOutlet weak var license: UITextField!
@@ -26,6 +27,7 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
     var cameFromVehicleMenu = false
     let db = Firestore.firestore()
     let currentUser = Auth.auth().currentUser
+    let validator = Validator()
     
     let statesArr = ["-SELECT-","Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut","District of Columbia","Delaware", "Florida", "Georgia", "Guam","Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana","Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina","North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma","Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas","Utah","Virginia", "Virgin Islands","Vermont","Washington","Wisconsin","West Virginia","Wyoming"]
     
@@ -95,11 +97,11 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
         super.viewDidLoad()
         isSignedUp()
         
-        state.underlined()
-        license.underlined()
-        make.underlined()
-        model.underlined()
-        color.underlined()
+        state.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        license.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        make.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        model.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        color.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
         
         statePicker.delegate = self
         statePicker.dataSource = self
@@ -119,7 +121,11 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
         
         license.delegate = self
         
- 
+        validator.registerField(make, rules: [RequiredRule()])
+        validator.registerField(model, rules: [RequiredRule()])
+        validator.registerField(color, rules: [RequiredRule()])
+        validator.registerField(state, rules: [RequiredRule()])
+        validator.registerField(license, rules: [RequiredRule()])
     }
     
     func isSignedUp(){
@@ -229,11 +235,13 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
             "email": email as Any,
             "dateOfBirth": dateOfBirth as Any,
             "Cars": [],
-            "Addresses": []
+            "Addresses": [],
+            "Reservations": []
             ])
     }
     
     @IBAction func finishClicked(_ sender: UIButton) {
+        validator.validate(self)
         
         var check = false
         if(state.text == "" || make.text == "" || model.text == "" || color.text == ""||state.text == "-SELECT-" || make.text == "-SELECT-" || model.text == "-SELECT-" || color.text == "-SELECT-"){
@@ -256,7 +264,8 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
                     "email": email as Any,
                     "dateOfBirth": dateOfBirth as Any,
                     "Cars":[make.text!,model.text!,color.text!,state.text!,license.text!],
-                    "Addresses": []
+                    "Addresses": [],
+                    "Reservations": []
                     ])
             }else{
                 let user = db.collection("Users").document((currentUser?.uid)!)
@@ -310,5 +319,24 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
             }
         }
     }
+    
+}
+
+extension VehicleInformationViewController: ValidationDelegate{
+    func validationSuccessful() {
+        // submit the form
+    }
+    
+    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+        // turn the fields to red
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.underlined(color: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1))
+            }
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.isHidden = false
+        }
+    }
+    
     
 }

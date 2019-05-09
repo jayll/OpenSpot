@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftValidator
 
 class UserInformationViewController: UIViewController, UITextFieldDelegate {
     
@@ -21,22 +22,26 @@ class UserInformationViewController: UIViewController, UITextFieldDelegate {
     var newUser = true
     let db = Firestore.firestore()
     let currentUser = Auth.auth().currentUser
+    let validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        fullNameTextField.underlined()
-        emailTextField.underlined()
-        dayTextField.underlined()
-        monthTextField.underlined()
-        yearTextField.underlined()
-        phoneNumberTextField.underlinedBlack()
+        fullNameTextField.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        emailTextField.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        dayTextField.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        monthTextField.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        yearTextField.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        phoneNumberTextField.underlined(color: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))
         let currentUser = Auth.auth().currentUser
         var phoneNumberWithSpaces = currentUser!.phoneNumber
         phoneNumberWithSpaces!.insert(string: " (", ind: 2)
         phoneNumberWithSpaces!.insert(string: ") ", ind: 7)
         phoneNumberWithSpaces!.insert(string: "-", ind: 12)
         self.phoneNumberTextField.text = phoneNumberWithSpaces
+        
+        validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule(message: "Invalid email")])
+        validator.registerField(emailTextField, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
         
         self.title = "User information"
         checkAccountExists()
@@ -46,10 +51,10 @@ class UserInformationViewController: UIViewController, UITextFieldDelegate {
         db.collection("Users").document((currentUser?.uid)!).getDocument { (value, Error) in
             if value?["fullName"] != nil{
                 self.newUser = false
-                self.fullNameTextField.underlinedBlack()
-                self.monthTextField.underlinedBlack()
-                self.dayTextField.underlinedBlack()
-                self.yearTextField.underlinedBlack()
+                self.fullNameTextField.underlined(color: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))
+                self.monthTextField.underlined(color: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))
+                self.dayTextField.underlined(color: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))
+                self.yearTextField.underlined(color: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))
                 
                 self.fullNameTextField.text = value!["fullName"] as? String
                 self.emailTextField.text = value!["email"] as? String
@@ -105,19 +110,8 @@ class UserInformationViewController: UIViewController, UITextFieldDelegate {
 
 extension UserInformationViewController: UIAlertViewDelegate{
     @IBAction func nextClicked(_ sender: Any) {
-        if monthTextField.text?.count == 1 {
-            monthTextField.text = "0" + monthTextField.text!
-        }
-        if dayTextField.text?.count == 1 {
-            dayTextField.text = "0" +  dayTextField.text!
-        }
-        if !(fullNameTextField.text?.contains(" "))!{
-            showErrorMessage(message: "Please Enter Your First And Last Name")
-        }
-        else if !(emailTextField.text?.contains("@"))! || !(emailTextField.text?.contains("."))!{
-            showErrorMessage(message: "Please Enter A Valid Email")
-        }
-        else if Int(monthTextField.text!) ?? 13 > 13{
+        validator.validate(self)
+        if Int(monthTextField.text!) ?? 13 > 13{
             showErrorMessage(message: "Please Enter Your Birth Month")
         }
         else if Int(dayTextField.text!) ?? 31 >= 31{
@@ -126,7 +120,17 @@ extension UserInformationViewController: UIAlertViewDelegate{
         else if !((yearTextField.text?.count ?? 0) > 3) || (Int(yearTextField.text!) ?? 1900 < 1900 || Int(yearTextField.text!) ?? 1991 > 2004){
             showErrorMessage(message: "Please Enter Your Birth Year")
         }
-        
+    }
+    
+    func showErrorMessage(message : String) {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension UserInformationViewController: ValidationDelegate{
+    func validationSuccessful() {
         if newUser == true{
             let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "VehicleInformationViewController") as! VehicleInformationViewController
             destinationVC.fullName = fullNameTextField.text!
@@ -146,11 +150,17 @@ extension UserInformationViewController: UIAlertViewDelegate{
         }
     }
     
-    func showErrorMessage(message : String) {
-        let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
+    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+        // turn the fields to red
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.underlined(color: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1))
+            }
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.isHidden = false
+        }
     }
+    
 }
 
 extension String {
@@ -159,8 +169,8 @@ extension String {
         let idx2 = index(startIndex, offsetBy: min(self.count, range.upperBound))
         return String(self[idx1..<idx2])
     }
-        mutating func insert(string:String,ind:Int) {
-            self.insert(contentsOf: string, at:self.index(self.startIndex, offsetBy: ind) )
-        }
+    mutating func insert(string:String,ind:Int) {
+        self.insert(contentsOf: string, at:self.index(self.startIndex, offsetBy: ind) )
+    }
     
 }
