@@ -37,7 +37,7 @@ class OpenSpotTestsSprint3: XCTestCase {
                     var index = 0
                     while index != address!.count{
                         if address![index + 3] == "1"{
-                            availableDriveways += [address![index + 0] + "\n"]
+                            availableDriveways += ["Lat: \(address![index + 1]), Lon: \(address![index + 2]), $\(address![index + 4])/hr"]
                         }
                         index += 5
                     }
@@ -64,7 +64,7 @@ class OpenSpotTestsSprint3: XCTestCase {
                     var index = 0
                     while index != address!.count{
                         if address![index + 3] == "1"{
-                            availableDriveways += [address![index + 0] + "\n" +  address![index + 4]]
+                            availableDriveways += ["Location Name: \(address![index]), $\(address![index + 4])/hr"]
                         }
                         index += 5
                     }
