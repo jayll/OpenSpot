@@ -44,6 +44,7 @@ import com.google.android.libraries.places.internal.lv
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import org.jetbrains.anko.horizontalPadding
 import org.jetbrains.anko.padding
@@ -68,7 +69,7 @@ class ReservationFragment : PreferenceFragmentCompat() {
         recyclerView.addItemDecoration(itemDecoration)
 
     }
-
+//
     override fun onCreatePreferences(savedInstanceState: Bundle?, root_key: String?) {
         setPreferencesFromResource(R.xml.reservations, root_key)
         activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -78,76 +79,80 @@ class ReservationFragment : PreferenceFragmentCompat() {
         var counter = 0
         var reservationArray :Any?
 
-
+        if (currentFirebaseUser == null) {
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+        }
+        else {
 //        Toast.makeText(activity!!.baseContext, "" + currentFirebaseUser?.uid, Toast.LENGTH_SHORT).show()
-        val docRef = db.collection("Users").document(currentFirebaseUser!!.uid)
-        docRef.get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        reservationArray = document.data!!["Reservations"]
-                        Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + reservationArray)
+            val docRef = db.collection("Users").document(currentFirebaseUser!!.uid) as DocumentReference?
+            docRef?.get()
+                    ?.addOnSuccessListener { document ->
+                        if (document != null) {
+                            reservationArray = document.data!!["Reservations"]
+                            Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + reservationArray)
 
-                        val a  = reservationArray as ArrayList<String>
-                        var title = ""
-                        for(i in a.indices){
-                            val preference = Preference(preferenceScreen.context)
+                            val a = reservationArray as ArrayList<String>
+                            var title = ""
+                            for (i in a.indices) {
+                                val preference = Preference(preferenceScreen.context)
 
-                            when(i%6){
-                                0 ->{ //Address
-                                    title = a[i]
-                                }
-                                1 ->{//Price
-                                    title = title + "\n" + a[i]
-                                }
-                                2 ->{//Date
-                                    title = title + "\n" + a[i]
-                                }
-                                3 ->{//Time
-                                    title = title + " at " + a[i]
-                                }
-                                4->{//Rating
-
-                                }
-                                5 ->{//PhoneNumber
-                                    preference.title = title
-                                    preference.key = "Reservation$counter"
-                                    preference.icon = ContextCompat.getDrawable(activity!!.baseContext,R.drawable.booking_40)
-                                    preferenceScreen.addPreference(preference)
-                                    val carButton = findPreference("Reservation$counter")
-                                    carButton.setOnPreferenceClickListener{
-                                        AuthUI.getInstance()
-                                        val callIntent = Intent(Intent.ACTION_CALL)
-                                        callIntent.data = Uri.fromParts("tel",a[i],null)
-
-                                        if (ActivityCompat.checkSelfPermission(
-                                                        context!!,
-                                                        Manifest.permission.CALL_PHONE
-                                                ) != PackageManager.PERMISSION_GRANTED
-                                        ) {
-                                            requestPermissions(
-                                                    arrayOf(
-                                                            Manifest.permission.CALL_PHONE
-                                                    ),
-                                                    ReservationFragment.MY_PERMISSIONS_REQUEST_CALL_PHONE
-                                            )
-                                        } else {
-                                            try {
-                                                startActivity(callIntent)
-                                            } catch (e: SecurityException) {
-                                                e.printStackTrace()
-                                            }
-                                        }
-                                        true
+                                when (i % 6) {
+                                    0 -> { //Address
+                                        title = a[i]
                                     }
-                                    counter++
+                                    1 -> {//Price
+                                        title = title + "\n" + a[i]
+                                    }
+                                    2 -> {//Date
+                                        title = title + "\n" + a[i]
+                                    }
+                                    3 -> {//Time
+                                        title = title + " at " + a[i]
+                                    }
+                                    4 -> {//Rating
+
+                                    }
+                                    5 -> {//PhoneNumber
+                                        preference.title = title
+                                        preference.key = "Reservation$counter"
+                                        preference.icon = ContextCompat.getDrawable(activity!!.baseContext, R.drawable.booking_40)
+                                        preferenceScreen.addPreference(preference)
+                                        val carButton = findPreference("Reservation$counter")
+                                        carButton.setOnPreferenceClickListener {
+                                            AuthUI.getInstance()
+                                            val callIntent = Intent(Intent.ACTION_CALL)
+                                            callIntent.data = Uri.fromParts("tel", a[i], null)
+
+                                            if (ActivityCompat.checkSelfPermission(
+                                                            context!!,
+                                                            Manifest.permission.CALL_PHONE
+                                                    ) != PackageManager.PERMISSION_GRANTED
+                                            ) {
+                                                requestPermissions(
+                                                        arrayOf(
+                                                                Manifest.permission.CALL_PHONE
+                                                        ),
+                                                        ReservationFragment.MY_PERMISSIONS_REQUEST_CALL_PHONE
+                                                )
+                                            } else {
+                                                try {
+                                                    startActivity(callIntent)
+                                                } catch (e: SecurityException) {
+                                                    e.printStackTrace()
+                                                }
+                                            }
+                                            true
+                                        }
+                                        counter++
+                                    }
                                 }
                             }
+                        } else {
+
                         }
                     }
-                    else {
-                        Log.d(VehicleViewActivity.TAG, "No such document")
-                    }
-                }
+        }
     }
 }
 
