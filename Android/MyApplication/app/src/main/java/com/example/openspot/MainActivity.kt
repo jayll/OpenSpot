@@ -12,6 +12,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 
 
+
 class MainActivity : AppCompatActivity() {
 
     private companion object {
@@ -27,8 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
         val providers = arrayListOf(
-            AuthUI.IdpConfig.PhoneBuilder().build(),
-            AuthUI.IdpConfig.EmailBuilder().build()
+            AuthUI.IdpConfig.PhoneBuilder().build()
         )
 
         // Create and launch sign-in intent
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 .createSignInIntentBuilder()
                 .setLogo(R.drawable.hello)
                 .setIsSmartLockEnabled(false)
+                .setAlwaysShowSignInMethodScreen(true)
                 .setAvailableProviders(providers)
                 .build(),
             RC_SIGN_IN

@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -28,26 +30,35 @@ class VehicleViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        setTheme(R.style.AppTheme)
+        setTheme(R.style.FragmentTheme)
         setContentView(R.layout.activity_vehicle_view)
+        supportActionBar?.title = "Vehicles"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        NavigationActivity.fromVehiclePage = true
+        fm.replace(R.id.vehicleContainer, vehicle,"vehicleFragment").commit()
 
-//        if(fromVehicleInfoPage){
-            fm.replace(R.id.pref_container, vehicle,"vehicleFragment").commit()
-//        }
+
 
 //        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
 //        Toast.makeText(this, "" + currentFirebaseUser?.uid, Toast.LENGTH_SHORT).show()
     }
 
-    fun addVehicle(v: View){
-        VehicleInfoActivity.fromVehicleView = true
-        val i = Intent(this@VehicleViewActivity, VehicleInfoActivity::class.java)
-        startActivity(i)
+    // create an action bar button
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.driveway, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
-    fun closeButton(v:View){
-        NavigationActivity.fromVehiclePage = true
-        val i = Intent(this@VehicleViewActivity, NavigationActivity::class.java)
-        startActivity(i)
+    // handle button activities
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id == R.id.drivewayAddButton) {
+            VehicleInfoActivity.fromVehicleView = true
+            val intent = Intent(this@VehicleViewActivity, VehicleInfoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

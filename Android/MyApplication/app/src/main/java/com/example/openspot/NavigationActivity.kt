@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.google.android.libraries.places.api.Places
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_navigation.*
@@ -18,6 +19,8 @@ class NavigationActivity : AppCompatActivity() {
         var fromVehiclePage = false
         var fromContactPage = false
         var fromEditProfile = false
+        var fromDrivewayPage = false
+        var fromReservationPage = false
     }
 
     private val fragment11: Fragment = HomeFragment()
@@ -67,23 +70,32 @@ class NavigationActivity : AppCompatActivity() {
 //                    Toast.makeText(applicationContext, "" + user.uid, Toast.LENGTH_SHORT).show()
 
                     if (!document.exists()) {
-                    val intent = Intent(this@NavigationActivity, VehicleInfoActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                        val intent = Intent(this@NavigationActivity, userProfile::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 }
         }
         setContentView(R.layout.activity_navigation)
 
-        if(NavigationActivity.fromVehiclePage || NavigationActivity.fromContactPage  || fromEditProfile){
+        if(fromVehiclePage || fromContactPage  || fromEditProfile || fromDrivewayPage){
             fm.beginTransaction().add(R.id.container, fragment22, "2").hide(fragment22).commit()
             fm.beginTransaction().add(R.id.container, fragment11, "1").hide(fragment11).commit()
             fm.beginTransaction().add(R.id.container, fragment33, "3").commit()
             active = fragment33
             navigation.selectedItemId = R.id.navigation_settings
-            NavigationActivity.fromVehiclePage = false
-            NavigationActivity.fromContactPage = false
-            NavigationActivity.fromEditProfile = false
+            fromVehiclePage = false
+            fromContactPage = false
+            fromEditProfile = false
+            fromDrivewayPage = false
+        }
+        else if(fromReservationPage){
+            fm.beginTransaction().add(R.id.container, fragment33, "3").hide(fragment33).commit()
+            fm.beginTransaction().add(R.id.container, fragment11, "1").hide(fragment11).commit()
+            fm.beginTransaction().add(R.id.container, fragment22, "2").commit()
+            active = fragment22
+            navigation.selectedItemId = R.id.navigation_reservations
+            fromReservationPage = false
         }
         else{
             fm.beginTransaction().add(R.id.container, fragment33, "3").hide(fragment33).commit()
