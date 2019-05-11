@@ -2,20 +2,27 @@ package com.example.openspot
 
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.*
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
+import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 import android.widget.Toast
 import com.example.openspot.DrivewayViewActivity.Companion.TAG
 import com.firebase.ui.auth.AuthUI
@@ -33,21 +40,119 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.internal.lv
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import org.jetbrains.anko.horizontalPadding
+import org.jetbrains.anko.padding
+import org.jetbrains.anko.verticalPadding
 //import org.jetbrains.anko.dip
 import java.io.BufferedInputStream
 import java.io.InputStream
 import java.util.*
 
 
-class ReservationFragment : Fragment() {
+class ReservationFragment : PreferenceFragmentCompat() {
+    private val db = FirebaseFirestore.getInstance()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    companion object {
+        const val MY_PERMISSIONS_REQUEST_CALL_PHONE  = 1
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val recyclerView = listView
+        val itemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
+        recyclerView.addItemDecoration(itemDecoration)
+
+    }
+//
+    override fun onCreatePreferences(savedInstanceState: Bundle?, root_key: String?) {
+        setPreferencesFromResource(R.xml.reservations, root_key)
         activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        return   inflater.inflate(R.layout.reservation, container, false)
+        preferenceScreen = this.preferenceScreen
+
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        var counter = 0
+        var reservationArray :Any?
+
+        if (currentFirebaseUser == null) {
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+        }
+        else {
+//        Toast.makeText(activity!!.baseContext, "" + currentFirebaseUser?.uid, Toast.LENGTH_SHORT).show()
+            val docRef = db.collection("Users").document(currentFirebaseUser!!.uid) as DocumentReference?
+            docRef?.get()
+                    ?.addOnSuccessListener { document ->
+                        if (document != null) {
+                            reservationArray = document.data!!["Reservations"]
+                            Log.d(VehicleViewActivity.TAG, "DocumentSnapshot dataaaa: " + reservationArray)
+
+                            val a = reservationArray as ArrayList<String>
+                            var title = ""
+                            for (i in a.indices) {
+                                val preference = Preference(preferenceScreen.context)
+
+                                when (i % 6) {
+                                    0 -> { //Address
+                                        title = a[i]
+                                    }
+                                    1 -> {//Price
+                                        title = title + "\n" + a[i]
+                                    }
+                                    2 -> {//Date
+                                        title = title + "\n" + a[i]
+                                    }
+                                    3 -> {//Time
+                                        title = title + " at " + a[i]
+                                    }
+                                    4 -> {//Rating
+
+                                    }
+                                    5 -> {//PhoneNumber
+                                        preference.title = title
+                                        preference.key = "Reservation$counter"
+                                        preference.icon = ContextCompat.getDrawable(activity!!.baseContext, R.drawable.booking_40)
+                                        preferenceScreen.addPreference(preference)
+                                        val carButton = findPreference("Reservation$counter")
+                                        carButton.setOnPreferenceClickListener {
+                                            AuthUI.getInstance()
+                                            val callIntent = Intent(Intent.ACTION_CALL)
+                                            callIntent.data = Uri.fromParts("tel", a[i], null)
+
+                                            if (ActivityCompat.checkSelfPermission(
+                                                            context!!,
+                                                            Manifest.permission.CALL_PHONE
+                                                    ) != PackageManager.PERMISSION_GRANTED
+                                            ) {
+                                                requestPermissions(
+                                                        arrayOf(
+                                                                Manifest.permission.CALL_PHONE
+                                                        ),
+                                                        ReservationFragment.MY_PERMISSIONS_REQUEST_CALL_PHONE
+                                                )
+                                            } else {
+                                                try {
+                                                    startActivity(callIntent)
+                                                } catch (e: SecurityException) {
+                                                    e.printStackTrace()
+                                                }
+                                            }
+                                            true
+                                        }
+                                        counter++
+                                    }
+                                }
+                            }
+                        } else {
+
+                        }
+                    }
+        }
     }
 }
 
@@ -261,15 +366,24 @@ class HomeFragment : Fragment(),OnMapReadyCallback{
 
 
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class SettingFragment : PreferenceFragmentCompat() {
 
     //Firebase for User Profile title replacement with Users Full name
     private val db = FirebaseFirestore.getInstance()
     private val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val recyclerView = listView
+        val itemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
+        recyclerView.addItemDecoration(itemDecoration)
+    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, root_key: String?) {
         setPreferencesFromResource(R.xml.preferences, root_key)
         activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         val logoutBtn = findPreference("logout")
         logoutBtn.setOnPreferenceClickListener {
             AuthUI.getInstance()

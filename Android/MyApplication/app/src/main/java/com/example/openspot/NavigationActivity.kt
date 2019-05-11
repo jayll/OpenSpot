@@ -20,6 +20,7 @@ class NavigationActivity : AppCompatActivity() {
         var fromContactPage = false
         var fromEditProfile = false
         var fromDrivewayPage = false
+        var fromReservationPage = false
     }
 
     private val fragment11: Fragment = HomeFragment()
@@ -87,6 +88,14 @@ class NavigationActivity : AppCompatActivity() {
             fromContactPage = false
             fromEditProfile = false
             fromDrivewayPage = false
+        }
+        else if(fromReservationPage){
+            fm.beginTransaction().add(R.id.container, fragment33, "3").hide(fragment33).commit()
+            fm.beginTransaction().add(R.id.container, fragment11, "1").hide(fragment11).commit()
+            fm.beginTransaction().add(R.id.container, fragment22, "2").commit()
+            active = fragment22
+            navigation.selectedItemId = R.id.navigation_reservations
+            fromReservationPage = false
         }
         else{
             fm.beginTransaction().add(R.id.container, fragment33, "3").hide(fragment33).commit()
