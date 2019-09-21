@@ -103,13 +103,13 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
             self.mapView.clear()
             for account in QuerySnapshot!.documents{
                 let address = account.data()["Addresses"] as? [String]
-                if address != nil {
+                if address != nil && address!.count > 0{
                     var index = 0
                     while index != address!.count{
                         if address![index + 3] == "1"{
                             let drivewayMarker = CustomGMSMarker(position: CLLocationCoordinate2D(latitude: Double(address![index + 1])!, longitude: Double(address![index + 2])!))
                             let price = "$" + address![index + 4] + ".00"
-                            drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image:  imageLiteral(resourceName: "Border"), price: price)
+                            drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image:  #imageLiteral(resourceName: "Border"), price: price)
                             drivewayMarker.snippet = price + "/hr"
                             drivewayMarker.title = address![index]
                             drivewayMarker.tracksViewChanges = false
@@ -123,29 +123,6 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
                 }
             }
         }
-        
-        //        ref.getDocuments { (value, error) in
-        //            for account in value!.documents{
-        //                let address = account.data()["Addresses"] as? [String]
-        //                if address != nil && address!.count > 0{
-        //                    var index = 0
-        //                    while index != address!.count{
-        //                        if address![index + 3] == "1"{
-        //                            let drivewayMarker = CustomGMSMarker(position: CLLocationCoordinate2D(latitude: Double(address![index + 1])!, longitude: Double(address![index + 2])!))
-        //                            let price = "$" + address![index + 4] + ".00"
-        //                            drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image: #imageLiteral(resourceName: "Border"), price: price)
-        //                            drivewayMarker.snippet = price + "/hr"
-        //                            drivewayMarker.title = address![index]
-        //                            drivewayMarker.tracksViewChanges = false
-        //                            drivewayMarker.map = self.mapView
-        //                            drivewayMarker.phoneNumber = account.data()["phoneNumber"] as! String
-        //                            drivewayMarker.documentID = account.documentID
-        //                        }
-        //                        index += 5
-        //                    }
-        //                }
-        //            }
-        //        }
         
     }
 }
