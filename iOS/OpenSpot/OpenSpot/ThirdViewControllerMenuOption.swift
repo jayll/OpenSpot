@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum MenuOption: Int, CustomStringConvertible {
+enum ThirdViewControllerMenuOption: Int, CustomStringConvertible {
     
     case Person
     case Driveway

@@ -50,7 +50,7 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource{
         let rotateAnimation = AnimationType.rotate(angle: CGFloat.pi/6)
         let cell: MenuOptionCell
         cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuOptionCell
-        let menuOption = MenuOption(rawValue: indexPath.row)
+        let menuOption = ThirdViewControllerMenuOption(rawValue: indexPath.row)
         cell.iconImageView.image = menuOption?.image
         
         if indexPath.row == 0 {

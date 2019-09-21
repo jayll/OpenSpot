@@ -31,6 +31,10 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         setUpMap()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.getAvailableDriveways()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ThirdViewController.isLoggedOut = false
@@ -42,8 +46,6 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
                 self.present(controller, animated: false, completion: nil)
             }
         }
-        
-        self.getAvailableDriveways()
     }
     
     func setUpLocationManager(){
@@ -81,6 +83,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         // Put the search bar in the navigation bar.
         searchController?.searchBar.sizeToFit()
         navigationItem.titleView = searchController?.searchBar
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings"), style: .plain, target: self, action: #selector(onButtonTap))
         
         // When UISearchController presents the results view, present it in
         // this view controller, not one further up the chain.
@@ -88,6 +91,12 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         
         // Prevent the navigation bar from being hidden when searching.
         searchController?.hidesNavigationBarDuringPresentation = false
+    }
+    
+    @objc func onButtonTap() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MapFilterViewController")
+        self.present(controller, animated: false, completion: nil)
     }
     
     func getAvailableDriveways(){
@@ -106,7 +115,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
                 if address != nil && address!.count > 0{
                     var index = 0
                     while index != address!.count{
-                        if address![index + 3] == "1"{
+                        if address![index + 3] == "1" && Int(address![index + 4])! > PriceSingleton.shared.minPrice && Int(address![index + 4])! < PriceSingleton.shared.maxPrice {
                             let drivewayMarker = CustomGMSMarker(position: CLLocationCoordinate2D(latitude: Double(address![index + 1])!, longitude: Double(address![index + 2])!))
                             let price = "$" + address![index + 4] + ".00"
                             drivewayMarker.iconView = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: 50 , height: 50), image:  #imageLiteral(resourceName: "Border"), price: price)

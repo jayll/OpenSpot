@@ -188,7 +188,7 @@ class VehicleInformationViewController: UIViewController, UITextFieldDelegate, U
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(pickerView == statePicker){
             state.text = statesArr[row]
-        }else if (pickerView==makePicker){
+        }else if (pickerView == makePicker){
             make.text = makeArr[row]
             if(make.text != ""){
                 model.text = ""

@@ -24,13 +24,17 @@
 		3E4ED988226D3E5000B8FB70 /* CustomGMSMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ED987226D3E5000B8FB70 /* CustomGMSMarker.swift */; };
 		3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */; };
 		3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */; };
-		3E5CA0B4221E2022009954D7 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B3221E2022009954D7 /* MenuOption.swift */; };
+		3E5CA0B4221E2022009954D7 /* ThirdViewControllerMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B3221E2022009954D7 /* ThirdViewControllerMenuOption.swift */; };
 		3E5CA0B6221E29A1009954D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA0B5221E29A1009954D7 /* Assets.xcassets */; };
 		3E6525BC225737FE00941F27 /* OpenSpotUITestsSprint2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */; };
 		3E6525BE2257381600941F27 /* OpenSpotTestsSprint2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */; };
 		3E6762A422292584008E85BC /* Pods_OpenSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0796D1BA3492B57B06B3A331 /* Pods_OpenSpot.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		3E9157EF2277FEC40070524C /* AnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9157EE2277FEC40070524C /* AnimatedTabBarController.swift */; };
 		3E9407C32265738600D9EE0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E9407C22265738600D9EE0E /* GoogleService-Info.plist */; };
+		3E9C8F7D2335E00D00B15689 /* MapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C8F7C2335E00D00B15689 /* MapFilterViewController.swift */; };
+		3E9C8F7F2335E59900B15689 /* MapFilterMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C8F7E2335E59900B15689 /* MapFilterMenuOptions.swift */; };
+		3E9C8F832335EA9F00B15689 /* MapFilterOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C8F822335EA9F00B15689 /* MapFilterOptionCell.swift */; };
+		3E9C8F852336044400B15689 /* PriceSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9C8F842336044400B15689 /* PriceSingleton.swift */; };
 		3EAC65BD226419AE0048D6E3 /* ReservationsOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */; };
 		3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC2373C224F0B5400DD6905 /* SupportViewController.swift */; };
 		3ED288E122338442007E8256 /* VehicleInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED288E022338442007E8256 /* VehicleInformationViewController.swift */; };
@@ -101,12 +105,16 @@
 		3E4ED987226D3E5000B8FB70 /* CustomGMSMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGMSMarker.swift; sourceTree = "<group>"; };
 		3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
-		3E5CA0B3221E2022009954D7 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
+		3E5CA0B3221E2022009954D7 /* ThirdViewControllerMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControllerMenuOption.swift; sourceTree = "<group>"; };
 		3E5CA0B5221E29A1009954D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E6525BB225737FE00941F27 /* OpenSpotUITestsSprint2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotUITestsSprint2.swift; sourceTree = "<group>"; };
 		3E6525BD2257381600941F27 /* OpenSpotTestsSprint2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSpotTestsSprint2.swift; sourceTree = "<group>"; };
 		3E9157EE2277FEC40070524C /* AnimatedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTabBarController.swift; sourceTree = "<group>"; };
 		3E9407C22265738600D9EE0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3E9C8F7C2335E00D00B15689 /* MapFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewController.swift; sourceTree = "<group>"; };
+		3E9C8F7E2335E59900B15689 /* MapFilterMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterMenuOptions.swift; sourceTree = "<group>"; };
+		3E9C8F822335EA9F00B15689 /* MapFilterOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterOptionCell.swift; sourceTree = "<group>"; };
+		3E9C8F842336044400B15689 /* PriceSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceSingleton.swift; sourceTree = "<group>"; };
 		3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsOptionCell.swift; sourceTree = "<group>"; };
 		3EC2373C224F0B5400DD6905 /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		3ED288E022338442007E8256 /* VehicleInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleInformationViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +201,7 @@
 				3E3C9C8A22176FAE00A88600 /* AppDelegate.swift */,
 				3E9157EE2277FEC40070524C /* AnimatedTabBarController.swift */,
 				3E3C9C8C22176FAE00A88600 /* FirstViewController.swift */,
+				3E9C8F7C2335E00D00B15689 /* MapFilterViewController.swift */,
 				3E2342E322617CB00061A6AE /* DrivewayListViewController.swift */,
 				3E2342E52261802E0061A6AE /* DrivewayViewController.swift */,
 				9CD5978B2241F60F00302BB1 /* OpenSpotFirebaseUI.swift */,
@@ -206,11 +215,14 @@
 				3EAC65BC226419AE0048D6E3 /* ReservationsOptionCell.swift */,
 				3E5CA0AA22193BD8009954D7 /* ThirdViewController.swift */,
 				3EC2373C224F0B5400DD6905 /* SupportViewController.swift */,
-				3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */,
 				9C5D93AF225170D700011FB7 /* VehicleOption.swift */,
 				3ED288E4223481C9007E8256 /* UITextFieldExtension.swift */,
 				9C5D93B72263E8F800011FB7 /* DrivewayPreviewView.swift */,
-				3E5CA0B3221E2022009954D7 /* MenuOption.swift */,
+				3E5CA0B3221E2022009954D7 /* ThirdViewControllerMenuOption.swift */,
+				3E5CA0B1221E1FD1009954D7 /* MenuOptionCell.swift */,
+				3E9C8F7E2335E59900B15689 /* MapFilterMenuOptions.swift */,
+				3E9C8F822335EA9F00B15689 /* MapFilterOptionCell.swift */,
+				3E9C8F842336044400B15689 /* PriceSingleton.swift */,
 				3E5CA0B5221E29A1009954D7 /* Assets.xcassets */,
 				3E3C9C9022176FAE00A88600 /* Main.storyboard */,
 				3E3C9C9522176FB000A88600 /* LaunchScreen.storyboard */,
@@ -673,19 +685,23 @@
 				9C5D93AE22505C3500011FB7 /* VehicleViewController.swift in Sources */,
 				3ED288E5223481C9007E8256 /* UITextFieldExtension.swift in Sources */,
 				9C5D93B62263E70800011FB7 /* CustomMarkerView.swift in Sources */,
+				3E9C8F7D2335E00D00B15689 /* MapFilterViewController.swift in Sources */,
 				3EAC65BD226419AE0048D6E3 /* ReservationsOptionCell.swift in Sources */,
 				3EC2373D224F0B5400DD6905 /* SupportViewController.swift in Sources */,
+				3E9C8F852336044400B15689 /* PriceSingleton.swift in Sources */,
 				9C5D93B0225170D700011FB7 /* VehicleOption.swift in Sources */,
 				3E4ED986226C47E200B8FB70 /* ConfirmBooking.swift in Sources */,
 				9CD5978C2241F60F00302BB1 /* OpenSpotFirebaseUI.swift in Sources */,
-				3E5CA0B4221E2022009954D7 /* MenuOption.swift in Sources */,
+				3E5CA0B4221E2022009954D7 /* ThirdViewControllerMenuOption.swift in Sources */,
 				3ED288E3223384B8007E8256 /* UserInformationViewController.swift in Sources */,
 				3E5CA0B2221E1FD1009954D7 /* MenuOptionCell.swift in Sources */,
 				3E3C9C8B22176FAE00A88600 /* AppDelegate.swift in Sources */,
+				3E9C8F832335EA9F00B15689 /* MapFilterOptionCell.swift in Sources */,
 				9C5D93B82263E8F800011FB7 /* DrivewayPreviewView.swift in Sources */,
 				3E4ED988226D3E5000B8FB70 /* CustomGMSMarker.swift in Sources */,
 				3E5CA0AB22193BD8009954D7 /* ThirdViewController.swift in Sources */,
 				3ED288E122338442007E8256 /* VehicleInformationViewController.swift in Sources */,
+				3E9C8F7F2335E59900B15689 /* MapFilterMenuOptions.swift in Sources */,
 				3E3C9C8D22176FAE00A88600 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
