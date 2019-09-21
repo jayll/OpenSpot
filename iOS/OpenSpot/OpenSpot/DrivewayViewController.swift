@@ -44,7 +44,7 @@ class DrivewayViewController : UIViewController {
                     getAddressesArray![self.addressIndex!+1] = self.lat
                     getAddressesArray![self.addressIndex!+2] = self.long
                     getAddressesArray![self.addressIndex!+3] = String(self.availablitySegmentedControl.selectedSegmentIndex)
-                    getAddressesArray![self.addressIndex!+4] = String(Int(self.priceSlide.value.rounded()))
+                    getAddressesArray![self.addressIndex!+4] = String(Int(floor(self.priceSlide.value)))
                     
                     db.collection("Users").document((currentUser?.uid)!).updateData([
                         "Addresses": getAddressesArray!])
@@ -65,7 +65,7 @@ class DrivewayViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchCompleter.delegate = self
-        addressTextView.underlined(color: #colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
+        addressTextView.underlined(color:  colorLiteral(red: 0.6156862745, green: 0.6039215686, blue: 0.937254902, alpha: 1))
         fillInformation()
     }
     
